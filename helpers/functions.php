@@ -23,6 +23,11 @@
                     <link rel="stylesheet" href="../public/css/login.css">
                     <link rel="stylesheet" href="../public/css/keyframe.css">';
             return $style;
+        } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                    <link rel="stylesheet" href="../public/css/dashboard.css">
+                    <link rel="stylesheet" href="../public/css/keyframe.css">';
+            return $style;
         }
     }
 
@@ -36,6 +41,9 @@
             return $javascript;
         } else if ($_SERVER['REQUEST_URI'] == '/connexion') {
             $javascript = '';
+            return $javascript;
+        } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
+            $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
             return $javascript;
         }
     }
