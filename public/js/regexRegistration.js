@@ -57,9 +57,11 @@ let verifyFirstName = () => {
 let verifyPassword = () => {
     if (regexPassword.test(inputPassword.value)) {
         inputPassword.style.borderColor = '#75DB79';
+        passwordIndication.style.display = 'none';
         return true;
     } else {
         inputPassword.style.borderColor = '#E87D7D';
+        passwordIndication.style.display = 'block';
         return false;
     }
 }
@@ -79,8 +81,6 @@ let verifyConfirmPassword = () => {
 /*************************** **************************/
 /************************  Work ***********************/
 /*************************** **************************/
-
-// On click open navbar in mobile view
 
 inputMail.addEventListener('blur', () => {
     verifyMail();

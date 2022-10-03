@@ -17,14 +17,22 @@
 
             <!-- Form -->
 
-            <form method="POST">
+            <form method="POST" novalidate>
                 <div class="formInput flexCenterCenterColumn">
-                    <input type="text" placeholder="example@app.com" name="mail" required>
+                    <input type="text" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
+                    <p class="errorMessage"><?= ($errorsRegistration['mail'] != '') ? $errorsRegistration['mail'] : '' ?></p>
                     <div class="formName flexCenterBetween">
-                        <input type="text" placeholder="Nom" name="lastname" required>
-                        <input type="text" placeholder="Prénom" name="firstname" required>
+                        <div class="flexCenterCenterColumn">
+                            <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" required>
+                            <p class="errorMessage"><?= ($errorsRegistration['lastname'] != '') ? $errorsRegistration['lastname'] : '' ?></p>
+                        </div>
+                        <div class="flexCenterColumn">
+                            <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" required>
+                            <p class="errorMessage"><?= ($errorsRegistration['firstname'] != '') ? $errorsRegistration['firstname'] : '' ?></p>
+                        </div>
                     </div>
-                    <input type="password" placeholder="Mot de passe" name="password" required>
+                    <input type="password" placeholder="Mot de passe*" name="password" required>
+                    <p class="errorMessage"><?= ($errorsRegistration['password'] != '') ? $errorsRegistration['password'] : '' ?></p>
                     <div class="passwordIndication hidden">
                         <p>Il doit contenir :</p>
                         <ul>
@@ -34,18 +42,20 @@
                             <li>8 caractères minimum</li>
                         </ul>
                     </div>
-                    <input type="password" placeholder="Mot de passe (confirmation)" name="passwordConfirm" required>
+                    <input type="password" placeholder="Mot de passe (confirmation)*" name="passwordConfirm" required>
                     <div class="formCheckboxContainer">
                         <div class="formCheckbox">
-                            <input type="checkbox" name="CGU[]" id="termServices" name="termServices" required>
+                            <input type="checkbox" name="CGU[]" id="termServices" name="termServices" value="1" <?= (!empty($cgu) && in_array('1', $cgu)) ? 'checked' : '' ?> required>
                             <label for="termServices">J'accepte les <a href="">conditions d'utitilisations</a></label>
+                            <p class="errorMessage"><?= (!empty($cgu) && in_array('1', $cgu)) ? '' : $errorsRegistration['CGU'] ?></p>
                         </div>
                         <div class="formCheckbox">
-                            <input type="checkbox" name="CGU[]" id="privacyPolicy" name="privacyPolicy" required>
+                            <input type="checkbox" name="CGU[]" id="privacyPolicy" name="privacyPolicy" value="2" <?= (!empty($cgu) && in_array('2', $cgu)) ? 'checked' : '' ?> required>
                             <label for="privacyPolicy">J'accepte la <a href="">politique de confidentialité</a></label>
+                            <p class="errorMessage"><?= (!empty($cgu) && in_array('2', $cgu)) ? '' : $errorsRegistration['CGU'] ?></p>
                         </div>
                         <div class="formCheckbox">
-                            <input type="checkbox" name="CGU[]" id="newsletter" name="newsletter">
+                            <input type="checkbox" name="newsletter" id="newsletter" name="newsletter" value="1" <?= (!empty($newsletter)) ? 'checked' : '' ?> >
                             <label for="newsletter">J'accepte de recevoir la newsletter de <strong class="important">BuildUs</strong></label>
                         </div>
                     </div>
@@ -61,7 +71,7 @@
 
         <!-- Call to action -->
 
-        <h4>Vous possédez un compte ? <a href="connexion.html">Cliquez ici</a></h4>
+        <h4>Vous possédez un compte ? <a href="/connexion">Cliquez ici</a></h4>
     </div>
 
     <!-- CDN Font Awesome -->

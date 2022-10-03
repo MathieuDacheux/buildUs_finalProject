@@ -102,6 +102,14 @@ p {
     line-height: 150%;
 }
 
+.errorMessage {
+    color: var(--error80);
+    font-size: .7rem;
+    margin-bottom: .25rem;
+    height: 10px;
+    width: 89%;
+}
+
 a {
     font-size: 1rem;
     font-weight: 600;

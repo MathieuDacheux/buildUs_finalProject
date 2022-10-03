@@ -83,7 +83,6 @@
 
 .formInput input {
     width: 90%;
-    margin-bottom: .5rem;
     padding: .70rem .5em;
     border-radius: 5px;
     border: 2px solid var(--black40);
@@ -99,8 +98,8 @@
     border: 2px solid var(--primary80);
 }
 
-.formInput input:nth-child(4) {
-    margin-bottom: 1rem;
+.formInput input:nth-child(7) {
+    margin-bottom: .5rem;
 }
 
 .formName {
@@ -108,11 +107,15 @@
 }
 
 .formName input:first-child {
-    margin-right: .5rem;
+    width: 100%;
 }
 
 .formName input:last-child {
-    margin-left: .5rem;
+    width: 100%;
+}
+
+.formName .errorMessage {
+    width: 99%;
 }
 
 /* Form privacy checkbox */
@@ -121,13 +124,13 @@
     width: 90%;
 }
 
-.formCheckbox {
-    padding-bottom: .5rem;
-}
-
 .formCheckbox label {
     font-size: .8rem;
     color: var(--black100);
+}
+
+.formCheckbox .errorMessage {
+    padding-left: 1rem;
 }
 
 .formCheckbox input[type=checkbox] {

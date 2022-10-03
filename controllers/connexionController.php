@@ -12,6 +12,11 @@
     $javascript = wichJavscript();
     $title = TITLE_HEAD[2];
     $description = DESCRIPTION_HEAD[2];
+    
+    // Actions effectuées si la méthode est en POST
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+    }
 
     // Appel des vues
     include (__DIR__.'/../views/templates/header.php');
