@@ -1,0 +1,219 @@
+/* Colors Variables */
+
+:root {
+    /* Primary Color */
+
+    --primary100: #2752E7;
+    --primary80: #5275EC;
+    --primary60: #7D97F1;
+    --primary40: #D0DBFF;
+
+    /* Base Color */
+
+    --black100: #2C3131;
+    --black80: #626262;
+    --black60: #A9A9A9;
+    --black40: #CACACA;
+    --black20: #E3E3E3;
+    --black0 : #FFFFFF;
+
+    /* Accent Color */
+
+    --success100: #53D258;
+    --succes80: #75DB79;
+    --succes60: #98E49B;
+    --succes40: #BAEDBC;
+    --succes20: #DDF6DE;
+
+    --error100: #E25C5C;
+    --error80: #E87D7D;
+    --error60: #EE9D9D;
+    --error40: #F3BEBE;
+    --error20: #F9DEDE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 16px;
+    background-color: var(--black0);
+}
+
+/* Media Queries to make Gutter view */
+
+@media screen and (min-width: 1200px) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
+    .desktopGutter {
+        width: 1200px;
+    }
+}
+
+/* Fonts integration */
+
+body {
+    font-family: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Fonts Settings */
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    line-height: 125%;
+    text-align: center;
+    padding: 0rem .5rem;
+    color: var(--black100);
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 125%;
+    text-align: center;
+    padding-bottom: 1rem;
+    color: var(--black100);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 130%;
+    color: var(--black100);
+}
+
+h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 130%;
+    color: var(--black0);
+}
+
+p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+a {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--black100);
+}
+
+@media screen and (min-width: 1200px) {
+    p {
+        font-size: 1rem;
+    }
+}
+
+.formCheckbox label {
+    font-size: .8rem;
+    font-weight: 400;
+    color: var(--black100);
+}
+
+.formCheckbox label a {
+    font-size: .8rem;
+    color: var(--primary100);
+}
+
+.important {
+    color: var(--primary100);
+}
+
+.listing {
+    color: var(--primary60);
+}
+
+.minimise {
+    font-size: 1rem;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Margin & Padding */
+
+section {
+    padding: 1rem 0rem;
+}
+
+nav {
+    padding: 0em 1rem;
+}
+
+ul {
+    padding: .5rem 0rem;
+}
+
+li {
+    margin: .5rem 0rem;
+}
+
+.containerContent {
+    padding: 0rem 1rem;
+}
+
+/* Button */ 
+
+.callToAction {
+    color: var(--black0);
+    padding: 1rem ;
+    font-size: 1.25rem;
+    text-align: center;
+    background: linear-gradient(to left, var(--primary100), var(--primary80));
+    border-radius: 10px;
+}
+
+/* Flex Settings */
+
+.flexCenterVertical {
+    display: flex;
+    align-items: center;
+}
+
+.flexCenterHorizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.flexCenterColumn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flexCenterCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexCenterCenterColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexCenterAround {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flexCenterBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

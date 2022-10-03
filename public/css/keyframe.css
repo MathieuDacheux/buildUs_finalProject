@@ -1,0 +1,13 @@
+/* Keyframe Apparition Mockup from the bottom of the header */
+
+@keyframes levitationMockUpHeader {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-7.5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

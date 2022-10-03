@@ -1,0 +1,27 @@
+footer {
+    height: auto;
+    background-color: var(--black0);
+}
+
+footer .containerLogo {
+    padding: .5rem 0rem;
+}
+
+footer div:nth-child(2) {
+    width: 100px;
+    padding: .5rem 0rem;
+}
+
+footer .flexCenterBetween i {
+    font-size: 2.25rem;
+    color: var(--black100);
+}
+
+.containerLinks {
+    padding: .5rem 0rem;
+}
+
+.containerLinks a {
+    color: var(--black100);
+    padding-bottom: .5rem;
+}
