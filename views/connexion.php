@@ -1,5 +1,5 @@
     <div class="backToHome">
-        <a href="index.html"><i class="fa-solid fa-arrow-left"></i></a> 
+        <a href="/accueil"><i class="fa-solid fa-arrow-left"></i></a> 
     </div>
     <div class="formContainer flexCenterColumn">
         <div class="formContent">

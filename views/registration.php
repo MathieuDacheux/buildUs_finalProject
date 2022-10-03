@@ -1,7 +1,7 @@
     <!-- Comeback to the landing page -->
 
     <div class="backToHome">
-        <a href="index.html"><i class="fa-solid fa-arrow-left"></i></a> 
+        <a href="/accueil"><i class="fa-solid fa-arrow-left"></i></a> 
     </div>
 
     <!-- Container registration -->

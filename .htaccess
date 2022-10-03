@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^accueil$ controllers/homeController.php
+RewriteRule ^inscription$ controllers/registrationController.php
+RewriteRule ^connexion$ controllers/connexionController.php

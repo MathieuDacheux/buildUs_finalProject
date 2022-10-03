@@ -7,7 +7,7 @@
     <header>
         <nav class="flexCenterBetween">
             <div class="containerLogo flexCenterVertical">
-                <a href="/"><img src="../public/assets/icons/logo.svg" alt="Logo du logiciel BuildUs"></a>
+                <a href="/accueil"><img src="../public/assets/icons/logo.svg" alt="Logo du logiciel BuildUs"></a>
                 <h3>BuildUs</h3>
             </div>
             
@@ -16,8 +16,8 @@
             <div class="desktopNav flexCenterBetween">
                 <a href="#pricing">Tarifs</a>
                 <a href="#features">Fonctionnalités</a>
-                <a href="/../controllers/registrationController.php" class="createAccount">Inscription</a>
-                <a href="/../controllers/connexionController.php" class="connectionAccount">Connexion</a>
+                <a href="/inscription" class="createAccount">Inscription</a>
+                <a href="/connexion" class="connectionAccount">Connexion</a>
             </div>
 
             <!-- Burger Menu for mobile view -->
@@ -29,10 +29,10 @@
                     <li><a href="#features">Fonctionnalités</a></li>
                     <div class="flexCenterAround containerConnection">
                         <li class="flexCenterCenter">
-                            <a href="/../controllers/registrationController.php" class="createAccount">Inscription</a>
+                            <a href="/inscription" class="createAccount">Inscription</a>
                         </li>
                         <li class="flexCenterCenter">
-                            <a href="/../controllers/registrationController.php" class="connectionAccount">Connexion</a>
+                            <a href="/connexion" class="connectionAccount">Connexion</a>
                         </li>
                     </div>
                 </ul>
