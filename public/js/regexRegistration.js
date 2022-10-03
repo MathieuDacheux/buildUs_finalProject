@@ -24,7 +24,7 @@ const listSpecialCharacter = document.querySelector('.passwordIndication li:nth-
 const listLenght = document.querySelector('.passwordIndication li:nth-child(4)');
 
 // Function verify form 
-let verifyMail = () => {
+const verifyMail = () => {
     if (regexMail.test(inputMail.value)) {
         inputMail.style.borderColor = '#75DB79';
         return true;
@@ -34,7 +34,7 @@ let verifyMail = () => {
     }
 }
 
-let verifyLastName = () => {
+const verifyLastName = () => {
     if (regexName.test(inputLastName.value)) {
         inputLastName.style.borderColor = '#75DB79';
         return true;
@@ -44,7 +44,7 @@ let verifyLastName = () => {
     }
 }
 
-let verifyFirstName = () => {
+const verifyFirstName = () => {
     if (regexName.test(inputFirstName.value)) {
         inputFirstName.style.borderColor = '#75DB79';
         return true;
@@ -54,19 +54,17 @@ let verifyFirstName = () => {
     }
 }
 
-let verifyPassword = () => {
+const verifyPassword = () => {
     if (regexPassword.test(inputPassword.value)) {
         inputPassword.style.borderColor = '#75DB79';
-        passwordIndication.style.display = 'none';
         return true;
     } else {
         inputPassword.style.borderColor = '#E87D7D';
-        passwordIndication.style.display = 'block';
         return false;
     }
 }
 
-let verifyConfirmPassword = () => {
+const verifyConfirmPassword = () => {
     if (regexPassword.test(inputPassword.value) && inputPassword.value == inputConfirmPassword.value) {
         inputConfirmPassword.style.borderColor = '#75DB79';
         inputPassword.style.borderColor = '#75DB79';
@@ -75,6 +73,14 @@ let verifyConfirmPassword = () => {
         inputPassword.style.borderColor = '#E87D7D';
         inputConfirmPassword.style.borderColor = '#E87D7D';
         return false;
+    }
+}
+
+const verifyEachSpecifity = () => {
+    if (regexUppercase.test(inputPassword.value)) {
+        listUpperCase.style.color = '#75DB79';
+    } else {
+        listUpperCase.style.color = '#E87D7D';
     }
 }
 

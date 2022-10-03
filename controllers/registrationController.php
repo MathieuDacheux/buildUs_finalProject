@@ -15,6 +15,7 @@
 
     // Appel des vues
     include (__DIR__.'/../views/templates/header.php');
+
     // Actions effectuées si la méthode est en POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Filtrage des inputs
@@ -32,16 +33,23 @@
         $errorsRegistration['firstname'] = validationInput($firstname, REGEX_NAME);
         $errorsRegistration['password'] = validationInput($password, REGEX_PASSWORD);
         $errorsRegistration['passwordConfirm'] = validationInput($passwordConfirm, REGEX_PASSWORD);
+
+        var_dump($newsletter);
+
+        if ($password != $passwordConfirm) {
+            $errorsRegistration['password'] = 'Les mots de passe doivent être identiques';
+        }
+
         if (empty($cgu)) {
             $errorsRegistration['CGU'] = 'Ce champs est obligatoire';
         } else if ($cgu[0] != 1 || $cgu[1] != 2) {
             $errorsRegistration['CGU'] = 'Ce champs est obligatoire';
         }
-        if ($newsletter != 1) {
+
+        if ($newsletter != 1 &&  $newsletter != NULL)  {
             $errorsRegistration['newsletter'] = 'Ce champs n\'est pas conforme';
         }
-        
-        
     }
+
     include (__DIR__.'/../views/registration.php');
     include (__DIR__.'/../views/templates/footer.php');

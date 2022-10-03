@@ -17,7 +17,7 @@
                 </div>
             </form>
         </div>
-        <h4>Vous souhaitez créer un compte ? <a href="registration.html">Cliquez ici</a></h4>
+        <h4>Vous souhaitez créer un compte ? <a href="/inscription">Cliquez ici</a></h4>
     </div>
 
     <!-- CDN Font Awesome -->
