@@ -20,19 +20,19 @@
             <form method="POST" novalidate>
                 <div class="formInput flexCenterCenterColumn">
                     <input type="text" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
-                    <p class="errorMessage"><?= ($errorsRegistration['mail'] != '') ? $errorsRegistration['mail'] : '' ?></p>
+                    <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
                     <div class="formName flexCenterBetween">
                         <div class="flexCenterCenterColumn">
                             <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" required>
-                            <p class="errorMessage"><?= ($errorsRegistration['lastname'] != '') ? $errorsRegistration['lastname'] : '' ?></p>
+                            <p class="errorMessage"><?= (array_key_exists('lastname', $errorsRegistration)) ? $errorsRegistration['lastname'] : '' ?></p>
                         </div>
                         <div class="flexCenterColumn">
                             <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" required>
-                            <p class="errorMessage"><?= ($errorsRegistration['firstname'] != '') ? $errorsRegistration['firstname'] : '' ?></p>
+                            <p class="errorMessage"><?= (array_key_exists('firstname', $errorsRegistration)) ? $errorsRegistration['firstname'] : '' ?></p>
                         </div>
                     </div>
                     <input type="password" placeholder="Mot de passe*" name="password" required>
-                    <p class="errorMessage"><?= ($errorsRegistration['password'] != '') ? $errorsRegistration['password'] : '' ?></p>
+                    <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                     <div class="passwordIndication hidden">
                         <p>Il doit contenir :</p>
                         <ul>
@@ -47,12 +47,12 @@
                         <div class="formCheckbox">
                             <input type="checkbox" name="CGU[]" id="termServices" name="termServices" value="1" <?= (!empty($cgu) && in_array('1', $cgu)) ? 'checked' : '' ?> required>
                             <label for="termServices">J'accepte les <a href="">conditions d'utitilisations</a></label>
-                            <p class="errorMessage"><?= (!empty($cgu) && in_array('1', $cgu)) ? '' : $errorsRegistration['CGU'] ?></p>
+                            <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                         </div>
                         <div class="formCheckbox">
                             <input type="checkbox" name="CGU[]" id="privacyPolicy" name="privacyPolicy" value="2" <?= (!empty($cgu) && in_array('2', $cgu)) ? 'checked' : '' ?> required>
                             <label for="privacyPolicy">J'accepte la <a href="">politique de confidentialité</a></label>
-                            <p class="errorMessage"><?= (!empty($cgu) && in_array('2', $cgu)) ? '' : $errorsRegistration['CGU'] ?></p>
+                            <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                         </div>
                         <div class="formCheckbox">
                             <input type="checkbox" name="newsletter" id="newsletter" name="newsletter" value="1" <?= (!empty($newsletter)) ? 'checked' : '' ?> >

@@ -53,6 +53,8 @@
             if (!$isOk) {
                 $error = 'Ce champs n\'est pas conforme';
                 return $error;
+            } else {
+                return true;
             }
         }
     }

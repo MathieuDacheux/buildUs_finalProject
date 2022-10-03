@@ -28,13 +28,21 @@
         $newsletter = (filter_input(INPUT_POST, 'newsletter', FILTER_SANITIZE_NUMBER_INT));
 
         // Validation des inputs
-        $errorsRegistration['mail'] = validationInput($mail, REGEX_MAIL);
-        $errorsRegistration['lastname'] = validationInput($lastname, REGEX_NAME);
+        if (validationInput($mail, REGEX_MAIL) != 'true') {
+            $errorsRegistration['mail'] = validationInput($mail, REGEX_MAIL);
+        }
+        if (validationInput($lastname, REGEX_NAME) != 'true') {
+            $errorsRegistration['lastname'] = validationInput($lastname, REGEX_NAME);
+        }
+        if (validationInput($firstname, REGEX_NAME) != 'true') {
         $errorsRegistration['firstname'] = validationInput($firstname, REGEX_NAME);
-        $errorsRegistration['password'] = validationInput($password, REGEX_PASSWORD);
-        $errorsRegistration['passwordConfirm'] = validationInput($passwordConfirm, REGEX_PASSWORD);
-
-        var_dump($newsletter);
+        }
+        if (validationInput($password, REGEX_PASSWORD) != 'true') {
+            $errorsRegistration['password'] = validationInput($password, REGEX_PASSWORD);
+        }        
+        if (validationInput($passwordConfirm, REGEX_PASSWORD) != 'true') {
+            $errorsRegistration['passwordConfirm'] = validationInput($passwordConfirm, REGEX_PASSWORD);
+        }
 
         if ($password != $passwordConfirm) {
             $errorsRegistration['password'] = 'Les mots de passe doivent être identiques';
@@ -45,7 +53,7 @@
         } else if ($cgu[0] != 1 || $cgu[1] != 2) {
             $errorsRegistration['CGU'] = 'Ce champs est obligatoire';
         }
-
+        
         if ($newsletter != 1 &&  $newsletter != NULL)  {
             $errorsRegistration['newsletter'] = 'Ce champs n\'est pas conforme';
         }
