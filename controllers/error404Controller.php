@@ -13,7 +13,6 @@
     $title = TITLE_HEAD[4];
     $description = DESCRIPTION_HEAD[4];
     
-
     // Appel des vues
     include (__DIR__.'/../views/templates/header.php');
     include (__DIR__.'/../views/404.php');

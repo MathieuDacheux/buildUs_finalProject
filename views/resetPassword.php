@@ -16,7 +16,7 @@
                 </div>
             </form>
         </div>
-        <h4>Connectez vous à votre compte <a href="/connexion">Cliquez ici</a></h4>
+        <h4>Connectez vous à votre compte ? <a href="/connexion">Cliquez ici</a></h4>
     </div>
 
     <!-- CDN Font Awesome -->

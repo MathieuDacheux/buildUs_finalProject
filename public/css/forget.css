@@ -99,6 +99,7 @@
 
 .formContainer h4 {
     padding-top: .75rem;
+    color: var(--black0);
 }
 
 .formContainer h4 a {
