@@ -39,7 +39,7 @@
 
 .formContent {
     width: 350px;
-    height: 250px;
+    height: 300px;
     background: url('../assets/img/background/mobile/backgroundMobile.svg') no-repeat;
     background-color: var(--black0);
     border-radius: 10px;
@@ -59,16 +59,19 @@
 /* Form */
 
 .formInput {
-    height: 100px;
+    height: 150px;
 }
 
 .formInput input {
     width: 90%;
-    margin-bottom: .5rem;
     padding: .70rem .5em;
     border-radius: 5px;
     border: 2px solid var(--black40);
     color: var(--black100);
+}
+
+.formInput input:nth-child(3){
+    margin-bottom: .5rem;
 }
 
 .formInput input::placeholder {
@@ -80,9 +83,13 @@
     border: 2px solid var(--primary80);
 }
 
-.formInput p {
-    font-size: .8rem;
+.errorMessage {
+    height: 10px;
+}
+
+.formInput p:last-child {
     color: var(--black100);
+    font-size: .8rem;
 }
 
 .formInput p a{
@@ -109,7 +116,7 @@
 }
 
 .formContainer h4 {
-    padding-top: 1rem;
+    padding-top: .75rem;
 }
 
 .formContainer h4 a {

@@ -1,4 +1,4 @@
-    <div class="backToHome">
+<div class="backToHome">
         <a href="/accueil"><i class="fa-solid fa-arrow-left"></i></a> 
     </div>
     <div class="formContainer flexCenterColumn">
@@ -11,7 +11,7 @@
                     <input type="text" placeholder="example@app.com" name="userLogin" required>
                     <p class="errorMessage"><?= (array_key_exists('userLogin', $errorConnexion)) ? $errorConnexion['userLogin'] : '' ?></p>
                     <input type="password" placeholder="Mot de passe" name="userPassword" required>
-                    <p>Mot de passe oublié ? <a href="/reinitialiser">Cliquez ici</a></p>
+                    <p>Mot de passe oublié ? <a href="connexion.html">Cliquez ici</a></p>
                 </div>
                 <div class="registerButton flexCenterCenter">
                     <button type="submit" name="connexion">Se connecter</button>

@@ -15,7 +15,13 @@
     
     // Actions effectuées si la méthode est en POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
+        // Filtrage des inputs
+        $userLogin = trim(filter_input(INPUT_POST, 'userLogin', FILTER_SANITIZE_SPECIAL_CHARS));
+        $userPassword = $_POST['userPassword'];
+        // Validation des inputs
+        if (validationInput($userLogin, REGEX_MAIL) != 'true') {
+            $errorConnexion['userLogin'] = validationInput($userLogin, REGEX_MAIL);
+        }
     }
 
     // Appel des vues

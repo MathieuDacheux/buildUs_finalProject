@@ -25,6 +25,7 @@
             return $style;
         } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
             $style = '<link rel="stylesheet" href="../public/css/main.css">
+                    <link rel="stylesheet" href="../public/css/navbarDashboard.css">
                     <link rel="stylesheet" href="../public/css/dashboard.css">
                     <link rel="stylesheet" href="../public/css/keyframe.css">';
             return $style;
