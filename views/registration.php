@@ -19,7 +19,7 @@
 
             <form method="POST" novalidate>
                 <div class="formInput flexCenterCenterColumn">
-                    <input type="text" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
+                    <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
                     <div class="formName flexCenterBetween">
                         <div class="flexCenterCenterColumn">

@@ -4,21 +4,19 @@
     <div class="formContainer flexCenterColumn">
         <div class="formContent">
             <div class="formContentTitle flexCenterCenter">
-                <h3>Retrouvez <strong class="important">BuildUs</strong></h3>
+                <h3>Mot de passe oublié ? <strong class="important">Facile</strong></h3>
             </div>
             <form method="POST" novalidate>
                 <div class="formInput flexCenterCenterColumn">
-                    <input type="text" placeholder="example@app.com" name="userLogin" required>
-                    <p class="errorMessage"><?= (array_key_exists('userLogin', $errorConnexion)) ? $errorConnexion['userLogin'] : '' ?></p>
-                    <input type="password" placeholder="Mot de passe" name="userPassword" required>
-                    <p>Mot de passe oublié ? <a href="connexion.html">Cliquez ici</a></p>
+                    <input type="mail" placeholder="example@app.com" name="userLogin" value="<?= $userLogin ?? '' ?>" required>
+                    <p class="errorMessage"><?= (array_key_exists('userLogin', $errorForgot)) ? $errorForgot['userLogin'] : '' ?></p>
                 </div>
                 <div class="registerButton flexCenterCenter">
-                    <button type="submit" name="connexion">Se connecter</button>
+                    <button type="submit" name="connexion">Reinitialiser</button>
                 </div>
             </form>
         </div>
-        <h4>Vous souhaitez créer un compte ? <a href="/inscription">Cliquez ici</a></h4>
+        <h4>Connectez vous à votre compte <a href="/connexion">Cliquez ici</a></h4>
     </div>
 
     <!-- CDN Font Awesome -->

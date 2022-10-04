@@ -8,7 +8,7 @@
             </div>
             <form method="POST" novalidate>
                 <div class="formInput flexCenterCenterColumn">
-                    <input type="text" placeholder="example@app.com" name="userLogin" required>
+                    <input type="mail" placeholder="example@app.com" name="userLogin" value="<?= $userLogin ?? '' ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('userLogin', $errorConnexion)) ? $errorConnexion['userLogin'] : '' ?></p>
                     <input type="password" placeholder="Mot de passe" name="userPassword" required>
                     <p>Mot de passe oublié ? <a href="/reinitialiser">Cliquez ici</a></p>
