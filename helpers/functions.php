@@ -25,6 +25,10 @@
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                     <link rel="stylesheet" href="../public/css/forget.css">';
             return $style;
+        } else if ($_SERVER['REQUEST_URI'] == '/404') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                    <link rel="stylesheet" href="../public/css/404.css">';
+            return $style;
         }
     }
 

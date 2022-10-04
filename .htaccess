@@ -1,5 +1,8 @@
 RewriteEngine On
 
+ErrorDocument 404 http://buildus.localhost/404
+
+RewriteRule ^404$ controllers/error404Controller.php
 RewriteRule ^accueil$ controllers/homeController.php
 RewriteRule ^inscription$ controllers/registrationController.php
 RewriteRule ^connexion$ controllers/connexionController.php

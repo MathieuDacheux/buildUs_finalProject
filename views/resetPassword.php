@@ -6,7 +6,7 @@
             <div class="formContentTitle flexCenterCenter">
                 <h3>Mot de passe oublié ? <strong class="important">Facile</strong></h3>
             </div>
-            <form method="POST" novalidate>
+            <form method="POST">
                 <div class="formInput flexCenterCenterColumn">
                     <input type="mail" placeholder="example@app.com" name="userLogin" value="<?= $userLogin ?? '' ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('userLogin', $errorForgot)) ? $errorForgot['userLogin'] : '' ?></p>

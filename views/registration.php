@@ -17,7 +17,7 @@
 
             <!-- Form -->
 
-            <form method="POST" novalidate>
+            <form method="POST">
                 <div class="formInput flexCenterCenterColumn">
                     <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>

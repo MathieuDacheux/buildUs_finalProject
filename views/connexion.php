@@ -6,7 +6,7 @@
             <div class="formContentTitle flexCenterCenter">
                 <h3>Retrouvez <strong class="important">BuildUs</strong></h3>
             </div>
-            <form method="POST" novalidate>
+            <form method="POST">
                 <div class="formInput flexCenterCenterColumn">
                     <input type="mail" placeholder="example@app.com" name="userLogin" value="<?= $userLogin ?? '' ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('userLogin', $errorConnexion)) ? $errorConnexion['userLogin'] : '' ?></p>
