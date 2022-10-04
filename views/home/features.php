@@ -9,6 +9,10 @@
                 quisquam pariatur reiciendis sequi omnis, reprehenderit eum accusantium recusandae 
                 laboriosam nulla doloremque similique. Veritatis doloribus animi adipisci maiores!
                 Lorem ipsum dolor sit amet consectetur adipisicing.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, ab repellat fugit, 
+                quisquam pariatur reiciendis sequi omnis, reprehenderit eum accusantium recusandae 
+                laboriosam nulla doloremque similique. Veritatis doloribus animi adipisci maiores!
+                Lorem ipsum dolor sit amet consectetur adipisicing.
             </h4>
         </div>
         <div class="containerRight">
