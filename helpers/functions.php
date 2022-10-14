@@ -52,6 +52,7 @@
     /******************** ********************/
     /************** INSCRIPTION **************/
     /******************** ********************/
+    
     // !VALIDATION DES INPUTS
     function validationInput ($var, $REGEX) {
         if(empty($var)) {
