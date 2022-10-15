@@ -7,3 +7,5 @@ RewriteRule ^accueil$ controllers/homeController.php
 RewriteRule ^inscription$ controllers/registrationController.php
 RewriteRule ^connexion$ controllers/connexionController.php
 RewriteRule ^reinitialiser$ controllers/resetPasswordController.php
+RewriteRule ^cgu$ controllers/cguController.php
+RewriteRule ^legal$ controllers/legalController.php
