@@ -18,6 +18,7 @@ const inputLastName = document.querySelector('[name=lastname]');
 const inputPassword = document.querySelector('[name=password]');
 const inputConfirmPassword = document.querySelector('[name=passwordConfirm]');
 const passwordIndication = document.querySelector('.passwordIndication');
+const formCheckbox = document.querySelector('.formCheckboxContainer');
 const listUpperCase = document.querySelector('.passwordIndication li:nth-child(1)');
 const listNumber = document.querySelector('.passwordIndication li:nth-child(2)');
 const listSpecialCharacter = document.querySelector('.passwordIndication li:nth-child(3)');
@@ -76,14 +77,6 @@ const verifyConfirmPassword = () => {
     }
 }
 
-const verifyEachSpecifity = () => {
-    if (regexUppercase.test(inputPassword.value)) {
-        listUpperCase.style.color = '#75DB79';
-    } else {
-        listUpperCase.style.color = '#E87D7D';
-    }
-}
-
 /*************************** **************************/
 /************************  Work ***********************/
 /*************************** **************************/
@@ -100,7 +93,14 @@ inputFirstName.addEventListener('blur', () => {
     verifyFirstName();
 })
 
+inputPassword.addEventListener('click', () => {
+    passwordIndication.style.display = 'block';
+    formCheckbox.style.display = 'none';
+})
+
 inputPassword.addEventListener('blur', () => {
+    passwordIndication.style.display = 'none';
+    formCheckbox.style.display = 'block';
     verifyPassword();
 })
 

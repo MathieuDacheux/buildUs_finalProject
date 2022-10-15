@@ -36,10 +36,10 @@
                     <div class="passwordIndication hidden">
                         <p>Il doit contenir :</p>
                         <ul>
-                            <li>Une lettre majuscule</li>
-                            <li>Un chiffre minimum</li>
-                            <li>Un caractère spécial</li>
-                            <li>8 caractères minimum</li>
+                            <li>- Une lettre majuscule</li>
+                            <li>- Un chiffre minimum</li>
+                            <li>- Un caractère spécial</li>
+                            <li>- 8 caractères minimum</li>
                         </ul>
                     </div>
                     <input type="password" placeholder="Mot de passe (confirmation)*" name="passwordConfirm" required>
