@@ -10,10 +10,10 @@
                 <a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
             <div class="containerLinks flexCenterCenterColumn">
-                <a href="">Mentions légales</a>
-                <a href="">Politique de confidentialité</a>
-                <a href="">Conditions générales de vente</a>
-                <a href="">Conditions générales d'utilisation</a>
+                <a href="/legal">Mentions légales</a>
+                <a href="/cgu">Politique de confidentialité</a>
+                <a href="/cgu">Conditions générales de vente</a>
+                <a href="/cgu">Conditions générales d'utilisation</a>
             </div>
         </footer>
 

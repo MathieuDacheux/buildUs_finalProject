@@ -107,11 +107,11 @@
 }
 
 .formName input:first-child {
-    width: 100%;
+    width: 99%;
 }
 
 .formName input:last-child {
-    width: 100%;
+    width: 99%;
 }
 
 .formName .errorMessage {

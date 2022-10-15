@@ -5,7 +5,9 @@
     'BuildUs | Créer un compte',
     'BuildUs | Connexion à votre espace',
     'BuildUs | Mot de passe oublié',
-    'BuildUs | Page non trouvée'
+    'BuildUs | Page non trouvée',
+    'BuildUs | Conditions générales d\'utilisation',
+    'BuildUs | Mentions légales',
     ]);
 
     define('DESCRIPTION_HEAD', [
@@ -14,7 +16,8 @@
     '',
     '',
     '',
-    ''
+    '',
+    '',
     ]);
 
     $errorsRegistration = [];

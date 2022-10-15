@@ -29,7 +29,19 @@
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                     <link rel="stylesheet" href="../public/css/404.css">';
             return $style;
-        }
+        } else if ($_SERVER['REQUEST_URI'] == '/cgu') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                <link rel="stylesheet" href="../public/css/header.css">
+                <link rel="stylesheet" href="../public/css/footer.css">
+                <link rel="stylesheet" href="../public/css/conditions.css">';
+            return $style;
+        } else if ($_SERVER['REQUEST_URI'] == '/legal') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                <link rel="stylesheet" href="../public/css/header.css">
+                <link rel="stylesheet" href="../public/css/footer.css">
+                <link rel="stylesheet" href="../public/css/conditions.css">';
+            return $style;
+        } 
     }
 
     // !ECRITURE DU BON JAVASCRIPT DANS LE HEAD EN FONCTION DE L'URL DU NAVIGATEUR
@@ -44,6 +56,9 @@
             $javascript = '';
             return $javascript;
         } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
+            $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+            return $javascript;
+        } else if ($_SERVER['REQUEST_URI'] == '/cgu') {
             $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
             return $javascript;
         }

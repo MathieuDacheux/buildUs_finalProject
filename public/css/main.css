@@ -157,7 +157,13 @@ section {
 }
 
 nav {
-    padding: 0em 1rem;
+    padding: 0rem 1rem;
+}
+
+@media screen and (min-width: 1200px) {
+    nav {
+        padding: 0rem;
+    }
 }
 
 ul {
