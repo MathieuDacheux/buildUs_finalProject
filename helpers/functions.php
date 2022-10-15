@@ -61,6 +61,9 @@
         } else if ($_SERVER['REQUEST_URI'] == '/cgu') {
             $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
             return $javascript;
+        } else if ($_SERVER['REQUEST_URI'] == '/confidentialite') {
+            $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+            return $javascript;
         }
     }
     

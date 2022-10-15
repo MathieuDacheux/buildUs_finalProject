@@ -6,10 +6,6 @@
 const regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const regexName = /^(?=.{1,50}$)[a-zA-Z]+(?:['_.\s][a-z]+)*$/;
 const regexPassword = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/;
-const regexUppercase = /^[A-Z]+/g;
-const regexNumber = /^\d/g;
-const regexSpecialCharacter = /^[\!\@\#\$\%\^\&\*\)\(\+\=\.\<\>\{\}\[\]\:\;\'\"\|\~\`\_\-]/g;
-const regexCounter = /[a-zA-Z]{8,}/g;
 
 // Variables Input from DOM
 const inputMail = document.querySelector('[name=mail]');
@@ -19,10 +15,6 @@ const inputPassword = document.querySelector('[name=password]');
 const inputConfirmPassword = document.querySelector('[name=passwordConfirm]');
 const passwordIndication = document.querySelector('.passwordIndication');
 const formCheckbox = document.querySelector('.formCheckboxContainer');
-const listUpperCase = document.querySelector('.passwordIndication li:nth-child(1)');
-const listNumber = document.querySelector('.passwordIndication li:nth-child(2)');
-const listSpecialCharacter = document.querySelector('.passwordIndication li:nth-child(3)');
-const listLenght = document.querySelector('.passwordIndication li:nth-child(4)');
 
 // Function verify form 
 const verifyMail = () => {

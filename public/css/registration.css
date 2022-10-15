@@ -72,8 +72,10 @@
 }
 
 .passwordIndication li {
+    padding-left: .5rem;
     font-size: .8rem;
     color: var(--primary80);
+
 }
 
 

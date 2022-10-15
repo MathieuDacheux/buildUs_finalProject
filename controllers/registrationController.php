@@ -46,10 +46,8 @@
         if ($password != $passwordConfirm) {
             $errorsRegistration['password'] = 'Les mots de passe doivent être identiques';
         }
-        if (empty($cgu)) {
-            $errorsRegistration['CGU'] = 'Ce champs est obligatoire';
-        } else if ($cgu[0] != 1 || $cgu[1] != 2) {
-            $errorsRegistration['CGU'] = 'Ce champs est obligatoire';
+        if (validationInput($cgu, REGEX_CGU) != 'true') {
+            $errorsRegistration['cgu'] = validationInput($cgu, REGEX_CGU);
         }
         if ($newsletter != 1 &&  $newsletter != NULL)  {
             $errorsRegistration['newsletter'] = 'Ce champs n\'est pas conforme';
