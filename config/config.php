@@ -7,7 +7,7 @@
     'BuildUs | Mot de passe oublié',
     'BuildUs | Page non trouvée',
     'BuildUs | Conditions générales d\'utilisation',
-    'BuildUs | Mentions légales',
+    'BuildUs | Politique de confidentialité',
     ]);
 
     define('DESCRIPTION_HEAD', [

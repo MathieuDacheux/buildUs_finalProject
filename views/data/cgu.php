@@ -275,10 +275,9 @@
             <a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
         <div class="containerLinks flexCenterCenterColumn">
-            <a href="/cgu" target="_blank">Mentions légales</a>
-            <a href="/cgu" target="_blank">Politique de confidentialité</a>
-            <a href="/cgu" target="_blank">Conditions générales de vente</a>
-            <a href="/cgu" target="_blank">Conditions générales d'utilisation</a>
+            <a href="/cgu">Mentions légales</a>
+            <a href="/confidentialite">Politique de confidentialité</a>
+            <a href="/cgu">Conditions générales d'utilisation</a>
         </div>
     </footer>
 

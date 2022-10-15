@@ -35,7 +35,7 @@
                 <link rel="stylesheet" href="../public/css/footer.css">
                 <link rel="stylesheet" href="../public/css/conditions.css">';
             return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/legal') {
+        } else if ($_SERVER['REQUEST_URI'] == '/confidentialite') {
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                 <link rel="stylesheet" href="../public/css/header.css">
                 <link rel="stylesheet" href="../public/css/footer.css">
