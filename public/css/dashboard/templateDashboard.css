@@ -213,7 +213,7 @@
         background-color: var(--black0);
     }
 
-    /* Employees */
+    /* Employees & Clients */
 
     .containerEmployees, .containerClients {
         width: 100%;
@@ -242,9 +242,9 @@
         height: 75px;
     }
     .containerPlus{
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.25rem;
         border-radius: 5px;
         color: var(--black0);
         background-color: var(--primary100);

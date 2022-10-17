@@ -1,5 +1,5 @@
 
-<div class="containerRecapIncome">
+<div class="containerRecapIncome flexCenterColumn">
     <div class="containerTitle flexCenterCenter">
             <h3>Chiffre d'affaires</h3>
     </div>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="containerInformations flexCenterCenter">
                     <div class="containerPlus flexCenterCenter">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-regular fa-eye"></i>
                     </div>
                 </div>      
             </div>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="containerInformations flexCenterCenter">
                     <div class="containerPlus flexCenterCenter">
-                        <i class="fa-solid fa-plus"></i>
+                        <i class="fa-regular fa-eye"></i>
                     </div>
                 </div>      
             </div>
