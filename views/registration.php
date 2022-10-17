@@ -46,12 +46,12 @@
                     <div class="formCheckboxContainer">
                         <div class="formCheckbox">
                             <input type="checkbox" name="CGU[]" id="termServices" name="termServices" value="1" <?= (!empty($cgu) && in_array('1', $cgu)) ? 'checked' : '' ?> required>
-                            <label for="termServices">J'accepte les <a href="">conditions d'utitilisations</a></label>
+                            <label for="termServices">J'accepte les <a href="/cgu" target="_blank">conditions d'utitilisations</a></label>
                             <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                         </div>
                         <div class="formCheckbox">
                             <input type="checkbox" name="CGU[]" id="privacyPolicy" name="privacyPolicy" value="2" <?= (!empty($cgu) && in_array('2', $cgu)) ? 'checked' : '' ?> required>
-                            <label for="privacyPolicy">J'accepte la <a href="">politique de confidentialité</a></label>
+                            <label for="privacyPolicy">J'accepte la <a href="/confidentialite" target="_blank">politique de confidentialité</a></label>
                             <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                         </div>
                         <div class="formCheckbox">
@@ -76,4 +76,4 @@
 
     <!-- CDN Font Awesome -->
 
-    <script src="https://kit.fontawesome.com/d067b7d25c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b274073d83.js" crossorigin="anonymous"></script>

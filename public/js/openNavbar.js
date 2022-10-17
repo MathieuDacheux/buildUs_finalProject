@@ -6,7 +6,7 @@
 
 const link = document.querySelector('.openModal');
 const burger = document.querySelector('.containerBurger');
-const ul = document.querySelector('ul');
+const ul = document.querySelector('.mobileNavList');
 
 // Function open navbar in mobile view
 

@@ -8,6 +8,7 @@
     'BuildUs | Page non trouvée',
     'BuildUs | Conditions générales d\'utilisation',
     'BuildUs | Politique de confidentialité',
+    'BuildUs | Tableau de bord',
     ]);
 
     define('DESCRIPTION_HEAD', [
@@ -18,6 +19,7 @@
     'La page que vous recherchez n\'existe pas ou plus.',
     'Retrouvez les conditions générales d\'utilisation de BuildUs.',
     'Retrouvez la politique de confidentialité de BuildUs.',
+    'Gérez votre entreprise plus simplement avec le logiciel web BuildUs et vous focalisez au maximum sur votre coeur de métier.',
     ]);
 
     $errorsRegistration = [];

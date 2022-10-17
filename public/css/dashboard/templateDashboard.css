@@ -1,0 +1,230 @@
+/* Dashboard container settings */
+
+.containerDashboard {
+    width: 100vw;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* Mobile navbar container settings */
+
+.containerLeft {
+    width: 100%;
+    height: 100px;
+    padding: 0rem .5rem;
+}
+
+.containerLeft {
+    height: 75px;
+    width: 100%;
+}
+
+.containerLogo img{
+    width: 50px;
+    padding-right: .5rem;
+}
+
+.desktopContainerLinks {
+    display: none;
+}
+
+/* Media Queries for Portrait tablet and Landscape tablet */
+
+@media screen and (min-width: 577px) and (pointer: coarse) {
+    .containerLogo img {
+        width: 60px;
+    }
+}
+
+/* Burger Menu */
+
+.containerBurger {
+    height: 3px;
+    width: 30px;
+    border-radius: 10px;
+    background: var(--black100);
+    display: inline-block;
+    position: relative;
+}
+
+.containerBurger::before, .containerBurger::after {
+    content: '';
+    height: 3px;
+    width: 30px;
+    position: absolute;
+    border-radius: 10px;
+    background: var(--black100);
+    display: inline-block;
+    transform-origin: center;
+    transition: all 0.5s ease;
+}
+
+.containerBurger::before {
+    top: -8px;
+}
+
+.containerBurger::after {
+    top: 8px;
+}
+
+.containerBurger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.containerBurger.open {
+    background: transparent;
+}
+
+.containerBurger.open::after {
+    transform: rotate(-45deg);
+    top:0;
+}
+
+.mobileNavList.open {
+    transform: scaleY(1);
+    -webkit-box-shadow: 0px 30px 25px 5px rgba(0,0,0,0.15); 
+    box-shadow: 0px 30px 25px 5px rgba(0,0,0,0.15);
+}
+
+.mobileNavList {
+    background: var(--black0);
+    position: absolute;
+    left: 0;
+    top: 75px;
+    width: 100%;
+    z-index: 5;
+    transform: scaleY(0);
+    transform-origin: center top;
+    transition: all 0.3s ease;
+}
+
+/* Media Queries for Portrait tablet and Landscape Tablet */
+
+@media screen and (min-width: 577px) and (pointer: coarse) {
+    .containerBurger {
+        width: 40px;
+    }
+    .containerBurger::before, .containerBurger::after {
+        width: 40px;
+    }
+    .containerBurger::before {
+        top: -10px;
+    }
+    .containerBurger::after {
+        top: 10px;
+    }
+}
+
+/* Media Queries for large display */
+
+@media screen and (min-width: 1000px) {
+    .containerDashboard {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+    .mobileContainerLinks {
+        display: none;
+    }
+    .containerLeft {
+        width: 225px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0rem;
+        background-color: var(--black20);
+        border-right: 1px solid var(--hr);
+    }
+    .containerLogo {
+        width: 100%;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .containerLogo img{
+        width: 65px;
+        padding-right: 1rem;
+    }
+    .desktopContainerLinks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: calc(100vh - 150px);
+    }
+    .desktopContainerLinks ul {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        height: 90%;
+    }
+    .desktopContainerLinks ul li{
+        padding-bottom: .5rem;
+    }
+    .desktopContainerLinks ul li i{ 
+        padding-bottom: .5rem;
+        padding-right: 1rem;
+        font-size: 1.25rem;
+        color: var(--primary80);
+    }
+    .containerCentral {
+        width: calc(100vw - 525px);
+    }
+    .containerRight {
+        width: 300px;
+        height: 100vh;
+        border-left: 1px solid var(--hr);
+    }
+    .containerCalendar, .containerTasks  {
+        height: 50%;
+        width: 100%;
+        overflow-y: scroll;
+    }
+    .containerCalendar {
+        border-bottom: 1px solid var(--hr);
+    }
+    .containerTitle {
+        height: 75px;
+        width: 100%;
+    }
+    .calendarList, .tasksList {
+        width: 100%;
+    }
+    .calendarEvent, .taskEvent {
+        width: 90%;
+        height: 70px;
+        background-color: var(--primary40);
+        border-radius: 5px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+    .calendarEvent .date {
+        margin: 0rem .5rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--black0);
+    }
+    .taskEvent .event, .calendarEvent .event {
+        width: calc(100% - 70px);
+    }
+    .taskEvent .event p ,.calendarEvent .event p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
+    .taskEvent .checkbox {
+        margin: 0rem .5rem;
+        width: 50px;
+        height: 50px;
+    }
+    .taskEvent .checkbox input[type=checkbox] {
+        height: 20px;
+        width: 20px;
+        border-radius: 5px;
+        accent-color: var(--primary80);
+    }
+}

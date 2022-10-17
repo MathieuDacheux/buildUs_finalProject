@@ -41,7 +41,11 @@
                 <link rel="stylesheet" href="../public/css/footer.css">
                 <link rel="stylesheet" href="../public/css/conditions.css">';
             return $style;
-        } 
+        } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/templateDashboard.css">';
+            return $style;
+        }
     }
 
     // !ECRITURE DU BON JAVASCRIPT DANS LE HEAD EN FONCTION DE L'URL DU NAVIGATEUR
@@ -62,6 +66,9 @@
             $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
             return $javascript;
         } else if ($_SERVER['REQUEST_URI'] == '/confidentialite') {
+            $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+            return $javascript;
+        } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
             $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
             return $javascript;
         }

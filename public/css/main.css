@@ -14,7 +14,7 @@
     --black80: #626262;
     --black60: #A9A9A9;
     --black40: #CACACA;
-    --black20: #E3E3E3;
+    --black20: #F6F8FE;
     --black0 : #FFFFFF;
 
     /* Accent Color */
@@ -30,6 +30,8 @@
     --error60: #EE9D9D;
     --error40: #F3BEBE;
     --error20: #F9DEDE;
+
+    --hr : #e3e7f7;
 }
 
 * {
@@ -157,7 +159,7 @@ section {
 }
 
 nav {
-    padding: 0rem 1rem;
+    padding: 0rem .5rem;
 }
 
 @media screen and (min-width: 1200px) {

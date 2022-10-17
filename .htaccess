@@ -9,3 +9,4 @@ RewriteRule ^connexion$ controllers/connexionController.php
 RewriteRule ^reinitialiser$ controllers/resetPasswordController.php
 RewriteRule ^cgu$ controllers/cguController.php
 RewriteRule ^confidentialite$ controllers/confidentialyController.php
+REWritErule ^dashboard$ controllers/dashboard/dashboardController.php
