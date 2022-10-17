@@ -9,7 +9,7 @@
             <ul class="mobileNavList flexCenterCenterColumn">
                 <li>
                     <i class="fa-regular fa-chart-bar"></i>
-                    <span>Chiffre d'affaires</span>
+                    <span>Chiffre d'affaires</so>
                 </li>
                 <li>
                     <i class="fa-regular fa-square-check"></i>
@@ -68,7 +68,15 @@
     </div>
     <div class="containerCentral">
         <div class="containerRecapIncome">
-        
+
+        </div>
+        <div class="containerRecapBottom flexCenterBetween">
+            <div class="containerRecapClients">
+
+            </div>
+            <div class="containerRecapEmployees">
+
+            </div>
         </div>
     </div>
     <div class="containerRight">
