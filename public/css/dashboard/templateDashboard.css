@@ -188,7 +188,7 @@
         width: 99%;
         height: 49.5%;
         background-color: var(--primary40);
-        border-radius: 5px;
+        border-radius: 10px;
     }
     .containerRecapBottom {
         width: 99%;
@@ -196,7 +196,7 @@
     }
     .containerRecapClients, .containerRecapEmployees {
         height: 99%;
-        border-radius: 5px;
+        border-radius: 10px;
         width: 49.5%;
     }
     .containerRecapClients {
@@ -204,6 +204,50 @@
     }
     .containerRecapEmployees {
         background-color: var(--primary80);
+    }
+    .containerRecap {
+        width: 99%;
+        border-radius: 5px;
+        opacity: 35%;
+        height: calc(99% - 80px);
+        background-color: var(--black0);
+    }
+
+    /* Employees */
+
+    .containerEmployees, .containerClients {
+        width: 100%;
+    }
+    .employeeRecap {
+        border-radius: 5px;
+        width: 98%;
+        height: 75px;
+        background-color: var(--black0);
+        overflow-y: scroll;
+    }
+    .employeeRecap .containerPicture {
+        width: 75px;
+        height: 75px;
+    }
+    .employeeRecap .containerPicture img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .containerName {
+        width: calc(100% - 150px)
+    }
+    .containerInformations {
+        width: 75px;
+        height: 75px;
+    }
+    .containerPlus{
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        border-radius: 5px;
+        color: var(--black0);
+        background-color: var(--primary100);
     }
 
     /* Container right in desktop */
