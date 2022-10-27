@@ -2,7 +2,7 @@
     <div class="containerRecap">
         <div class="containerProfil">
             <div class="containerTitle flexCenterCenter">
-                <h3 class="titleColor">Votre profil</h3>
+                <h3 class="titleColor">Client</h3>
             </div>
             <div class="containerContent">
                 <p>
@@ -27,6 +27,9 @@
             <div class="containerButton flexCenterCenter">
                 <a href="/dashboard/client?id=">Modifier le client</a>
             </div>
+        </div>
+        <div class="containerForm">
+
         </div>
     </div>
 </main>

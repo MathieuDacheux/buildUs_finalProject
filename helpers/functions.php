@@ -57,10 +57,15 @@
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/listing.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
+            return $style;
+        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/profil-client') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
             return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/employes') {
+        }else if ($_SERVER['REQUEST_URI'] == '/dashboard/employes') {
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">
