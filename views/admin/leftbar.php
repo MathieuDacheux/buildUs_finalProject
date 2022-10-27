@@ -35,7 +35,7 @@
                 </li>
                 <li>
                     <i class="fa-solid fa-sliders"></i>
-                    <a href=""><span>Paramètres</span></a>
+                    <a href="/dashboard/parametres"><span>Paramètres</span></a>
                 </li>
             </ul>           
         </nav>
@@ -69,7 +69,7 @@
                 </div>
                 <li>
                     <i class="fa-solid fa-sliders"></i>
-                    <a href=""><span>Paramètres</span></a>
+                    <a href="/dashboard/parametres"><span>Paramètres</span></a>
                 </li>
             </ul>
         </nav>            

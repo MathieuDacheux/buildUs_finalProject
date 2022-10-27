@@ -9,6 +9,7 @@
     'BuildUs | Conditions générales d\'utilisation',
     'BuildUs | Politique de confidentialité',
     'BuildUs | Tableau de bord',
+    'BuildUs | Paramètres',
     ]);
 
     define('DESCRIPTION_HEAD', [

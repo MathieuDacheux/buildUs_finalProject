@@ -47,6 +47,12 @@
                 <link rel="stylesheet" href="/../../public/css/dashboard/dashboard.css">
                 <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
             return $style;
+        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/parametres') {
+            $style = '<link rel="stylesheet" href="../public/css/main.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/settings.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
+            return $style;
         }
     }
 

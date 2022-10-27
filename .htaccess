@@ -2,11 +2,19 @@ RewriteEngine On
 
 ErrorDocument 404 http://buildus.localhost/404
 
+# Redirection Error 404 
 RewriteRule ^404$ controllers/error404Controller.php
+
+# Redirection Page d'accueil
 RewriteRule ^accueil$ controllers/homeController.php
+RewriteRule ^cgu$ controllers/cguController.php
+RewriteRule ^confidentialite$ controllers/confidentialyController.php
+
+# Redirection Page d'inscription / connexion / mot de passe oublié
 RewriteRule ^inscription$ controllers/registrationController.php
 RewriteRule ^connexion$ controllers/connexionController.php
 RewriteRule ^reinitialiser$ controllers/resetPasswordController.php
-RewriteRule ^cgu$ controllers/cguController.php
-RewriteRule ^confidentialite$ controllers/confidentialyController.php
-REWritErule ^dashboard$ controllers/dashboard/dashboardController.php
+
+# Redirection Tableau de bord
+Rewriterule ^dashboard$ controllers/dashboard/dashboardController.php
+Rewriterule ^dashboard/parametres controllers/dashboard/settingsController.php

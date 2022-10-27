@@ -1,0 +1,89 @@
+main {
+    height: calc(100vh - 75px);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container du profil */
+
+.containerRecap {
+    height: 350px;
+    width: 350px;
+    border-radius: 10px;
+    background-image: url('../../assets/img/background/mobile/backgroundMobile.svg');
+    background-color: var(--primary80);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.containerProfil {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Container title */
+
+.containerTitle {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.containerTitle h3 {
+    color: var(--black0);
+}
+
+
+/* Container content */
+
+.containerContent {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.containerContent p {
+    color: var(--black0);
+    font-size: 1.25rem;
+}
+
+/* Button de modification */
+
+.containerButton {
+    height: 20%;
+    width: 100%;
+}
+
+.containerButton a {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+    background: var(--black0);
+    color: var(--primary80);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 200px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 425px);
+    }
+}
