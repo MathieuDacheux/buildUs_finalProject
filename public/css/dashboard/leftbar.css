@@ -1,0 +1,180 @@
+/* Dashboard container settings */
+
+.containerDashboard {
+    width: 100vw;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/* Mobile navbar container settings */
+
+.containerLeft {
+    height: 75px;
+    width: 100%;
+    padding: 0rem .5rem;
+}
+
+.containerLogo img{
+    width: 50px;
+    padding-right: .5rem;
+}
+
+.desktopContainerLinks {
+    display: none;
+}
+
+/* Media Queries for Portrait tablet and Landscape tablet */
+
+@media screen and (min-width: 577px) and (pointer: coarse) {
+    .containerLogo img {
+        width: 60px;
+    }
+}
+
+/* Burger Menu */
+
+.containerBurger {
+    height: 3px;
+    width: 30px;
+    border-radius: 10px;
+    background: var(--black100);
+    display: inline-block;
+    position: relative;
+}
+
+.containerBurger::before, .containerBurger::after {
+    content: '';
+    height: 3px;
+    width: 30px;
+    position: absolute;
+    border-radius: 10px;
+    background: var(--black100);
+    display: inline-block;
+    transform-origin: center;
+    transition: all 0.5s ease;
+}
+
+.containerBurger::before {
+    top: -8px;
+}
+
+.containerBurger::after {
+    top: 8px;
+}
+
+.containerBurger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.containerBurger.open {
+    background: transparent;
+}
+
+.containerBurger.open::after {
+    transform: rotate(-45deg);
+    top:0;
+}
+
+.mobileNavList.open {
+    transform: scaleY(1);
+    -webkit-box-shadow: 0px 30px 25px 5px rgba(0,0,0,0.15); 
+    box-shadow: 0px 30px 25px 5px rgba(0,0,0,0.15);
+}
+
+.mobileNavList {
+    background: var(--black0);
+    position: absolute;
+    left: 0;
+    top: 75px;
+    width: 100%;
+    z-index: 5;
+    transform: scaleY(0);
+    transform-origin: center top;
+    transition: all 0.3s ease;
+}
+
+/* Media Queries for Portrait tablet and Landscape Tablet */
+
+@media screen and (min-width: 577px) and (pointer: coarse) {
+    .containerBurger {
+        width: 40px;
+    }
+    .containerBurger::before, .containerBurger::after {
+        width: 40px;
+    }
+    .containerBurger::before {
+        top: -10px;
+    }
+    .containerBurger::after {
+        top: 10px;
+    }
+}
+
+/* Media Queries for Desktop view */
+
+@media screen and (min-width: 1000px) {
+    
+    /* Container du Dashboard */
+    .containerDashboard {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .mobileContainerLinks {
+        display: none;
+    }
+
+    /* Aside container in desktop */
+
+    .containerLeft {
+        width: 200px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0rem;
+        background-color: var(--black20);
+        border-right: 1px solid var(--hr);
+    }
+
+    .containerLogo {
+        width: 100%;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .containerLogo img{
+        width: 65px;
+        padding-right: 1rem;
+    }
+
+    .desktopContainerLinks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: calc(100vh - 150px);
+    }
+
+    .desktopContainerLinks ul {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        height: 90%;
+    }
+
+    .desktopContainerLinks ul li{
+        padding-bottom: .5rem;
+    }
+    
+    .desktopContainerLinks ul li i{ 
+        padding-bottom: .5rem;
+        padding-right: 1rem;
+        font-size: 1.25rem;
+        color: var(--primary80);
+    }
+}

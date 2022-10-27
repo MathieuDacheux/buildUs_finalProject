@@ -1,69 +1,76 @@
+
+<!-- Container Dashboard  -->
 <div class="containerDashboard">
-    <div class="containerLeft flexCenterBetween">
+
+    <!-- Container Header du dashboard -->
+    <header class="containerLeft flexCenterBetween">
         <div class="containerLogo flexCenterVertical">
             <a href="/accueil"><img src="../public/assets/icons/logo.svg" alt="Logo du logiciel BuildUs"></a>
             <h3>BuildUs</h3>
         </div>
-        <div class="mobileContainerLinks">
+
+        <!-- Container Navbar mobile -->
+        <nav class="mobileContainerLinks">
             <a class="openModal" href="#"><span class="containerBurger"></span></a>
             <ul class="mobileNavList flexCenterCenterColumn">
                 <li>
                     <i class="fa-regular fa-chart-bar"></i>
-                    <span>Chiffre d'affaires</so>
+                    <a href=""><span>Chiffre d'affaires</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-square-check"></i>
-                    <span>Rappels</span>
+                    <a href=""><span>Rappels</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-calendar"></i>
-                    <span>Calendrier</span>
+                    <a href=""><span>Calendrier</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-address-book"></i>
-                    <span>Employés</span>
+                    <a href=""><span>Employés</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-address-book"></i>
-                    <span>Clients</span>
+                    <a href=""><span>Clients</span></a>
                 </li>
                 <li>
                     <i class="fa-solid fa-sliders"></i>
-                    <span>Paramètres</span>
+                    <a href=""><span>Paramètres</span></a>
                 </li>
             </ul>           
-        </div>
-        <div class="desktopContainerLinks">
+        </nav>
+
+        <!-- Container Navbar desktop -->
+        <nav class="desktopContainerLinks">
             <ul>
                 <div class="containerList">
                     <li>
                         <i class="fa-regular fa-chart-bar"></i>
-                        <span>Chiffre d'affaires</span>
+                        <a href=""><span>Chiffre d'affaires</span></a>
                     </li>
                     <li>
                         <i class="fa-regular fa-square-check"></i>
-                        <span>Rappels</span>
+                        <a href=""><span>Rappels</span></a>
                     </li>
                     <li>
                         <i class="fa-regular fa-calendar"></i>
-                        <span>Calendrier</span>
+                        <a href=""><span>Calendrier</span></a>
                     </li>
                 </div>
                 <div class="containerList">
                     <li>
                         <i class="fa-regular fa-address-book"></i>
-                        <span>Employés</span>
+                        <a href=""><span>Employés</span></a>
                     </li>
                     <li>
                         <i class="fa-regular fa-address-book"></i>
-                        <span>Clients</span>
+                        <a href=""><span>Clients</span></a>
                     </li>
                 </div>
                 <li>
                     <i class="fa-solid fa-sliders"></i>
-                    <span>Paramètres</span>
+                    <a href=""><span>Paramètres</span></a>
                 </li>
             </ul>
-        </div>            
-    </div>
-    <div class="containerCentral">
+        </nav>            
+    </header>

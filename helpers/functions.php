@@ -43,7 +43,9 @@
             return $style;
         } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
             $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/templateDashboard.css">';
+                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/dashboard.css">
+                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
             return $style;
         }
     }
