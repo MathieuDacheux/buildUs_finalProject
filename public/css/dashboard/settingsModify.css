@@ -1,0 +1,121 @@
+main {
+    height: calc(100vh - 75px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerRecap {
+    height: 350px;
+    width: 350px;
+    border-radius: 10px;
+    background-image: url('../../assets/img/background/mobile/backgroundMobile.svg');
+    background-color: var(--primary80);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Form content */
+
+.formContent {
+    height: 350px;
+    width: 350px;
+    border-radius: 10px;
+    background-image: url('../../assets/img/background/mobile/backgroundMobile.svg');
+    background-color: var(--primary80);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Title */
+
+.formContentTitle {
+    height: 75px;
+}
+
+.formContentTitle h3 {
+    text-align: center;
+    color: var(--black0);
+}
+
+/* Form */
+
+form {
+    height: 80%;
+}
+
+/* Input des forms */
+
+.formInput {
+    height: calc(100% - 75px);
+}
+
+.formInput input {
+    width: 90%;
+    padding: .70rem .5em;
+    border-radius: 5px;
+    border: 2px solid var(--black40);
+    color: var(--black100);
+}
+
+.formInput input::placeholder {
+    color: var(--black80);
+}
+
+.formInput input:focus {
+    outline: none;
+    border: 2px solid var(--primary80);
+}
+
+.formInput input:nth-child(7) {
+    margin-bottom: .5rem;
+}
+
+.formName {
+    width: 90%;
+}
+
+.formName input:first-child {
+    width: 99%;
+}
+
+.formName input:last-child {
+    width: 99%;
+}
+
+.formName .errorMessage {
+    width: 99%;
+}
+
+/* Submit button */
+
+.registerButton {
+    height: 75px;
+}
+
+.registerButton button {
+    width: 130px;
+    padding: .75rem;
+    text-align: center;
+    background: var(--black0);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 0;
+    color: var(--primary80);
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 200px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 425px);
+    }
+}

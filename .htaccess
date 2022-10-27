@@ -18,3 +18,6 @@ RewriteRule ^reinitialiser$ controllers/resetPasswordController.php
 # Redirection Tableau de bord
 Rewriterule ^dashboard$ controllers/dashboard/dashboardController.php
 Rewriterule ^dashboard/parametres controllers/dashboard/settingsController.php
+Rewriterule ^dashboard/clients controllers/dashboard/clientsListingController.php
+Rewriterule ^dashboard/employes controllers/dashboard/employeesListingController.php
+

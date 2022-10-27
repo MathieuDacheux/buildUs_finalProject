@@ -10,6 +10,7 @@
     'BuildUs | Politique de confidentialité',
     'BuildUs | Tableau de bord',
     'BuildUs | Paramètres',
+    'BuildUs | Clients',
     ]);
 
     define('DESCRIPTION_HEAD', [

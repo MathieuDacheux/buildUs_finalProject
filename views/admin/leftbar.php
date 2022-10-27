@@ -5,7 +5,7 @@
     <!-- Container Header du dashboard -->
     <header class="containerLeft flexCenterBetween">
         <div class="containerLogo flexCenterVertical">
-            <a href="/accueil"><img src="../public/assets/icons/logo.svg" alt="Logo du logiciel BuildUs"></a>
+            <a href="/dashboard"><img src="../public/assets/icons/logo.svg" alt="Logo du logiciel BuildUs"></a>
             <h3>BuildUs</h3>
         </div>
 
@@ -27,11 +27,11 @@
                 </li>
                 <li>
                     <i class="fa-regular fa-address-book"></i>
-                    <a href=""><span>Employés</span></a>
+                    <a href="/dashboard/employes"><span>Employés</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-address-book"></i>
-                    <a href=""><span>Clients</span></a>
+                    <a href="/dashboard/clients"><span>Clients</span></a>
                 </li>
                 <li>
                     <i class="fa-solid fa-sliders"></i>
@@ -60,11 +60,11 @@
                 <div class="containerList">
                     <li>
                         <i class="fa-regular fa-address-book"></i>
-                        <a href=""><span>Employés</span></a>
+                        <a href="/dashboard/employes"><span>Employés</span></a>
                     </li>
                     <li>
                         <i class="fa-regular fa-address-book"></i>
-                        <a href=""><span>Clients</span></a>
+                        <a href="/dashboard/clients"><span>Clients</span></a>
                     </li>
                 </div>
                 <li>
