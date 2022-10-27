@@ -16,7 +16,7 @@
     // Appel des vues
     include (__DIR__.'/../../views/templates/header.php');
     include (__DIR__.'/../../views/admin/leftbar.php');
-    include (__DIR__.'/../../views/admin/settingsModify.php');
+    include (__DIR__.'/../../views/admin/settings.php');
     include (__DIR__.'/../../views/admin/rightbar.php');
     include (__DIR__.'/../../views/templates/footer.php');
 
