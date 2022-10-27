@@ -1,0 +1,235 @@
+/* Main settings */
+
+main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.containerSubject {
+    width: 95%;
+    height: 700px;
+    overflow: hidden;
+    background-color: var(--primary60);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.containerTitle {
+    height: 75px;
+    position: relative;
+}
+
+.formContentTitle .containerAdd, .containerTitle .containerAdd {
+    position: absolute;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--black0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formContentTitle .containerAdd {
+    background-color: var(--primary100);
+}
+
+.formContentTitle .containerAdd i{
+    font-size: 1.25rem;
+    color: var(--black0);
+}
+
+.containerTitle .containerAdd i {
+    font-size: 1.25rem;
+    color: var(--primary60);
+}
+
+.containerTitle h3 {
+    color: var(--black0);
+}
+
+.containerContent {
+    width: 100%;
+    height: calc(100% - 75px);
+    padding: .5rem;
+    overflow-y: scroll;
+}
+
+.listingRecap {
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: .5rem;
+    background-color: var(--hr);
+    padding: 0rem .5rem;
+}
+
+.containerInformations {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.containerPicture {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--black0);
+    margin-right: .5rem;
+}
+
+.containerPicture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.containerMore {
+    height: 100%;
+}
+
+.containerMore a i {
+    font-size: 1.25rem;
+    color: var(--black100);
+}
+
+
+@media screen and (min-width: 1000px) {
+    main {
+        width: calc(100vw - 200px);
+        height: 100vh;
+    }
+
+    .containerSubject {
+        width: 98%;
+        height: 98%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        width: calc(100vw - 425px);
+        height: 100vh;
+    }
+}
+
+/* Modal ajout client */
+
+/* Form content */
+
+.formContent {
+    position: absolute;
+    height: 400px;
+    width: 350px;
+    border-radius: 10px;
+    background-image: url('../../assets/img/background/mobile/backgroundMobile.svg');
+    background-color: var(--black0);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+    transition: all .3s ease;
+}
+
+/* Title */
+
+.formContentTitle {
+    height: 75px;
+}
+
+.formContentTitle h3 {
+    text-align: center;
+    color: var(--primary100);
+}
+
+/* Form */
+
+form {
+    height: calc(100% - 75px);
+}
+
+/* Input des forms */
+
+.formInput {
+    height: calc(100% - 50px);
+}
+
+.formInput input {
+    width: 90%;
+    padding: .70rem .5em;
+    border-radius: 5px;
+    border: 2px solid var(--black40);
+    color: var(--black100);
+}
+
+.formInput input::placeholder {
+    color: var(--black80);
+}
+
+.formInput input:focus {
+    outline: none;
+    border: 2px solid var(--primary80);
+}
+
+.formName {
+    width: 90%;
+}
+
+.formName input:first-child {
+    width: 99%;
+}
+
+.formName input:last-child {
+    width: 99%;
+}
+
+.formName .errorMessage {
+    width: 99%;
+    margin: 0;
+}
+
+/* Submit button */
+
+.registerButton {
+    height: 50px;
+}
+
+.registerButton button {
+    width: 130px;
+    padding: .5rem 1rem;
+    text-align: center;
+    background: var(--primary100);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 0;
+    color: var(--black0);
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 200px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 425px);
+    }
+}
+

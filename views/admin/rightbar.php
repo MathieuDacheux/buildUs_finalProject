@@ -4,7 +4,7 @@
         <!-- Affichage des événements du calendrier -->
         <div class="containerCalendar">
             <div class="containerTitle flexCenterCenter">
-                <h3>Calendrier</h3>
+                <h3 class="titleRight">Calendrier</h3>
             </div>
             <div class="calendarList flexCenterColumn">
                 <div class="calendarEvent flexCenterBetween">
@@ -21,7 +21,7 @@
         <!-- Affichage des tâches à faire -->
         <div class="containerTasks">
             <div class="containerTitle flexCenterCenter">
-                <h3>Rappels</h3>
+                <h3 class="titleRight">Rappels</h3>
             </div>
             <div class="tasksList flexCenterColumn">
                 <div class="taskEvent flexCenterCenter">
