@@ -2,10 +2,10 @@
     <div class="containerRecap">
         <div class="containerSubject income">
             <div class="containerTitle flexCenterCenter">
-                    <h3>Chiffre d'affaires</h3>
+                    <h3>Graphiques</h3>
             </div>
             <div class="containerIncome">
-        
+                <canvas></canvas>
             </div>
         </div>
     </div>

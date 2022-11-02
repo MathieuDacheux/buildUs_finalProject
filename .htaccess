@@ -29,3 +29,6 @@ Rewriterule ^dashboard/profil-employe controllers/dashboard/employeeProfilContro
 
 # Redirection Page du chiffre d'affaires
 Rewriterule ^dashboard/business controllers/dashboard/incomeController.php
+
+# Redirection Page des rappels
+Rewriterule ^dashboard/rappels controllers/dashboard/todosController.php

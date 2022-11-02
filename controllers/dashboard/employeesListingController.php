@@ -16,7 +16,7 @@
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>
     <script defer src="../public/js/openModal.js"></script>';
     
-    $title = TITLE_HEAD[9];
+    $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
 
     // Appel des vues

@@ -10,12 +10,12 @@
     // Variables
     $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-    <link rel="stylesheet" href="/../../public/css/dashboard/modify.css">
+    <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
 
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
     
-    $title = TITLE_HEAD[9];
+    $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
 
     // Appel des vues

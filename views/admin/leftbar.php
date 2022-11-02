@@ -50,7 +50,7 @@
                     </li>
                     <li>
                         <i class="fa-regular fa-square-check"></i>
-                        <a href=""><span>Rappels</span></a>
+                        <a href="/dashboard/rappels"><span>Rappels</span></a>
                     </li>
                     <li>
                         <i class="fa-regular fa-calendar"></i>
