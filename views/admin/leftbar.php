@@ -15,7 +15,7 @@
             <ul class="mobileNavList flexCenterCenterColumn">
                 <li>
                     <i class="fa-regular fa-chart-bar"></i>
-                    <a href=""><span>Chiffre d'affaires</span></a>
+                    <a href="/dashboard/business"><span>Chiffre d'affaires</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-square-check"></i>
@@ -46,7 +46,7 @@
                 <div class="containerList">
                     <li>
                         <i class="fa-regular fa-chart-bar"></i>
-                        <a href=""><span>Chiffre d'affaires</span></a>
+                        <a href="/dashboard/business"><span>Chiffre d'affaires</span></a>
                     </li>
                     <li>
                         <i class="fa-regular fa-square-check"></i>

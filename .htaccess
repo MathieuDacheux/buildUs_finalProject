@@ -27,3 +27,5 @@ Rewriterule ^dashboard/profil-client controllers/dashboard/clientProfilControlle
 Rewriterule ^dashboard/employes controllers/dashboard/employeesListingController.php
 Rewriterule ^dashboard/profil-employe controllers/dashboard/employeeProfilController.php
 
+# Redirection Page du chiffre d'affaires
+Rewriterule ^dashboard/business controllers/dashboard/incomeController.php
