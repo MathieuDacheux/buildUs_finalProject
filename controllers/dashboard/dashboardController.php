@@ -8,8 +8,13 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Variables
-    $style = whichCss();
-    $javascript = wichJavscript();
+    $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
+    <link rel="stylesheet" href="/../../public/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
+
+    $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+    
     $title = TITLE_HEAD[7];
     $description = DESCRIPTION_HEAD[7];
 

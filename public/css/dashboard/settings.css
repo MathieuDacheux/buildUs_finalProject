@@ -1,77 +1,87 @@
 main {
     height: calc(100vh - 75px);
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Container du profil */
-
-.containerRecap {
-    height: 350px;
+.containerForm {
     width: 350px;
+    height: 400px;
+    background-color: var(--primary60);
     border-radius: 10px;
-    background-image: url('../../assets/img/background/mobile/backgroundMobile.svg');
-    background-color: var(--primary80);
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
-.containerProfil {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+/* Title */
+
+.formContentTitle {
+    height: 75px;
 }
 
-/* Container title */
-
-.containerTitle {
-    height: 20%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.containerTitle h3 {
-    color: var(--black0);
-}
-
-
-/* Container content */
-
-.containerContent {
-    height: 60%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.containerContent p {
-    color: var(--black0);
-    font-size: 1.25rem;
-}
-
-/* Button de modification */
-
-.containerButton {
-    height: 20%;
-    width: 100%;
-}
-
-.containerButton a {
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
+.formContentTitle h3 {
     text-align: center;
-    background: var(--black0);
-    color: var(--primary80);
+    color: var(--black0);
+}
+
+/* Form */
+
+.formInput {
+    height: calc(400px - 150px);
+}
+
+.formInput input {
+    width: 90%;
+    padding: .70rem .5em;
     border-radius: 5px;
+    border: 2px solid var(--black40);
+    color: var(--black100);
+}
+
+.formInput input::placeholder {
+    color: var(--black80);
+}
+
+.formInput input:focus {
+    outline: none;
+    border: 2px solid var(--primary80);
+}
+
+.formInput input:nth-child(7) {
+    margin-bottom: .5rem;
+}
+
+.formName {
+    width: 90%;
+}
+
+.formName input:first-child {
+    width: 99%;
+}
+
+.formName input:last-child {
+    width: 99%;
+}
+
+.formName .errorMessage {
+    width: 99%;
+}
+
+/* Submit button */
+
+.registerButton {
+    height: 75px;
+}
+
+.registerButton button {
+    padding: .75rem;
+    text-align: center;
+    background-color: var(--black0);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 0;
+    color: var(--primary80);
 }
 
 @media screen and (min-width: 1000px) {
@@ -81,10 +91,13 @@ main {
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1000px) {
     main {
         height: 100vh;
         width: calc(100vw - 425px);
     }
 }
 
+.hidden {
+    display: none;
+}

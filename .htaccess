@@ -22,8 +22,10 @@ Rewriterule ^dashboard/parametres controllers/dashboard/settingsController.php
 # Redirection Page des employés
 Rewriterule ^dashboard/clients controllers/dashboard/clientsListingController.php
 Rewriterule ^dashboard/profil-client controllers/dashboard/clientProfilController.php
+Rewriterule ^dashboard/client-modifie controllers/dashboard/clientModifyController.php
 
 # Redirection Page des clients
 Rewriterule ^dashboard/employes controllers/dashboard/employeesListingController.php
 Rewriterule ^dashboard/profil-employe controllers/dashboard/employeeProfilController.php
+Rewriterule ^dashboard/employe-modifie controllers/dashboard/clientModifyController.php
 

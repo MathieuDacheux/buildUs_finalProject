@@ -10,7 +10,7 @@ const ul = document.querySelector('.mobileNavList');
 
 // Function open navbar in mobile view
 
-let openNavMobileView = (e) => {
+const openNavMobileView = (e) => {
     e.preventDefault();
     burger.classList.toggle('open');
     ul.classList.toggle('open');

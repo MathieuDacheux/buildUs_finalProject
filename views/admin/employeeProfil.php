@@ -26,8 +26,13 @@
                     123 rue de la paix
                 </p>
             </div>
-            <div class="containerButton flexCenterCenter">
-                <a href="/dashboard/profil-client?id=">Modifier le salarié</a>
+            <div class="containerButtons flexCenterBetween">
+                <div class="containerButton flexCenterCenter">
+                    <a href="/dashboard/profil-client?id=">Supprimer le salarié</a>
+                </div>
+                <div class="containerButton flexCenterCenter">
+                    <a href="/dashboard/profil-client?id=">Modifier le salarié</a>
+                </div>
             </div>
         </div>
         <div class="containerForm">

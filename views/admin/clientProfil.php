@@ -26,8 +26,13 @@
                     123 rue de la paix
                 </p>
             </div>
-            <div class="containerButton flexCenterCenter">
-                <a href="/dashboard/profil-client?id=">Modifier le client</a>
+            <div class="containerButtons flexCenterBetween">
+                <div class="containerButton flexCenterCenter">
+                    <a href="/dashboard/profil-client?id=">Supprimer le client</a>
+                </div>
+                <div class="containerButton flexCenterCenter">
+                    <a href="/dashboard/profil-client?id=">Modifier le client</a>
+                </div>
             </div>
         </div>
         <div class="containerForm">
@@ -38,7 +43,7 @@
                 <div class="containerBills">
 
                 </div>
-                <form method="POST" enctype="multipart/form-data" class="flexCenterCenter">
+                <form method="POST" enctype="multipart/form-data" class="flexCenterBetween">
                     <label for="bills">Déposez une nouvelle facture</label>
                     <input type="file" name="bills" id="bills">
                     <button>Envoyer</button>

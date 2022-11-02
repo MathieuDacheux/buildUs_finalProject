@@ -18,12 +18,12 @@ main {
     transition: all 0.3s ease;
 }
 
-.containerTitle {
+.containerTitleListing {
     height: 75px;
     position: relative;
 }
 
-.formContentTitle .containerAdd, .containerTitle .containerAdd {
+.formContentTitle .containerAdd, .containerTitleListing .containerAdd {
     position: absolute;
     right: 15px;
     width: 30px;
@@ -42,12 +42,12 @@ main {
     color: var(--black0);
 }
 
-.containerTitle .containerAdd i {
+.containerTitleListing .containerAdd i {
     font-size: 1.25rem;
     color: var(--primary60);
 }
 
-.containerTitle h3 {
+.containerTitleListing h3 {
     color: var(--black0);
 }
 
@@ -148,7 +148,7 @@ main {
 
 .formContentTitle h3 {
     text-align: center;
-    color: var(--primary100);
+    color: var(--primary80);
 }
 
 /* Form */
@@ -204,10 +204,9 @@ form {
 }
 
 .registerButton button {
-    width: 130px;
     padding: .5rem 1rem;
     text-align: center;
-    background: var(--primary100);
+    background: var(--primary80);
     border-radius: 10px;
     font-size: 1rem;
     font-weight: 600;

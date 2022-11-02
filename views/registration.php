@@ -1,7 +1,7 @@
     <!-- Comeback to the landing page -->
 
     <div class="backToHome">
-        <a href="/accueil"><i class="fa-solid fa-arrow-left"></i></a> 
+        <a href="/accueil"><i class="fa-solid fa-arrow-left"></i></a>
     </div>
 
     <!-- Container registration -->
@@ -19,19 +19,19 @@
 
             <form method="POST">
                 <div class="formInput flexCenterCenterColumn">
-                    <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
+                    <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" pattern="<?= REGEX_MAIL ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
                     <div class="formName flexCenterBetween">
                         <div class="flexCenterCenterColumn">
-                            <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" required>
+                            <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" pattern="<?= REGEX_NAME ?>" required>
                             <p class="errorMessage"><?= (array_key_exists('lastname', $errorsRegistration)) ? $errorsRegistration['lastname'] : '' ?></p>
                         </div>
                         <div class="flexCenterColumn">
-                            <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" required>
+                            <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" pattern="<?= REGEX_NAME ?>" required>
                             <p class="errorMessage"><?= (array_key_exists('firstname', $errorsRegistration)) ? $errorsRegistration['firstname'] : '' ?></p>
                         </div>
                     </div>
-                    <input type="password" placeholder="Mot de passe*" name="password" required>
+                    <input type="password" placeholder="Mot de passe*" name="password" pattern="<?= REGEX_PASSWORD ?>" required>
                     <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                     <div class="passwordIndication hidden">
                         <p>Il doit contenir :</p>
@@ -55,7 +55,7 @@
                             <p class="errorMessage"><?= (array_key_exists('password', $errorsRegistration)) ? $errorsRegistration['password'] : '' ?></p>
                         </div>
                         <div class="formCheckbox">
-                            <input type="checkbox" name="newsletter" id="newsletter" name="newsletter" value="1" <?= (!empty($newsletter)) ? 'checked' : '' ?> >
+                            <input type="checkbox" name="newsletter" id="newsletter" name="newsletter" value="1" <?= (!empty($newsletter)) ? 'checked' : '' ?>>
                             <label for="newsletter">J'accepte de recevoir la newsletter de <strong class="important">BuildUs</strong></label>
                         </div>
                     </div>

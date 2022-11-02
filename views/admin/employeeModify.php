@@ -1,7 +1,5 @@
 <main>
-
-    <!-- Modal ajout client -->
-    <div class="formContent hidden">
+    <div class="formContent">
         <div class="formContentTitle flexCenterCenter">
             <div class="containerAdd flexCenterCenter">
                 <i class="fa-solid fa-xmark"></i>
@@ -37,32 +35,5 @@
             </div>
         </form>
     </div>
-
-
-    <!-- Listage des clients  -->
-    <div class="containerSubject">
-        <div class="containerTitleListing flexCenterCenter">
-            <div class="containerAdd flexCenterCenter">
-                <i class="fa-solid fa-plus"></i>
-            </div>
-            <h3>Employés</h3>
-        </div>
-        <div class="containerContent flexCenterColumn">
-            <div class="listingRecap flexCenterBetween">
-                <div class="containerInformations">
-                    <div class="containerPicture">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
-                    </div>
-                    <div class="containerName">
-                        <p>Mathieu Dacheux</p>
-                    </div>
-                </div>
-                <div class="containerMore flexCenterCenter">
-                    <div class="containerPlus flexCenterCenter">
-                        <a href=""><i class="fa-regular fa-eye"></i></a>
-                    </div>
-                </div>      
-            </div>
-        </div>
-    </div>
 </main>
+

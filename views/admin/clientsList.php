@@ -41,7 +41,7 @@
 
     <!-- Listage des clients  -->
     <div class="containerSubject">
-        <div class="containerTitle flexCenterCenter">
+        <div class="containerTitleListing flexCenterCenter">
             <div class="containerAdd flexCenterCenter">
                 <i class="fa-solid fa-plus"></i>
             </div>

@@ -41,42 +41,6 @@
                 <link rel="stylesheet" href="../public/css/footer.css">
                 <link rel="stylesheet" href="../public/css/conditions.css">';
             return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/dashboard.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
-            return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/parametres') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/settingsModify.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
-            return $style;
-        }  else if ($_SERVER['REQUEST_URI'] == '/dashboard/clients') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/listing.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
-            return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/profil-client') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
-            return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/employes') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/listing.css">';
-            return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/profil-employe') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
-                <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
-            return $style;
         }
     }
 
@@ -99,17 +63,6 @@
             return $javascript;
         } else if ($_SERVER['REQUEST_URI'] == '/confidentialite') {
             $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
-            return $javascript;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard') {
-            $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
-            return $javascript;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/clients') {
-            $javascript = '<script defer src="../public/js/openNavbar.js"></script>
-                <script defer src="../public/js/openModal.js"></script>';
-            return $javascript;
-        } else if ($_SERVER['REQUEST_URI'] == '/dashboard/employes') {
-            $javascript = '<script defer src="../public/js/openNavbar.js"></script>
-                <script defer src="../public/js/openModal.js"></script>';
             return $javascript;
         }
     }
