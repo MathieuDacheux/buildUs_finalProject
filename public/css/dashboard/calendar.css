@@ -1,0 +1,34 @@
+main {
+    width: 100vw;
+    height: calc(100vh - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#calendar {
+    width: 90%;
+    height: 90%;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 200px);
+    }
+    #calendar {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 425px);
+    }
+    #calendar {
+        width: 90%;
+        height: 90%;
+    }
+}

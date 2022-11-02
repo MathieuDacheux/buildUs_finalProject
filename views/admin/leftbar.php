@@ -19,11 +19,11 @@
                 </li>
                 <li>
                     <i class="fa-regular fa-square-check"></i>
-                    <a href=""><span>Rappels</span></a>
+                    <a href="/dashboard/rappels"><span>Rappels</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-calendar"></i>
-                    <a href=""><span>Calendrier</span></a>
+                    <a href="/dashboard/calendrier"><span>Calendrier</span></a>
                 </li>
                 <li>
                     <i class="fa-regular fa-address-book"></i>
@@ -54,7 +54,7 @@
                     </li>
                     <li>
                         <i class="fa-regular fa-calendar"></i>
-                        <a href=""><span>Calendrier</span></a>
+                        <a href="/dashboard/calendrier"><span>Calendrier</span></a>
                     </li>
                 </div>
                 <div class="containerList">

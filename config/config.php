@@ -1,20 +1,20 @@
 <?php
 
     define('TITLE_HEAD', [
-    '0BuildUs | Gérer votre entreprise plus simplement',
-    '1BuildUs | Créer un compte',
-    '2BuildUs | Connexion à votre espace',
-    '3BuildUs | Mot de passe oublié',
-    '4BuildUs | Page non trouvée',
-    '5BuildUs | Conditions générales d\'utilisation',
-    '6BuildUs | Politique de confidentialité',
-    '7BuildUs | Tableau de bord',
-    '8BuildUs | Paramètres',
-    '9BuildUs | Clients',
-    '10BuildUs | Employés',
-    '11BuildUs | Calendrier',
-    '12BuildUs | Rappels',
-    '13BuildUs | Chiffre d\'affaires',
+    'BuildUs | Gérer votre entreprise plus simplement',
+    'BuildUs | Créer un compte',
+    'BuildUs | Connexion à votre espace',
+    'BuildUs | Mot de passe oublié',
+    'BuildUs | Page non trouvée',
+    'BuildUs | Conditions générales d\'utilisation',
+    'BuildUs | Politique de confidentialité',
+    'BuildUs | Tableau de bord',
+    'BuildUs | Paramètres',
+    'BuildUs | Clients',
+    'BuildUs | Employés',
+    'BuildUs | Calendrier',
+    'BuildUs | Rappels',
+    'BuildUs | Chiffre d\'affaires',
     ]);
 
     define('DESCRIPTION_HEAD', [

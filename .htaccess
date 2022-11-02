@@ -32,3 +32,6 @@ Rewriterule ^dashboard/business controllers/dashboard/incomeController.php
 
 # Redirection Page des rappels
 Rewriterule ^dashboard/rappels controllers/dashboard/todosController.php
+
+# Redirection Page du calendrier
+Rewriterule ^dashboard/calendrier controllers/dashboard/calendarController.php
