@@ -1,12 +1,9 @@
 <main>
     <div class="formContent">
         <div class="formContentTitle flexCenterCenter">
-            <div class="containerAdd flexCenterCenter">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-            <h3>Ajout d'un employé</h3>
+            <h3>Modifier un employé</h3>
         </div>
-        <form method="POST" novalidate>
+        <form method="POST">
             <div class="formInput flexCenterCenterColumn">
                 <div class="formName flexCenterBetween">
                     <div class="flexCenterCenterColumn">
@@ -31,7 +28,7 @@
             <!-- Button to submit form -->
         
             <div class="registerButton flexCenterCenter">
-                <button type="submit">Ajouter</button>
+                <button type="submit">Modifier</button>
             </div>
         </form>
     </div>

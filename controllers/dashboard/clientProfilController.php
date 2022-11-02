@@ -10,7 +10,7 @@
     // Variables
     $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-    <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
+    <link rel="stylesheet" href="/../../public/css/dashboard/modify.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
 
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
@@ -21,7 +21,7 @@
     // Appel des vues
     include (__DIR__.'/../../views/templates/header.php');
     include (__DIR__.'/../../views/admin/leftbar.php');
-    include (__DIR__.'/../../views/admin/clientProfil.php');
+    include (__DIR__.'/../../views/admin/clientModify.php');
     include (__DIR__.'/../../views/admin/rightbar.php');
     include (__DIR__.'/../../views/templates/footer.php');
 

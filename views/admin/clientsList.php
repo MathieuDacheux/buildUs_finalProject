@@ -1,33 +1,32 @@
 <main>
 
-    <!-- Modal ajout client -->
     <div class="formContent hidden">
         <div class="formContentTitle flexCenterCenter">
             <div class="containerAdd flexCenterCenter">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-            <h3>Ajout d'un client</h3>
+            <h3>Ajout d'un employé</h3>
         </div>
         <form method="POST" novalidate>
             <div class="formInput flexCenterCenterColumn">
                 <div class="formName flexCenterBetween">
                     <div class="flexCenterCenterColumn">
-                        <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" required>
+                        <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" pattern="<?= '/'.REGEX_NAME.'/' ?>" required>
                         <p class="errorMessage"><?= (array_key_exists('lastname', $errorsRegistration)) ? $errorsRegistration['lastname'] : '' ?></p>
                     </div>
                     <div class="flexCenterColumn">
-                        <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" required>
+                        <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" pattern="<?= '/'.REGEX_NAME.'/' ?>" required>
                         <p class="errorMessage"><?= (array_key_exists('firstname', $errorsRegistration)) ? $errorsRegistration['firstname'] : '' ?></p>
                     </div>
                 </div>
-                <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" required>
+                <input type="mail" placeholder="example@app.com" name="mail" value="<?= $mail ?? '' ?>" pattern="<?= '/'.REGEX_MAIL.'/' ?>">
                 <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
-                <input type="tel" placeholder="Téléphone*" name="phone" value="<?= $phone ?? '' ?>" required>
+                <input type="tel" placeholder="Téléphone*" name="phone" value="<?= $phone ?? '' ?>" pattern="<?= '/'.REGEX_PHONE.'/' ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('phone', $errorsRegistration)) ? $errorsRegistration['phone'] : '' ?></p>
-                <input type="mail" placeholder="SIRET*" name="siret" value="<?= $siret ?? '' ?>" required>
-                <p class="errorMessage"><?= (array_key_exists('siret', $errorsRegistration)) ? $errorsRegistration['siret'] : '' ?></p>
-                <input type="text" placeholder="Adresse" name="address" value="<?= $address ?? '' ?>" required>
-                <p class="errorMessage"><?= (array_key_exists('adress', $errorsRegistration)) ? $errorsRegistration['adress'] : '' ?></p>
+                <input type="text" placeholder="Salaire*" name="income" value="<?= $income ?? '' ?>" pattern="<?= '/'.REGEX_INCOME.'/' ?>" required>
+                <p class="errorMessage"><?= (array_key_exists('income', $errorsRegistration)) ? $errorsRegistration['income'] : '' ?></p>
+                <input type="text" placeholder="Adresse" name="address" value="<?= $address ?? '' ?>">
+                <p class="errorMessage"><?= (array_key_exists('address', $errorsRegistration)) ? $errorsRegistration['siret'] : '' ?></p>
             </div>
         
             <!-- Button to submit form -->
@@ -37,7 +36,6 @@
             </div>
         </form>
     </div>
-
 
     <!-- Listage des clients  -->
     <div class="containerSubject">
