@@ -1,5 +1,6 @@
 <?php
 
+    // Metadonnées titre dans HEAD
     define('TITLE_HEAD', [
     'BuildUs | Gérer votre entreprise plus simplement',
     'BuildUs | Créer un compte',
@@ -17,6 +18,7 @@
     'BuildUs | Chiffre d\'affaires',
     ]);
 
+    // Metadonnées description dans HEAD
     define('DESCRIPTION_HEAD', [
     'Gérez votre entreprise plus simplement avec le logiciel web BuildUs et vous focalisez au maximum sur votre coeur de métier.',
     'Créez un compte sur BuildUs et gérez votre entreprise plus simplement.',
@@ -28,6 +30,13 @@
     'Gérez votre entreprise plus simplement avec le logiciel web BuildUs et vous focalisez au maximum sur votre coeur de métier.',
     ]);
 
+    // Données de connexion à la base de données
+    define('HOST', 'localhost');
+    define('DB_NAME', 'buildus');
+    define('USERNAME', 'godtier');
+    define('PASSWORD', 'Dr3tqvmkl2prcg80*');
+
+    // Tableaux d'erreurs
     $errorsRegistration = [];
     $errorConnexion = [];
     $errorForgot = [];

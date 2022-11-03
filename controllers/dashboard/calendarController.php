@@ -22,6 +22,7 @@
         // Création d\'un objet FullCalendar
         var calendarEl = document.getElementById(\'calendar\');
         var calendar = new FullCalendar.Calendar(calendarEl, {
+          editable: true,
           initialView: \'dayGridMonth\',
           initialDate: \'2021-09-07\',
           locale: \'fr\',
@@ -36,12 +37,6 @@
             center: \'title\',
             right: \'dayGridMonth,timeGridWeek,timeGridDay\'
           },
-          calendar.addEvent({
-            title: \'All Day Event\',
-            start: \'2021-09-01\'
-          })
-
-          
         });
         calendar.render();
       });
