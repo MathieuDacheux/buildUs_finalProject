@@ -29,7 +29,7 @@ class Database {
      * Récupération de la connexion à la base de données
      * @return PDO
      */
-    public function getConnection() :PDO {
-        return $this->connection;
+    public static function getConnection () :PDO {
+        return self::getInstance()->connection;
     }
 }
