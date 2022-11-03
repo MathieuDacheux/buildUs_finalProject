@@ -106,7 +106,7 @@ class Admin extends User {
     /********************************** UPDATE ***********************************/
     /************************************** **************************************/
 
-    public function update ($id) :bool {
+    public function update (int $id = 1) :bool {
         try {
             $databaseConnection = Database::getConnection();
             $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password WHERE id = :id');
@@ -130,7 +130,7 @@ class Admin extends User {
     /********************************** DELETE ***********************************/
     /************************************** **************************************/
 
-    public static function delete ($id) :bool {
+    public static function delete (int $id = 1) :bool {
         try {
             $databaseConnection = Database::getConnection();
             $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
