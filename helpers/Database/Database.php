@@ -9,7 +9,6 @@ class Database {
     private $password = PASSWORD;
     private static $instance = null;
     
-    
     /**
      * Constructeur
      */

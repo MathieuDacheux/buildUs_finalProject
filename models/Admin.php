@@ -61,24 +61,20 @@ class Admin extends User {
     /************************************** **************************************/
 
     public function add () :bool {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, password, cgu, newsletter, role) VALUES (:firstname, :lastname, :email, :password, :cgu, :newsletter, :role)');
-            $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
-            $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
-            $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
-            $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
-            $query->bindValue(':cgu', $this->getCgu(), PDO::PARAM_BOOL);
-            $query->bindValue(':newsletter', $this->getNewsletter(), PDO::PARAM_BOOL);
-            $query->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
-            $query->execute();
-            if ($query->rowCount() == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, password, cgu, newsletter, role) VALUES (:firstname, :lastname, :email, :password, :cgu, :newsletter, :role)');
+        $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        $query->bindValue(':cgu', $this->getCgu(), PDO::PARAM_BOOL);
+        $query->bindValue(':newsletter', $this->getNewsletter(), PDO::PARAM_BOOL);
+        $query->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -87,18 +83,14 @@ class Admin extends User {
     /************************************** **************************************/
 
     public static function getAll () :array {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('SELECT * FROM users');
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_OBJ);
-            if ($result == false) {
-                return [];
-            } else {
-                return $result;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT * FROM users');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        if ($result == false) {
+            return [];
+        } else {
+            return $result;
         }
     }
 
@@ -107,22 +99,18 @@ class Admin extends User {
     /************************************** **************************************/
 
     public function update (int $id) :bool {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password WHERE id = :id');
-            $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
-            $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
-            $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
-            $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
-            $query->bindValue(':id', $id, PDO::PARAM_INT);
-            $query->execute();
-            if ($query->rowCount() == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password WHERE id = :id');
+        $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -131,18 +119,14 @@ class Admin extends User {
     /************************************** **************************************/
 
     public static function delete (int $id) :bool {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
-            $query->bindValue(':id', $id, PDO::PARAM_INT);
-            $query->execute();
-            if ($query->rowCount() == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -50,24 +50,24 @@ class Client extends User {
     /*********************************** CREATE **********************************/
     /************************************** **************************************/
 
+    /**
+     * Création d'un client
+     * @return bool
+     */
     public function add () :bool {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, phone, siret, adress) VALUES (:firstname, :lastname, :email, :phone, :siret, :adress)');
-            $query->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
-            $query->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
-            $query->bindValue(':email', $this->email, PDO::PARAM_STR);
-            $query->bindValue(':phone', $this->phone, PDO::PARAM_STR);
-            $query->bindValue(':siret', $this->siret, PDO::PARAM_STR);
-            $query->bindValue(':adress', $this->adress, PDO::PARAM_STR);
-            $query->execute();
-            if ($query->rowCount() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, phone, siret, adress) VALUES (:firstname, :lastname, :email, :phone, :siret, :adress)');
+        $query->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+        $query->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+        $query->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $query->bindValue(':phone', $this->phone, PDO::PARAM_STR);
+        $query->bindValue(':siret', $this->siret, PDO::PARAM_STR);
+        $query->bindValue(':adress', $this->adress, PDO::PARAM_STR);
+        $query->execute();
+        if ($query->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -75,19 +75,19 @@ class Client extends User {
     /*********************************** READ ************************************/
     /************************************** **************************************/
 
+    /**
+     * Récupération de tout les clients
+     * @return array
+     */
     public static function getAll () :array {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('SELECT * FROM users');
-            $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            if ($result == false) {
-                return [];
-            } else {
-                return $result;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT * FROM users');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        if ($result == false) {
+            return [];
+        } else {
+            return $result;
         }
     }
 
@@ -95,25 +95,27 @@ class Client extends User {
     /********************************** UPDATE ***********************************/
     /************************************** **************************************/
 
+    /**
+     * Mise à jour du client
+     * @param int $id
+     * 
+     * @return bool
+     */
     public function update (int $id) :bool {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, phone = :phone, siret = :siret, adress = :adress WHERE id = :id');
-            $query->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
-            $query->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
-            $query->bindValue(':email', $this->email, PDO::PARAM_STR);
-            $query->bindValue(':phone', $this->phone, PDO::PARAM_STR);
-            $query->bindValue(':siret', $this->siret, PDO::PARAM_STR);
-            $query->bindValue(':adress', $this->adress, PDO::PARAM_STR);
-            $query->bindValue(':id', $id, PDO::PARAM_INT);
-            $query->execute();
-            if ($query->rowCount() == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, phone = :phone, siret = :siret, adress = :adress WHERE id = :id');
+        $query->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+        $query->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+        $query->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $query->bindValue(':phone', $this->phone, PDO::PARAM_STR);
+        $query->bindValue(':siret', $this->siret, PDO::PARAM_STR);
+        $query->bindValue(':adress', $this->adress, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -121,19 +123,21 @@ class Client extends User {
     /********************************** DELETE ***********************************/
     /************************************** **************************************/
 
+    /**
+     * Suppression d'un client
+     * @param int $id
+     * 
+     * @return bool
+     */
     public static function delete (int $id) :bool {
-        try {
-            $databaseConnection = Database::getConnection();
-            $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
-            $query->bindValue(':id', $id, PDO::PARAM_INT);
-            $query->execute();
-            if ($query->rowCount() == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
         }
     }
 

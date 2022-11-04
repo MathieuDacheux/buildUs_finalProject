@@ -7,6 +7,10 @@
     // Appel des fonctions
     require_once(__DIR__.'/../../helpers/functions.php');
 
+    // Appel des modèles
+    require_once(__DIR__.'/../../models/User.php');
+    require_once(__DIR__.'/../../models/Employee.php');
+
     // Variables
     $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
@@ -18,6 +22,7 @@
     
     $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
+    
 
     // Appel des vues
     include (__DIR__.'/../../views/templates/header.php');
