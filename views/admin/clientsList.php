@@ -5,7 +5,7 @@
             <div class="containerAdd flexCenterCenter">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-            <h3>Ajout d'un employé</h3>
+            <h3>Ajout d'un client</h3>
         </div>
         <form method="POST" novalidate>
             <div class="formInput flexCenterCenterColumn">
@@ -23,8 +23,8 @@
                 <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
                 <input type="tel" placeholder="Téléphone*" name="phone" value="<?= $phone ?? '' ?>" pattern="<?= '/'.REGEX_PHONE.'/' ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('phone', $errorsRegistration)) ? $errorsRegistration['phone'] : '' ?></p>
-                <input type="text" placeholder="Salaire*" name="income" value="<?= $income ?? '' ?>" pattern="<?= '/'.REGEX_INCOME.'/' ?>" required>
-                <p class="errorMessage"><?= (array_key_exists('income', $errorsRegistration)) ? $errorsRegistration['income'] : '' ?></p>
+                <input type="text" placeholder="SIRET" name="siret" value="<?= $siret ?? '' ?>" pattern="<?= '/'.REGEX_SIRET.'/' ?>" required>
+                <p class="errorMessage"><?= (array_key_exists('income', $errorsRegistration)) ? $errorsRegistration['siret'] : '' ?></p>
                 <input type="text" placeholder="Adresse" name="address" value="<?= $address ?? '' ?>">
                 <p class="errorMessage"><?= (array_key_exists('address', $errorsRegistration)) ? $errorsRegistration['siret'] : '' ?></p>
             </div>

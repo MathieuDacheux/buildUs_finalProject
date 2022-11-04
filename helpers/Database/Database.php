@@ -9,7 +9,10 @@ class Database {
     private $password = PASSWORD;
     private static $instance = null;
     
-    // Constructeur
+    
+    /**
+     * Constructeur
+     */
     private function __construct() {
         $this->connection = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
     }

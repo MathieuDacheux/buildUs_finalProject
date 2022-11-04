@@ -16,7 +16,7 @@ class Admin extends User {
      * @param bool $cgu
      * @param bool $newsletter
      */
-    public function __construct(string $firstname = 'firstname', string $lastname = 'lastname', string $email = 'email', string $password = 'password', bool $cgu = false, bool $newsletter = false) {
+    public function __construct(string $firstname, string $lastname, string $email, string $password, bool $cgu = true, bool $newsletter = false) {
         parent::__construct($firstname, $lastname, $email);
         $this->password = $password;
         $this->cgu = $cgu;
@@ -106,7 +106,7 @@ class Admin extends User {
     /********************************** UPDATE ***********************************/
     /************************************** **************************************/
 
-    public function update (int $id = 1) :bool {
+    public function update (int $id) :bool {
         try {
             $databaseConnection = Database::getConnection();
             $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password WHERE id = :id');
@@ -130,7 +130,7 @@ class Admin extends User {
     /********************************** DELETE ***********************************/
     /************************************** **************************************/
 
-    public static function delete (int $id = 1) :bool {
+    public static function delete (int $id) :bool {
         try {
             $databaseConnection = Database::getConnection();
             $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');

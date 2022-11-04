@@ -12,7 +12,7 @@
             </div>
         </form>
     </div>
-    <div class="containerTasks flexCenterColumn">
+    <div class="containerTasksPage flexCenterColumn">
         <div class="containerNav flexCenterBetween">
             <div class="navTask todosNav flexCenterCenter">
                 <a href="">À faire</a>
@@ -24,7 +24,7 @@
                 <a href="">Terminé</a>
             </div>
         </div>
-        <div class="containerListTasks todos">
+        <div class="containerListTasks">
             <div class="listingRecap flexCenterBetween">
                 <div class="containerInformations">
                     <div class="containerPicture">
@@ -40,12 +40,6 @@
                     </div>
                 </div>      
             </div>
-        </div>
-        <div class="containerListTasks incoming hidden">
-
-        </div>
-        <div class="containerListTasks finish hidden">
-
         </div>
     </div>
 </main>

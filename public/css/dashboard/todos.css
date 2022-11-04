@@ -71,7 +71,7 @@ form legend {
 
 /* Container list tasks */
 
-.containerTasks {
+.containerTasksPage{
     width: 95%;
     height: 600px;
     overflow-y: scroll;
@@ -146,4 +146,30 @@ form legend {
 
 .hidden {
     display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 200px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .containerTasksPage {
+        height: calc(100vh - 100px - 1rem - 5%);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    main {
+        height: 100vh;
+        width: calc(100vw - 425px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .containerTasksPage {
+        height: calc(100vh - 100px - 1rem - 5%);
+    }
 }
