@@ -1,9 +1,10 @@
 <?php
 
+require_once(__DIR__.'/User.php');
+
 class Admin extends User {
         
     private $password;
-    private $cgu;
     private $newsletter;
     private $role;
 
@@ -16,12 +17,11 @@ class Admin extends User {
      * @param bool $cgu
      * @param bool $newsletter
      */
-    public function __construct(string $firstname, string $lastname, string $email, string $password, bool $cgu = true, bool $newsletter = false) {
+    public function __construct(string $firstname, string $lastname, string $email, string $password, bool $newsletter = false, int $role = 1) {
         parent::__construct($firstname, $lastname, $email);
-        $this->password = $password;
-        $this->cgu = $cgu;
+        $this->password =  password_hash($password, PASSWORD_BCRYPT);
         $this->newsletter = $newsletter;
-        $this->role = 1;
+        $this->role = $role;
     }
 
     /**
@@ -30,14 +30,6 @@ class Admin extends User {
      */
     public function getPassword() :string {
         return $this->password;
-    }
-
-    /**
-     * Récupération des CGU
-     * @return bool
-     */
-    public function getCgu() :bool {
-        return $this->cgu;
     }
 
     /**
@@ -60,18 +52,37 @@ class Admin extends User {
     /*********************************** CREATE **********************************/
     /************************************** **************************************/
 
+    /**
+     * Vérification si l'email existe déjà
+     * @return bool
+     */
+    public function isExist () :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT * FROM users WHERE email = :email');
+        $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $query->execute();
+        if ($query->rowCount() > 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Création d'un nouvel utilisateur
+     * @return bool
+     */
     public function add () :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, password, cgu, newsletter, role) VALUES (:firstname, :lastname, :email, :password, :cgu, :newsletter, :role)');
+        $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, password, newsletter, Id_role) VALUES (:firstname, :lastname, :email, :password, :newsletter, :role)');
         $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
         $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
         $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
-        $query->bindValue(':cgu', $this->getCgu(), PDO::PARAM_BOOL);
         $query->bindValue(':newsletter', $this->getNewsletter(), PDO::PARAM_BOOL);
         $query->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
-        $query->execute();
-        if ($query->rowCount() == 1) {
+        return $query->execute();
+        if ($query->rowCount() > 1) {
             return true;
         } else {
             return false;

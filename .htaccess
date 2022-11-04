@@ -5,6 +5,9 @@ ErrorDocument 404 http://buildus.localhost/404
 # Redirection Error 404 
 RewriteRule ^404$ controllers/error404Controller.php
 
+# Redirection Error 500
+RewriteRule ^500$ controllers/error500Controller.php
+
 # Redirection Page d'accueil
 RewriteRule ^accueil$ controllers/homeController.php
 RewriteRule ^cgu$ controllers/cguController.php

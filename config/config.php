@@ -32,7 +32,7 @@
 
     // Données de connexion à la base de données
     define('HOST', 'localhost');
-    define('DB_NAME', 'buildus');
+    define('DB_NAME', 'buildUs');
     define('USERNAME', 'godtier');
     define('PASSWORD', 'Dr3tqvmkl2prcg80*');
 

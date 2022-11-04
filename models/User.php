@@ -13,7 +13,6 @@ class User {
      * @param string $email
      */
     public function __construct(string $firstname = 'firstname', string $lastname = 'lastname', string $email = 'email') {
-        Database::getInstance();
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;

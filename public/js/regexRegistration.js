@@ -5,7 +5,7 @@
 // Variables REGEX
 const regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const regexName = /^(?=.{1,50}$)[a-zA-Z]+(?:['_.\s][a-z]+)*$/;
-const regexPassword = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/;
+const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$/;
 
 // Variables Input from DOM
 const inputMail = document.querySelector('[name=mail]');
@@ -85,7 +85,7 @@ inputFirstName.addEventListener('blur', () => {
     verifyFirstName();
 })
 
-inputPassword.addEventListener('click', () => {
+inputPassword.addEventListener('focus', () => {
     passwordIndication.style.display = 'block';
     formCheckbox.style.display = 'none';
 })

@@ -7,6 +7,9 @@
     // Appel des fonctions
     require_once(__DIR__.'/../helpers/functions.php');
 
+    // Appel du modèle Database
+    require_once(__DIR__.'/../helpers/Database/Database.php');
+
     // Variables
     $style = whichCss(); 
     $javascript = wichJavscript();
@@ -46,11 +49,40 @@
         if ($password != $passwordConfirm) {
             $errorsRegistration['password'] = 'Les mots de passe doivent être identiques';
         }
-        if (validationInput($cgu, REGEX_CGU) != 'true') {
-            $errorsRegistration['cgu'] = validationInput($cgu, REGEX_CGU);
+        if ($cgu[0] != 1 && $cgu[1] != 2) {
+            $errorsRegistration['cgu'] = 'Les champs doivent être cochés';
         }
-        if ($newsletter != 1 &&  $newsletter != NULL)  {
+        if ($newsletter == 1) {
+            $newsletter = true;
+        } else if ($newsletter == NULL){
+            $newsletter = false;
+        } else {
             $errorsRegistration['newsletter'] = 'Ce champs n\'est pas conforme';
+        }
+
+        // Si tableau d'erreurs vide
+        if (empty($errorsRegistration)) {
+            // Appel du model
+            require_once(__DIR__.'/../../buildus/models/Admin.php');
+            // Instanciation de l'objet Admin
+            $admin = new Admin($firstname, $lastname, $mail, $password, $newsletter);
+            // Vérification de l'unicité de l'email
+            try {
+                if ($admin->isExist() == true) {
+                    $errorsRegistration['mail'] = 'Cet email est déjà utilisé';
+                } else {
+                    // Ajout de l'utilisateur
+                    if ($admin->add() == true) {
+                        $error = 'Votre compte a bien été créé';
+                        // Redirection vers la page de connexion
+                        header('Location: /connexion');
+                        exit();
+                    }
+                }
+            } catch (Exception $e) {
+                header('Location: /404');
+                exit();
+            }
         }
     }
 
