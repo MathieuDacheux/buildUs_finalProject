@@ -7,3 +7,4 @@ define('REGEX_PHONE', '^[0-9]{10}$');
 define('REGEX_SIRET', '^[0-9]{14}$');
 define('REGEX_INCOME', '^[0-9]{1,6}([.,][0-9]{1,2})?$');
 define('REGEX_PAGE', '^[0-9]{1,3}$');
+define('REGEX_ID', '^[0-9]{1,5}$');

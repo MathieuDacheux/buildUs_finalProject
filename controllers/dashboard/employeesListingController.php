@@ -38,19 +38,19 @@
         $adress = trim(filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_SPECIAL_CHARS));
 
         // Validationd des inputs
-        if (validationInput($lastname, REGEX_NAME) != 'true') {
+        if (validationInput($lastname, REGEX_NAME) != true) {
             $errorsRegistration['lastname'] = validationInput($lastname, REGEX_NAME);
         }
-        if (validationInput($firstname, REGEX_NAME) != 'true') {
+        if (validationInput($firstname, REGEX_NAME) != true) {
             $errorsRegistration['firstname'] = validationInput($firstname, REGEX_NAME);
         }
-        if (validationInput($mail, REGEX_MAIL) != 'true') {
+        if (validationInput($mail, REGEX_MAIL) != true) {
             $errorsRegistration['mail'] = validationInput($mail, REGEX_MAIL);
         }
-        if (validationInput($phone, REGEX_PHONE) != 'true') {
+        if (validationInput($phone, REGEX_PHONE) != true) {
             $errorsRegistration['phone'] = validationInput($phone, REGEX_PHONE);
         }
-        if (validationInput($income, REGEX_INCOME) != 'true') {
+        if (validationInput($income, REGEX_INCOME) != true) {
             $errorsRegistration['income'] = validationInput($income, REGEX_INCOME);
         }
 
@@ -67,13 +67,12 @@
                     // Ajout de l'employé
                     if ($employee->add() == true) {
                         $succes = 'L\'employé a bien été ajouté';
-                        header('Location: /employes');
+                        header('Location: /dashboard/employes');
                         exit();
                     }
                 }
             } catch (Exception $e) {
-                header('Location: /500');
-                exit();
+                $e->getMessage();
             }
         }
     }

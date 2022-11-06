@@ -60,7 +60,7 @@
                 </div>
                 <div class="containerMore flexCenterCenter">
                     <div class="containerPlus flexCenterCenter">
-                        <a href="/dashboard/profil-employe&id=<?= $employee->Id_users ?>"><i class="fa-regular fa-eye"></i></a>
+                        <a href="/dashboard/profil-employe?id=<?= $employee->Id_users ?>"><i class="fa-regular fa-eye"></i></a>
                     </div>
                 </div>      
             </div>
@@ -74,7 +74,7 @@
                         </div>
                     <?php else : ?>
                         <div class="containerPage flexCenterCenter">
-                            <a href="/dashboard/employes&page=<?= $whichPage - 1 ?>"><i class="fa-solid fa-chevron-left"></i></a>
+                            <a href="/dashboard/employes?page=<?= $whichPage - 1 ?>"><i class="fa-solid fa-chevron-left"></i></a>
                         </div>
                     <?php endif; ?>
                     <?php if($page == $howManyPages) : ?>
@@ -82,7 +82,7 @@
                         </div>
                     <?php else : ?>
                         <div class="containerPage flexCenterCenter">
-                            <a href="/dashboard/employes&page=<?= $whichPage + 1 ?>"><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="/dashboard/employes?page=<?= $whichPage + 1 ?>"><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     <?php endif; ?>
                 </div>

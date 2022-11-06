@@ -37,5 +37,6 @@
     define('PASSWORD', 'Dr3tqvmkl2prcg80*');
 
     // Tableaux d'erreurs
+    $errorsModify = [];
     $errorsRegistration = [];
     $errorConnexion = [];

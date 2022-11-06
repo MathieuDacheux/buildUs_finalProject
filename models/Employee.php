@@ -85,11 +85,7 @@ class Employee extends User {
         $query->bindValue(':adress', $this->getAdress(), PDO::PARAM_STR);
         $query->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
         $query->execute();
-        if ($query->rowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return $query->rowCount() > 0 ? true : false;
     }
 
     /************************************** **************************************/
@@ -106,10 +102,7 @@ class Employee extends User {
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         $totalPages = intdiv($result->total, 10);
-        if ($result->total % 10 > 0) {
-            $totalPages++;
-        }
-        return $totalPages;
+        return $result->total % 10 > 0 ? $totalPages++ : $totalPages;
     }
 
     /**
@@ -131,6 +124,18 @@ class Employee extends User {
     }
 
     /**
+     * Récupération de tous les employés
+     * @return array
+     */
+    public static function getAll () :array {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `id` FROM users where Id_role = 2 ;');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    /**
      * Récupération de 10 employés par page
      * @return array
      */
@@ -145,15 +150,16 @@ class Employee extends User {
     }
 
     /**
-     * Récupération de tous les employés
-     * @return array
+     * Vérication de l'existence d'un employé
+     * @return bool
      */
-    public static function getAll () :array {
+    public static function checkId (int $id) : bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `id` FROM users where Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT `Id_users` FROM users WHERE Id_users = :id AND Id_role = 2 ;');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
-        return $result;
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result ? true : false;
     }
 
     /**
@@ -164,10 +170,48 @@ class Employee extends User {
      */
     public static function getOne (int $id) :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT * FROM users WHERE id = :id AND Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `email`, `phone`, `salaries`, `adress`, `Id_users` FROM users WHERE Id_users = :id AND Id_role = 2 ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        $result = $query->fetch(PDO::FETCH_OBJ);
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    /************************************** **************************************/
+    /*********************************** UPDATE **********************************/
+    /************************************** **************************************/
+
+    /**
+     * Modification d'un employé
+     * @return bool
+     */
+    public function update (int $id) :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('UPDATE `users` SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email, `phone` = :phone, `salaries` = :income, `adress` = :adress WHERE `Id_users` = :id ;');
+        $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':phone', $this->getPhone(), PDO::PARAM_STR);
+        $query->bindValue(':income', $this->getIncome(), PDO::PARAM_STR);
+        $query->bindValue(':adress', $this->getAdress(), PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        return $query->rowCount() > 0 ? true : false;
+    }
+
+    /************************************** **************************************/
+    /*********************************** DELETE **********************************/
+    /************************************** **************************************/
+
+    /**
+     * Suppression d'un employé
+     * @return bool
+     */
+    public static function delete (int $id) :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('DELETE FROM `users` WHERE `Id_users` = :id ;');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        return $query->rowCount() > 0 ? true : false;
     }
 }
