@@ -19,7 +19,7 @@ main {
 }
 
 .containerTitleListing {
-    height: 75px;
+    height: 50px;
     position: relative;
 }
 
@@ -53,14 +53,14 @@ main {
 
 .containerContent {
     width: 100%;
-    height: calc(100% - 75px);
+    height: calc(100% - 100px);
     padding: .5rem;
     overflow-y: scroll;
 }
 
 .listingRecap {
     width: 100%;
-    height: 70px;
+    height: 55px;
     overflow: hidden;
     border-radius: 5px;
     margin-bottom: .5rem;
@@ -80,8 +80,8 @@ main {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background-color: var(--black0);
     margin-right: .5rem;
@@ -103,6 +103,27 @@ main {
     color: var(--black100);
 }
 
+.pagesListing {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerPages {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.containerPages i {
+    font-size: 1.25rem;
+    color: var(--black0);
+    cursor: pointer;
+}
 
 @media screen and (min-width: 1000px) {
     main {

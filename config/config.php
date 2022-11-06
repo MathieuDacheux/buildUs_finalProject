@@ -39,4 +39,3 @@
     // Tableaux d'erreurs
     $errorsRegistration = [];
     $errorConnexion = [];
-    $errorForgot = [];

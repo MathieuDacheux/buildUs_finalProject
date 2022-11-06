@@ -22,7 +22,7 @@
     // Actions effectuées si la méthode est en POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Filtrage des inputs
-        $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_SPECIAL_CHARS));
+        $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
         $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
         $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_SPECIAL_CHARS));
         $password = $_POST['password'];
@@ -73,14 +73,14 @@
                 } else {
                     // Ajout de l'utilisateur
                     if ($admin->add() == true) {
-                        $error = 'Votre compte a bien été créé';
+                        $succes = 'Votre compte a bien été créé';
                         // Redirection vers la page de connexion
                         header('Location: /connexion');
                         exit();
                     }
                 }
             } catch (Exception $e) {
-                header('Location: /404');
+                header('Location: /500');
                 exit();
             }
         }

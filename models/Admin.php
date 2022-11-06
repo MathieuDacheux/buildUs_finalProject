@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/User.php');
+require_once(__DIR__.'/../models/User.php');
 
 class Admin extends User {
         
@@ -81,7 +81,7 @@ class Admin extends User {
         $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
         $query->bindValue(':newsletter', $this->getNewsletter(), PDO::PARAM_BOOL);
         $query->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
-        return $query->execute();
+        $query->execute();
         if ($query->rowCount() > 1) {
             return true;
         } else {
