@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
 
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>
-    <script defer src="../public/js/openModal.js"></script>';
+    <script defer src="../public/js/openModal.js"></script>
+    <script defer src="../public/js/registrationState.js"></script>';
     
     $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
@@ -56,23 +57,23 @@
 
         // Si tableau d'erreurs vide
         if (empty($errorsRegistration)) {
-            
             // Instanciation de l'objet Employee
             $employee = new Employee($firstname, $lastname, $mail, $phone, $income, $adress);
             // Vérification de l'unicité du numéro de téléphone
             try {
                 if ($employee->isExist() == true) {
-                    $errorsRegistration['exist'] = 'Cet employé existe déjà';
+                    $isExist = true;
                 } else {
                     // Ajout de l'employé
                     if ($employee->add() == true) {
-                        $succes = 'L\'employé a bien été ajouté';
-                        header('Location: /dashboard/employes');
-                        exit();
+                        $confirmation = true;
+                    } else {
+                        $confirmation = false;
                     }
                 }
             } catch (Exception $e) {
-                $e->getMessage();
+                header('Location: /500');
+                exit();
             }
         }
     }
@@ -84,4 +85,3 @@
     include (__DIR__.'/../../views/admin/employeesList.php');
     include (__DIR__.'/../../views/admin/rightbar.php');
     include (__DIR__.'/../../views/templates/footer.php');
-

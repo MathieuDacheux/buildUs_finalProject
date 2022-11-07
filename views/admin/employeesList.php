@@ -38,6 +38,22 @@
         </form>
     </div>
 
+    <!-- Modal confirmation register -->
+    <?php if (isset($confirmation)) : ?>
+        <?php if($confirmation == true) :?>
+        <div class="showResult visible">
+            <p class="resultFormText goodResult">Le données ont bien été ajoutées</p>
+        </div>
+        <?php elseif ($confirmation == false) : ?>
+        <div class="showResult visible">
+            <p class="resultFormText badResult">Les données fournies ne sont pas conformes</p>
+        </div>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if (isset($isExist)) : ?>
+        <?= ($isExist == true) ? '<div class="showResult visible"><p class="resultFormText badResult">L\'employé existe déjà dans le répertoire</p></div>' : '' ;?>
+    <?php endif; ?>
+
 
     <!-- Listage des clients  -->
     <div class="containerSubject">

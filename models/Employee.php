@@ -65,15 +65,23 @@ class Employee extends User {
     /*********************************** CREATE **********************************/
     /************************************** **************************************/
 
+    /**
+     * Vérification si l'employé existe déjà
+     * @return bool
+     */
     public function isExist () :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('SELECT * FROM users WHERE phone = :phone AND Id_role = 2 ;');
         $query->bindValue(':phone', $this->getPhone(), PDO::PARAM_STR);
         $query->execute();
-        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $result = $query->fetch(PDO::FETCH_OBJ);
         return $result ? true : false;
     }
 
+    /**
+     * Création d'un employé
+     * @return bool
+     */
     public function add () :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, phone, salaries, adress, Id_role) VALUES (:firstname, :lastname, :email, :phone, :income, :adress, :role) ;');

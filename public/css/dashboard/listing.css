@@ -147,7 +147,38 @@ main {
     }
 }
 
-/* Modal ajout client */
+/* Modal confirmation d'inscription */
+
+.showResult {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    transition: all .3s ease;
+    z-index: 5;
+}
+
+.showResult p {
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    color: var(--black0);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.goodResult {
+    background-color: var(--succes80);
+}
+
+.badResult {
+    background-color: var(--error80);
+}
 
 /* Form content */
 

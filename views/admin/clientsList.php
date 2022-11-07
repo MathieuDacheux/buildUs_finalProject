@@ -19,13 +19,13 @@
                         <p class="errorMessage"><?= (array_key_exists('firstname', $errorsRegistration)) ? $errorsRegistration['firstname'] : '' ?></p>
                     </div>
                 </div>
-                <input type="mail" placeholder="example@app.com" name="mail" value="<?= $mail ?? '' ?>" pattern="<?= '/'.REGEX_MAIL.'/' ?>">
+                <input type="mail" placeholder="example@app.com" name="mail" value="<?= $mail ?? '' ?>" pattern="<?= '/'.REGEX_MAIL.'/' ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
                 <input type="tel" placeholder="Téléphone*" name="phone" value="<?= $phone ?? '' ?>" pattern="<?= '/'.REGEX_PHONE.'/' ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('phone', $errorsRegistration)) ? $errorsRegistration['phone'] : '' ?></p>
-                <input type="text" placeholder="SIRET" name="siret" value="<?= $siret ?? '' ?>" pattern="<?= '/'.REGEX_SIRET.'/' ?>" required>
+                <input type="text" placeholder="SIRET*" name="siret" value="<?= $siret ?? '' ?>" pattern="<?= '/'.REGEX_SIRET.'/' ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('income', $errorsRegistration)) ? $errorsRegistration['siret'] : '' ?></p>
-                <input type="text" placeholder="Adresse" name="address" value="<?= $address ?? '' ?>">
+                <input type="text" placeholder="Adresse*" name="address" value="<?= $address ?? '' ?>">
                 <p class="errorMessage"><?= (array_key_exists('address', $errorsRegistration)) ? $errorsRegistration['siret'] : '' ?></p>
             </div>
         
