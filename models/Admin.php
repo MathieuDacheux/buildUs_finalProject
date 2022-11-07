@@ -1,5 +1,6 @@
 <?php
 
+require_once(__DIR__.'/../helpers/DataBase/Database.php');
 require_once(__DIR__.'/../models/User.php');
 
 class Admin extends User {

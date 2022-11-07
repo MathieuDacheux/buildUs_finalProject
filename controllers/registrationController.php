@@ -7,8 +7,8 @@
     // Appel des fonctions
     require_once(__DIR__.'/../helpers/functions.php');
 
-    // Appel du modèle Database
-    require_once(__DIR__.'/../helpers/Database/Database.php');
+    // Appel du modèle
+    require_once(__DIR__.'/../../buildus/models/Admin.php');
 
     // Variables
     $style = whichCss(); 
@@ -62,8 +62,6 @@
 
         // Si tableau d'erreurs vide
         if (empty($errorsRegistration)) {
-            // Appel du model
-            require_once(__DIR__.'/../../buildus/models/Admin.php');
             // Instanciation de l'objet Admin
             $admin = new Admin($firstname, $lastname, $mail, $password, $newsletter);
             // Vérification de l'unicité de l'email

@@ -8,15 +8,9 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Appel des modèles
-    require_once(__DIR__.'/../../helpers/Database/Database.php');
     require_once(__DIR__.'/../../models/Employee.php');
 
     // Variables
-    $style = '<link rel="stylesheet" href="../public/css/main.css">
-    <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-    <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
-    <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
-
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
     
     $title = TITLE_HEAD[10];
@@ -120,4 +114,3 @@
 
     include (__DIR__.'/../../views/admin/rightbar.php');
     include (__DIR__.'/../../views/templates/footer.php');
-

@@ -1,7 +1,7 @@
 <?php
 
+require_once(__DIR__.'/../helpers/DataBase/Database.php');
 require_once(__DIR__.'/../models/User.php');
-require_once(__DIR__.'/../helpers/functions.php');
 
 class Employee extends User {
     

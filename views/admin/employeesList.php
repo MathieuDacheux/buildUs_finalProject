@@ -26,7 +26,7 @@
                 <p class="errorMessage"><?= (array_key_exists('phone', $errorsRegistration)) ? $errorsRegistration['phone'] : '' ?></p>
                 <input type="number" placeholder="Salaire*" name="income" value="<?= $income ?? '' ?>" pattern="<?= '/'.REGEX_INCOME.'/' ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('income', $errorsRegistration)) ? $errorsRegistration['income'] : '' ?></p>
-                <input type="text" placeholder="Adresse" name="adress" value="<?= $address ?? '' ?>">
+                <input type="text" placeholder="Adresse" name="adress" value="<?= $adress ?? '' ?>">
                 <p class="errorMessage"><?= (array_key_exists('adress', $errorsRegistration)) ? $errorsRegistration['adress'] : '' ?></p>
             </div>
         

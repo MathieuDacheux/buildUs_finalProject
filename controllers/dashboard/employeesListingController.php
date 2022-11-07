@@ -8,7 +8,6 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Appel des modèles
-    require_once(__DIR__.'/../../helpers/Database/Database.php');
     require_once(__DIR__.'/../../models/Employee.php');
 
     // Variables
