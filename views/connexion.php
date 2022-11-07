@@ -4,7 +4,15 @@
     <div class="formContainer flexCenterColumn">
         <div class="formContent">
             <div class="formContentTitle flexCenterCenter">
-                <h3>Retrouvez <strong class="important">BuildUs</strong></h3>
+                <?php if (isset($succes)) : ?>
+                    <?php if ($succes == true) : ?>
+                        <h3>Votre compte a bien été <strong class="important">validé</strong></h3>
+                    <?php elseif ($succes == false) : ?>
+                        <h3>Une <strong class="important">erreur</strong> est survenue</h3>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <h3>Retrouvez <strong class="important">BuildUs</strong></h3>
+                <?php endif; ?>
             </div>
             <form method="POST">
                 <div class="formInput flexCenterCenterColumn">

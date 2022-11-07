@@ -17,10 +17,6 @@
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                     <link rel="stylesheet" href="../public/css/registration.css">';
             return $style;
-        } else if ($_SERVER['REQUEST_URI'] == '/connexion') {
-            $style = '<link rel="stylesheet" href="../public/css/main.css">
-                    <link rel="stylesheet" href="../public/css/login.css">';
-            return $style;
         } else if ($_SERVER['REQUEST_URI'] == '/reinitialiser') {
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                     <link rel="stylesheet" href="../public/css/forget.css">';

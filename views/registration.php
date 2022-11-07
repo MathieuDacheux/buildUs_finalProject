@@ -12,7 +12,15 @@
             <!-- Container title -->
 
             <div class="formContentTitle flexCenterCenter">
-                <h3>C'est rapide et <strong class="important">facile</strong></h3>
+                <?php if (isset($success)) : ?>
+                    <?php if ($success == true) : ?>
+                        <h3>Mail<strong class="important">confirmation</strong> envoyé</h3>
+                    <?php elseif ($success == false) : ?>
+                        <h3>Une <strong class="important">erreur</strong> est survenue</h3>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <h3>C'est rapide et <strong class="important">facile</strong></h3>
+                <?php endif; ?>
             </div>
 
             <!-- Form -->

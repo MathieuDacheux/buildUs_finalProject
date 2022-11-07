@@ -71,10 +71,14 @@
                 } else {
                     // Ajout de l'utilisateur
                     if ($admin->add() == true) {
-                        $succes = 'Votre compte a bien été créé';
-                        // Redirection vers la page de connexion
-                        header('Location: /connexion');
-                        exit();
+                        $success = true;
+                        if ($admin->sendEmail() == true) {
+                            $success = true;
+                        } else {
+                            $succes = false;
+                        }
+                    } else {
+                        $success = false;
                     }
                 }
             } catch (Exception $e) {
