@@ -8,7 +8,7 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Variables
-    $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
+    $style = '<link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/income.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';

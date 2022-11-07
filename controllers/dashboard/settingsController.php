@@ -7,8 +7,11 @@
     // Appel des fonctions
     require_once(__DIR__.'/../../helpers/functions.php');
 
+    // Appel des modèles
+    require_once(__DIR__.'/../../models/Admin.php');
+
     // Variables
-    $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
+    $style = '<link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/settings.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';

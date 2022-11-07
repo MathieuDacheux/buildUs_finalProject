@@ -8,7 +8,7 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Variables
-    $style = $style = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    $style = '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/calendar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">

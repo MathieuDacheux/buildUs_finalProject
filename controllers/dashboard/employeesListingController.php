@@ -11,7 +11,7 @@
     require_once(__DIR__.'/../../models/Employee.php');
 
     // Variables
-    $style = $style = '<link rel="stylesheet" href="../public/css/main.css">
+    $style = '<link rel="stylesheet" href="../public/css/main.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/listing.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
