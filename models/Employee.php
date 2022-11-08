@@ -9,24 +9,26 @@ class Employee extends User {
     private $income;
     private $adress;
     private $role;
+    private $created;
 
-    
     /**
-     * Constructeur
+     * Constructeur 
      * @param string $firstname
      * @param string $lastname
      * @param string $email
      * @param string $phone
      * @param float $income
+     * @param int $created
      * @param string|null $adress
      * @param int $role
      */
-    public function __construct (string $firstname, string $lastname, string $email, string $phone, float $income, string $adress = null, int $role = 2) {
+    public function __construct (string $firstname, string $lastname, string $email, string $phone, float $income, int $created, string $adress = null, int $role = 2) {
         parent::__construct($firstname, $lastname, $email);
         $this->phone = $phone;
         $this->income = $income;
         $this->adress = $adress;
         $this->role = $role;
+        $this->created = $created;
     }
 
     /**
@@ -61,6 +63,14 @@ class Employee extends User {
         return $this->role;
     }
 
+    /**
+     * Récupération de l'admin créateur
+     * @return int
+     */
+    public function getCreated () :int {
+        return $this->created;
+    }
+
     /************************************** **************************************/
     /*********************************** CREATE **********************************/
     /************************************** **************************************/
@@ -71,8 +81,9 @@ class Employee extends User {
      */
     public function isExist () :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT * FROM users WHERE phone = :phone AND Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT `phone` FROM `users` WHERE `phone` = :phone AND `Id_role` = 2 AND `created_by` = :created;');
         $query->bindValue(':phone', $this->getPhone(), PDO::PARAM_STR);
+        $query->bindValue(':created', $this->getCreated(), PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result ? true : false;
@@ -84,7 +95,7 @@ class Employee extends User {
      */
     public function add () :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('INSERT INTO users (firstname, lastname, email, phone, salaries, adress, Id_role) VALUES (:firstname, :lastname, :email, :phone, :income, :adress, :role) ;');
+        $query = $databaseConnection->prepare('INSERT INTO `users` (firstname, lastname, email, phone, salaries, adress, Id_role, created_by) VALUES (:firstname, :lastname, :email, :phone, :income, :adress, :role, :created) ;');
         $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
         $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
         $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
@@ -92,6 +103,7 @@ class Employee extends User {
         $query->bindValue(':income', $this->getIncome(), PDO::PARAM_STR);
         $query->bindValue(':adress', $this->getAdress(), PDO::PARAM_STR);
         $query->bindValue(':role', $this->getRole(), PDO::PARAM_INT);
+        $query->bindValue(':created', $this->getCreated(), PDO::PARAM_INT);
         $query->execute();
         return $query->rowCount() > 0 ? true : false;
     }
@@ -106,7 +118,8 @@ class Employee extends User {
      */
     public static function howManyPages () :int {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT COUNT(`Id_users`) as total FROM `users` WHERE Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT COUNT(`Id_users`) as total FROM `users` WHERE Id_role = 2 AND `created_by` = :created ;');
+        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         $totalPages = intdiv($result->total, 10);
@@ -137,7 +150,8 @@ class Employee extends User {
      */
     public static function getAll () :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `id` FROM users where Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `id` FROM `users` where `Id_role` = 2 AND `created_by` = :created ;');
+        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -149,7 +163,8 @@ class Employee extends User {
      */
     public static function getTen () :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `lastname`, `firstname`, `Id_users` FROM `users` WHERE Id_role = 2 ORDER BY `lastname` ASC LIMIT :numberPerPage OFFSET :offset ');
+        $query = $databaseConnection->prepare('SELECT `lastname`, `firstname`, `Id_users` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created ORDER BY `lastname` ASC LIMIT :numberPerPage OFFSET :offset ');
+        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
         $query->bindValue(':numberPerPage', 10, PDO::PARAM_INT);
         $query->bindValue(':offset', (Employee::whichPage() - 1) * 10, PDO::PARAM_INT);
         $query->execute();
@@ -163,8 +178,9 @@ class Employee extends User {
      */
     public static function checkId (int $id) : bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `Id_users` FROM users WHERE Id_users = :id AND Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT `Id_users` FROM `users` WHERE `Id_users` = :id AND `Id_role` = 2 AND `created_by` = :created ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result ? true : false;
@@ -178,8 +194,9 @@ class Employee extends User {
      */
     public static function getOne (int $id) :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `email`, `phone`, `salaries`, `adress`, `Id_users` FROM users WHERE Id_users = :id AND Id_role = 2 ;');
+        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `email`, `phone`, `salaries`, `adress`, `Id_users` FROM `users` WHERE `Id_users` = :id AND `Id_role` = 2 AND `created_by` = :created ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;

@@ -56,21 +56,19 @@
         if (validationInput($userLogin, REGEX_MAIL) != 'true') {
             $errorConnexion['userLogin'] = validationInput($userLogin, REGEX_MAIL);
         }
-        var_dump($errorConnexion);
         // Si tableau d'erreurs vide
         if (empty($errorConnexion)) {
-            var_dump(Admin::loginVerification($userLogin, $userPassword));
             try {
                 if (Admin::loginVerification($userLogin, $userPassword) == true) {
                     $id = Admin::getId($userLogin);
-
+                    // Création de la session utilisateur connecté
                     $_SESSION['id'] = $id;
                     $_SESSION['login'] = $userLogin;
                     // Redirection vers la page d'accueil du dashboard
                     header('Location: /dashboard');
                     exit();
                 } else {
-                    var_dump('Erreur de connexion');
+                    $errorConnexion['userLogin'] = 'Identifiant ou mot de passe incorrect';
                 }
             } catch (Exception $e) {
                 header('Location: /500');
