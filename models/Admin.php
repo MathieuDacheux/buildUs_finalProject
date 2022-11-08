@@ -184,10 +184,17 @@ class Admin extends User {
         return $success;
     }
 
-    // Compare le mot de passe saisi avec celui de la base de données
-    public static function connexion (string $email, string $password) :bool {
+    
+    /**
+     * Comparaison du mot de passe entré dans le formulaire avec celui de la base de données en fonction de l'email
+     * @param string $email
+     * @param string $password
+     * 
+     * @return bool
+     */
+    public static function loginVerification (string $email, string $password) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `password` FROM `users` WHERE `email` = :email');
+        $query = $databaseConnection->prepare('SELECT `password`, `Id_users` FROM `users` WHERE `email` = :email AND `activated_at` IS NOT NULL AND `Id_role` = 1');
         $query->bindValue(':email', $email, PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
@@ -197,6 +204,15 @@ class Admin extends User {
             $success = false;
         }
         return $success;
+    }
+
+    public static function getId (string $email) :int {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT `Id_users` FROM `users` WHERE `email` = :email and `Id_role` = 1');
+        $query->bindValue(':email', $email, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result->Id_users;
     }
 
     /************************************** **************************************/

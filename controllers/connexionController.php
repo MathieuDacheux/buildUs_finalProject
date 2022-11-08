@@ -17,6 +17,21 @@
     $title = TITLE_HEAD[2];
     $description = DESCRIPTION_HEAD[2];
 
+    // Instanciation de la session
+    session_start();
+
+    // Vérification de la session
+    if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
+        if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {
+            session_destroy();
+            header('Location: /connexion');
+            exit();
+        } else {
+            header('Location: /dashboard');
+            exit();
+        }
+    }
+
     // Actions effectuées si la méthode est en GET
     if (isset($_GET['token'])) {
         $token = $_GET['token'];
@@ -27,7 +42,8 @@
                 $succes = false;
             }
         } catch (Exception $e) {
-            $succes = false;
+            header('Location: /500');
+            exit();
         }
     }
 
@@ -40,11 +56,19 @@
         if (validationInput($userLogin, REGEX_MAIL) != 'true') {
             $errorConnexion['userLogin'] = validationInput($userLogin, REGEX_MAIL);
         }
+        var_dump($errorConnexion);
         // Si tableau d'erreurs vide
         if (empty($errorConnexion)) {
+            var_dump(Admin::loginVerification($userLogin, $userPassword));
             try {
-                if (Admin::connexion($userLogin, $userPassword) == true) {
-                    die();
+                if (Admin::loginVerification($userLogin, $userPassword) == true) {
+                    $id = Admin::getId($userLogin);
+
+                    $_SESSION['id'] = $id;
+                    $_SESSION['login'] = $userLogin;
+                    // Redirection vers la page d'accueil du dashboard
+                    header('Location: /dashboard');
+                    exit();
                 } else {
                     var_dump('Erreur de connexion');
                 }
