@@ -37,6 +37,10 @@
                     <i class="fa-solid fa-sliders"></i>
                     <a href="/dashboard/parametres"><span>Paramètres</span></a>
                 </li>
+                <li>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <a href="/dashboard/parametres"><span>Déconnexion</span></a>
+                </li>
             </ul>           
         </nav>
 
@@ -67,10 +71,16 @@
                         <a href="/dashboard/clients"><span>Clients</span></a>
                     </li>
                 </div>
-                <li>
-                    <i class="fa-solid fa-sliders"></i>
-                    <a href="/dashboard/parametres"><span>Paramètres</span></a>
-                </li>
+                <div class="containerList">
+                    <li>
+                        <i class="fa-solid fa-sliders"></i>
+                        <a href="/dashboard/parametres"><span>Paramètres</span></a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <a href="/dashboard/parametres"><span>Déconnexion</span></a>
+                    </li>
+                </div>
             </ul>
         </nav>            
     </header>

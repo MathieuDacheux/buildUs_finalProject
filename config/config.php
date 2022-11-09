@@ -1,4 +1,6 @@
 <?php
+    // Début de la session
+    session_start();
 
     // Metadonnées titre dans HEAD
     define('TITLE_HEAD', [

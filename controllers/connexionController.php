@@ -17,9 +17,6 @@
     $title = TITLE_HEAD[2];
     $description = DESCRIPTION_HEAD[2];
 
-    // Instanciation de la session
-    session_start();
-
     // Vérification de la session
     if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
         if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {

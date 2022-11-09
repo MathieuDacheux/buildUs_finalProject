@@ -86,3 +86,14 @@
             }
         }
     }
+
+    /******************** ********************/
+    /************* DECONNECTION **************/
+    /******************** ********************/
+
+    // !DECONNECTION
+    function deconnection() {
+        session_destroy();
+        header('Location: /connexion');
+        exit();
+    }

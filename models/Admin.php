@@ -194,8 +194,8 @@ class Admin extends User {
      */
     public static function loginVerification (string $email, string $password) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `password`, `Id_users` FROM `users` WHERE `email` = :email AND `activated_at` IS NOT NULL AND `Id_role` = 1');
-        $query->bindValue(':email', $email, PDO::PARAM_INT);
+        $query = $databaseConnection->prepare('SELECT `password` FROM `users` WHERE `email` = :email AND `Id_role` = 1 ;');
+        $query->bindValue(':email', $email, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         if (password_verify($password, $result->password) == true) {
@@ -219,29 +219,25 @@ class Admin extends User {
     /*********************************** READ ************************************/
     /************************************** **************************************/
 
-    public static function getAll () :array {
+    public static function getOne () :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT * FROM users');
+        $query = $databaseConnection->prepare('SELECT `Id_users`, `firstname`, `lastname`, `email` FROM `users` WHERE `Id_users` = :id AND `Id_role` = 1');
+        $query->bindValue(':id', $_SESSION['id'], PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
-        if ($result == false) {
-            return [];
-        } else {
-            return $result;
-        }
+        return $result;
     }
 
     /************************************** **************************************/
     /********************************** UPDATE ***********************************/
     /************************************** **************************************/
 
-    public function update (int $id) :bool {
+    public static function update (string $firstname, string $lastname, string $email, int $id) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('UPDATE users SET firstname = :firstname, lastname = :lastname, email = :email, password = :password WHERE id = :id');
-        $query->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
-        $query->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
-        $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
-        $query->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        $query = $databaseConnection->prepare('UPDATE `users` SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email WHERE `Id_users` = :id AND `Id_role` = 1 ;');
+        $query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
+        $query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
+        $query->bindValue(':email', $email, PDO::PARAM_STR);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         if ($query->rowCount() == 1) {
