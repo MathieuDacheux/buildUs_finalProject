@@ -14,7 +14,7 @@
             <div class="containerCardContent flexCenterColumn">
                 <h3>Simplicité</h3>
                 <hr>
-                <p>BuildUs vous propose un logiciel web <strong class="important">cléf en main</strong> pour vous aider à gérer votre entreprise le plus simplement à un tarif unique.</p>
+                <p>BuildUs vous propose un logiciel web <strong class="important">clef en main</strong> pour vous aider à gérer votre entreprise le plus simplement à un tarif unique.</p>
             </div>
         </div>
 

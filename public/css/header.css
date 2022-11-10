@@ -93,7 +93,7 @@ ul {
 }
 
 .containerConnection li .createAccount, .containerConnection li .connectionAccount {
-    width: 130px;
+    width: 140px;
     padding: .5rem;
     text-align: center;
     background: linear-gradient(to right, var(--primary100), var(--primary80));
@@ -139,7 +139,7 @@ ul {
         width: 400px;
     }
     .desktopNav a:nth-child(3), .desktopNav a:last-child {
-        width: 100px;
+        width: 110px;
         padding: .25rem;
         border: 0px;
         font-size: 1rem;

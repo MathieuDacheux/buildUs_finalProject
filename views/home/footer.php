@@ -7,7 +7,7 @@
             </div>
             <div class="flexCenterBetween">
                 <a href="https://github.com/MathieuDacheux/buildUs" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/mathieudachx/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
             <div class="containerLinks flexCenterCenterColumn">
                 <a href="/cgu">Mentions légales</a>

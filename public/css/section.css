@@ -147,26 +147,8 @@
     overflow: hidden;
 }
 
-.containerLeft {
-    width: 100%;
-    padding: 0rem .5rem;
-    height: 50%;
-}
-
-.containerLeft p {
-    padding: 0rem .5rem;
-}
-
-.containerRight {
-    padding: 1rem .5rem 0rem .5rem;
-    width: 100%;
-    height: 50%;
-}
-
-.containerRight video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.featuresContainer video {
+    max-width: 350px;
 }
 
 .desktopFeaturesGrid {
@@ -208,34 +190,13 @@
         margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         padding-left: 1rem;
         padding-right: 1rem;
     }
-    .containerLeft {
-        width: 100%;
-        height: 50%;
-        padding-top: .5rem;
-        padding-right: 0rem;
-        padding-left: 0rem;
-    }
-    .containerLeft h2 {
-        text-align: center;
-    }
-    .containerLeft p {
-        padding: 0;
-    }
-    .containerRight {
-        width: 100%;
+    .featuresContainer video {
+        max-width: 95%;
         height: 100%;
-        padding: 0rem;
-        padding-top: 1rem;
-    }
-    .containerRight video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
     .desktopFeaturesGrid {
         display: grid;
@@ -282,35 +243,15 @@
 @media screen and (min-width: 1000px) {
     .featuresContainer {
         width: 100%;
-        height: 400px;
+        height: 450px;
         margin-bottom: 1rem;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
     }
-    .containerLeft {
-        width: 40%;
+    .featuresContainer video {
+        max-width: 95%;
         height: 100%;
-        padding-top: .5rem;
-        padding-right: .5rem;
-    }
-    .containerLeft h2 {
-        text-align: left;
-    }
-    .containerLeft p {
-        padding: 0;
-        padding-left: .5rem;
-    }
-    .containerRight {
-        width: 60%;
-        height: 100%;
-        padding-left: .5rem;
-    }
-    .containerRight video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
     .desktopFeaturesGrid {
         display: grid;
@@ -354,37 +295,15 @@
 @media screen and (min-width: 1200px) {
     .featuresContainer {
         width: 100%;
-        height: 400px;
+        height: 500px;
         margin-bottom: 1rem;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
     }
-    .containerLeft {
-        width: 40%;
+    .featuresContainer video {
+        max-width: 100%;
         height: 100%;
-        padding-top: .5rem;
-        padding-right: .5rem;
-        padding-left: 0rem;
-    }
-    .containerLeft h2 {
-        text-align: left;
-    }
-    .containerLeft p {
-        padding: 0;
-    }
-    .containerRight {
-        width: 60%;
-        height: 100%;
-        padding-left: .5rem;
-        padding-right: 0rem;
-        padding-top: .5rem;
-    }
-    .containerRight video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
     }
     .desktopFeaturesGrid {
         display: grid;
