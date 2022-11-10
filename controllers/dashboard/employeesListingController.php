@@ -8,6 +8,7 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Appel des modèles
+    require_once(__DIR__.'/../../helpers/Pages.php');
     require_once(__DIR__.'/../../models/Admin.php');
     require_once(__DIR__.'/../../models/Employee.php');
 
@@ -36,9 +37,7 @@
                 $created = $_SESSION['id'];
                 
                 // Listing des employés
-                $howManyPages = Employee::howManyPages();
-                $whichPage = Employee::whichPage();
-                $tenEmployees = Employee::getTen();
+                $display = Pages::display($created);
 
                 // Actions effectuées si la méthode est en POST
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

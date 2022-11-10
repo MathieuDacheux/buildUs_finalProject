@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/../helpers/DataBase/Database.php');
+require_once(__DIR__.'/../helpers/Database.php');
 require_once(__DIR__.'/../models/User.php');
 
 class Employee extends User {
@@ -113,60 +113,20 @@ class Employee extends User {
     /************************************** **************************************/
 
     /**
-     * Récupération du nombre de page totale pour la pagination
-     * @return int
-     */
-    public static function howManyPages () :int {
-        $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT COUNT(`Id_users`) as total FROM `users` WHERE Id_role = 2 AND `created_by` = :created ;');
-        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
-        $query->execute();
-        $result = $query->fetch(PDO::FETCH_OBJ);
-        $totalPages = intdiv($result->total, 10);
-        return $result->total % 10 > 0 ? $totalPages++ : $totalPages;
-    }
-
-    /**
-     * Récupération du numéro de page en méthode GET
-     * @return int
-     */
-    public static function whichPage () :int {
-        if (isset($_GET['page'])) {
-            $input = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
-            if (validationInput($input, REGEX_PAGE) == true) {
-                $page = $input;
-            } else {
-                $page = 1;
-            }
-        } else {
-            $page = 1;
-        }
-        return intval($page, 10);
-    }
-
-    /**
      * Récupération de tous les employés
      * @return array
      */
-    public static function getAll () :array {
+    public static function get (int $idCreator ,int $id = 0) :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `id` FROM `users` where `Id_role` = 2 AND `created_by` = :created ;');
-        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
-        return $result;
-    }
-
-    /**
-     * Récupération de 10 employés par page
-     * @return array
-     */
-    public static function getTen () :array {
-        $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `lastname`, `firstname`, `Id_users` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created ORDER BY `lastname` ASC LIMIT :numberPerPage OFFSET :offset ');
-        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
-        $query->bindValue(':numberPerPage', 10, PDO::PARAM_INT);
-        $query->bindValue(':offset', (Employee::whichPage() - 1) * 10, PDO::PARAM_INT);
+        if ($id == 0) {
+            $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created';
+            $query = $databaseConnection->prepare($sql);
+        } else {
+            $sql = 'SELECT `firstname`, `lastname`, `Id_users`, `email`, `phone`, `salaries`, `adress` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created AND `Id_users` = :id';
+            $query = $databaseConnection->prepare($sql);
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+        }
+        $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -184,22 +144,6 @@ class Employee extends User {
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result ? true : false;
-    }
-
-    /**
-     * Récupération d'un employé par son id
-     * @param int $id
-     * 
-     * @return array
-     */
-    public static function getOne (int $id) :array {
-        $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `firstname`, `lastname`, `email`, `phone`, `salaries`, `adress`, `Id_users` FROM `users` WHERE `Id_users` = :id AND `Id_role` = 2 AND `created_by` = :created ;');
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
-        return $result;
     }
 
     /************************************** **************************************/

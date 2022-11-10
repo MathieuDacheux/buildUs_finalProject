@@ -30,10 +30,10 @@
                 </div>
                 <div class="containerButtons flexCenterBetween">
                     <div class="containerButton flexCenterCenter">
-                        <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;delete=true">Supprimer le salarié</a>
+                        <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;delete=true">Supprimer le client</a>
                     </div>
                     <div class="containerButton flexCenterCenter">
-                        <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le salarié</a>
+                        <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le client</a>
                     </div>
                 </div>
                 <?php endforeach; ?>

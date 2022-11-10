@@ -8,6 +8,7 @@
     require_once(__DIR__.'/../../helpers/functions.php');
 
     // Appel du modèle
+    require_once(__DIR__.'/../../helpers/Pages.php');
     require_once(__DIR__.'/../../models/Admin.php');
     require_once(__DIR__.'/../../models/Client.php');
 
@@ -35,9 +36,7 @@
                 // ID de l'admin connecté
                 $created = $_SESSION['id'];
                 // Listing des employés
-                $howManyPages = Client::howManyPages();
-                $whichPage = Client::whichPage();
-                $tenClients = Client::getTen();
+                $display = Pages::display($created, 1);
 
                 // Actions effectuées si la méthode est en POST
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -82,6 +81,8 @@
                                 }
                             }
                         } catch (Exception $e) {
+                            echo $e->getMessage();
+                            die();
                             header('Location: /500');
                             exit();
                         }
@@ -89,6 +90,8 @@
                 }
             }
         } catch (Exception $e) {
+            echo $e->getMessage();
+            die();
             header('Location: /500');
             exit();
         }

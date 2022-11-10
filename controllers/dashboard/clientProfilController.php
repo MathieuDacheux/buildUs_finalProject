@@ -35,9 +35,7 @@
                     // Vérification de l'id
                     if (validationInput($id, REGEX_ID) == 'true' && Client::checkId($id) == true) {
                         // Récupération des informations de l'employé
-                        $client = Client::getOne($id);
-                        // Action effectuée si la méthode est en POST
-                        
+                        $client = Client::get($created, $id);                 
                     } else {
                         header('Location: /dashboard/clients');
                         exit();

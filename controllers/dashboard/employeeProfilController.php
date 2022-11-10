@@ -35,7 +35,7 @@
                     // Vérification de l'id
                     if (validationInput($id, REGEX_ID) == 'true' && Employee::checkId($id) == true) {
                         // Récupération des informations de l'employé
-                        $employee = Employee::getOne($id);
+                        $employee = Employee::get($created ,$id);
                     } else {
                         header('Location: /dashboard/employes');
                         exit();
