@@ -12,6 +12,7 @@ RewriteRule ^500$ controllers/error500Controller.php
 RewriteRule ^accueil$ controllers/homeController.php
 RewriteRule ^cgu$ controllers/cguController.php
 RewriteRule ^confidentialite$ controllers/confidentialyController.php
+Rewriterule ^dashboard/deconnexion controllers/dashboard/deconnexionController.php
 
 # Redirection Page d'inscription / connexion / mot de passe oublié
 RewriteRule ^inscription$ controllers/registrationController.php

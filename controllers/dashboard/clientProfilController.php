@@ -17,17 +17,19 @@
     $title = TITLE_HEAD[9];
     $description = DESCRIPTION_HEAD[7];
 
-    // Vérification de la session
-    if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
-        try {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {
+    try {
+        // Vérification de la session
+        if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();
             } else {
+                // Nouvelle date de session
+                $_SESSION['time'] = time();
                 // ID de l'admin connecté
                 $created = $_SESSION['id'];
-
+    
                 // Action effectuée si la méthode est en GET et si l'id est présent
                 if (isset($_GET['id'])) {
                     // Nettage de l'id
@@ -41,7 +43,7 @@
                         exit();
                     }
                 }
-
+    
                 // Action effectuée si la méthode est en POST et si modify est présent
                 if (isset($_GET['modify'])) {
                     if ($_GET['modify'] == 'true' && $_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -70,17 +72,12 @@
                         }
                         // Si tableau d'erreurs vide
                         if (empty($errorsModify)) {
-                            try {
-                                // Instanciation de l'objet Employee
-                                $client = new Client($lastname, $firstname, $mail, $phone, $siret, $created, $adress);
-                                var_dump($client);
-                                // Modification de l'employé
-
-                                $client->update($id);
-                                header('Location: /dashboard/profil-client?id='.$id);
-                            } catch (Exception $e) {
-                                echo $e->getMessage();
-                            }
+                            // Instanciation de l'objet Employee
+                            $client = new Client($lastname, $firstname, $mail, $phone, $siret, $created, $adress);
+                            
+                            // Modification de l'employé
+                            $client->update($id);
+                            header('Location: /dashboard/profil-client?id='.$id);
                         } else {
                             header('Location: /dashboard/client');
                             exit();
@@ -92,13 +89,8 @@
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
                         if (Client::checkId($id) == true) {
-                            try {
-                                Client::delete($id);
-                                header('Location: /dashboard/clients');
-                            } catch (Exception $e) {
-                                header('Location: /500');
-                                exit();
-                            }
+                            Client::delete($id);
+                            header('Location: /dashboard/clients');
                         } else {
                             header('Location: /dashboard/clients');
                             exit();
@@ -106,14 +98,15 @@
                     }
                 }
             }
-        } catch (Exception $e) {
-            header('Location: /500');
+        } else {
+            header('Location: /connexion');
             exit();
         }
-    } else {
-        header('Location: /connexion');
+    } catch (Exception $e) {
+        header('Location: /500');
         exit();
     }
+
 
     // Appel des vues
     if (isset($_GET['modify']) == 'true') {

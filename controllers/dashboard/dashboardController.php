@@ -21,20 +21,23 @@
     $title = TITLE_HEAD[7];
     $description = DESCRIPTION_HEAD[7];
 
-    // Vérification de la session
-    if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
-        try {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {
+    try {
+        // Vérification de la session
+        if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();
+            } else {
+                // Nouvelle date de session
+                $_SESSION['time'] = time();
             }
-        } catch (Exception $e) {
-            header('Location: /500');
+        } else {
+            header('Location: /connexion');
             exit();
         }
-    } else {
-        header('Location: /connexion');
+    } catch (Exception $e) {
+        header('Location: /500');
         exit();
     }
 

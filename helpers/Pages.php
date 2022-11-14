@@ -116,16 +116,24 @@ class Pages {
                         if ($page == 1) {
                             $html .= '<div class="containerPage flexCenterCenter"></div>';
                         } else {
-                            $html .= '<div class="containerPage flexCenterCenter">
-                                <a href="/dashboard/clients?page=<?= $whichPage - 1 ?>"><i class="fa-solid fa-chevron-left"></i></a>
-                            </div>';
+                            $html .= '<div class="containerPage flexCenterCenter">';
+                            if ($role == 0) {
+                                $html .= '<a href="/dashboard/employes?page='. $page-- .'>"><i class="fa-solid fa-chevron-left"></i></a>';
+                            } else {
+                                $html .= '<a href="/dashboard/clients?page='. $page-- .'>"><i class="fa-solid fa-chevron-left"></i></a>';
+                            }
+                            $html .= '</div>';
                         }
                         if ($page == $pages) {
                             $html .= '<div class="containerPage flexCenterCenter"></div>';
                         } else {
-                            $html .= '<div class="containerPage flexCenterCenter">
-                                <a href="/dashboard/clients?page=<?= $whichPage + 1 ?>"><i class="fa-solid fa-chevron-right"></i></a>
-                            </div>';
+                            $html .= '<div class="containerPage flexCenterCenter">';
+                            if ($role == 0) {
+                                $html .= '<a href="/dashboard/employes?page='. $page++ .'>"><i class="fa-solid fa-chevron-right"></i></a>';
+                            } else {
+                                $html .= '<a href="/dashboard/clients?page='. $page++ .'>"><i class="fa-solid fa-chevron-right"></i></a>';
+                            }
+                            $html .= '</div>';
                         }
                         $html .= '</div>';
                     }

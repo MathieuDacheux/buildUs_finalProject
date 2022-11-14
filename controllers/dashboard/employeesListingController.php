@@ -25,20 +25,22 @@
     $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
 
-    // Vérification de la session
-    if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
-        try {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {
+    try {
+        // Vérification de la session
+        if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();
             } else {
+                // Nouvelle date de session
+                $_SESSION['time'] = time();
                 // ID de l'admin connecté
                 $created = $_SESSION['id'];
                 
                 // Listing des employés
                 $display = Pages::display($created);
-
+    
                 // Actions effectuées si la méthode est en POST
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -47,7 +49,7 @@
                     $phone = trim(filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_NUMBER_INT));
                     $income = floatval(trim(filter_input(INPUT_POST, 'income', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION)));
                     $adress = trim(filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_SPECIAL_CHARS));
-
+    
                     // Validationd des inputs
                     if (validationInput($lastname, REGEX_NAME) != true) {
                         $errorsRegistration['lastname'] = validationInput($lastname, REGEX_NAME);
@@ -64,38 +66,34 @@
                     if (validationInput($income, REGEX_INCOME) != true) {
                         $errorsRegistration['income'] = validationInput($income, REGEX_INCOME);
                     }
-
+    
                     // Si tableau d'erreurs vide
                     if (empty($errorsRegistration)) {
                         // Instanciation de l'objet Employee
                         $employee = new Employee($firstname, $lastname, $mail, $phone, $income, $created, $adress);
                         // Vérification de l'unicité du numéro de téléphone
-                        try {
-                            if ($employee->isExist() == true) {
-                                $isExist = true;
+                        if ($employee->isExist() == true) {
+                            $isExist = true;
+                        } else {
+                            // Ajout de l'employé
+                            if ($employee->add() == true) {
+                                $confirmation = true;
                             } else {
-                                // Ajout de l'employé
-                                if ($employee->add() == true) {
-                                    $confirmation = true;
-                                } else {
-                                    $confirmation = false;
-                                }
+                                $confirmation = false;
                             }
-                        } catch (Exception $e) {
-                            header('Location: /500');
-                            exit();
                         }
                     }
                 }
             }
-        } catch (Exception $e) {
-            header('Location: /500');
+        } else {
+            header('Location: /connexion');
             exit();
         }
-    } else {
-        header('Location: /connexion');
+    } catch (Exception $e) {
+        header('Location: /500');
         exit();
     }
+
 
     // Appel des vues
     include (__DIR__.'/../../views/templates/header.php');

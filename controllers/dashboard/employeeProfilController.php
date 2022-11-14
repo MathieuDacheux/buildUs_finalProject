@@ -17,17 +17,19 @@
     $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
 
-    // Vérification de la session
-    if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
-        try {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {
+    try {
+        // Vérification de la session
+        if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();
             } else {
+                // Nouvelle date de session
+                $_SESSION['time'] = time();
                 // ID de l'admin connecté
                 $created = $_SESSION['id'];
-
+    
                 // Action effectuée si la méthode est en GET et si l'id est présent
                 if (isset($_GET['id'])) {
                     // Nettage de l'id
@@ -41,7 +43,7 @@
                         exit();
                     }
                 }
-
+    
                 // Action effectuée si la méthode est en POST et si modify est présent
                 if (isset($_GET['modify'])) {
                     if ($_GET['modify'] == 'true' && $_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -70,34 +72,24 @@
                         }
                         // Si tableau d'erreurs vide
                         if (empty($errorsModify)) {
-                            try {
-                                // Instanciation de l'objet Employee
-                                $employee = new Employee($lastname, $firstname, $mail, $phone, $income, $created, $adress);
-                                // Modification de l'employé
-                                $employee->update($id);
-                                header('Location: /dashboard/profil-employe?id='.$id);
-                            } catch (Exception $e) {
-                                header('Location: /500');
-                                exit();
-                            }
+                            // Instanciation de l'objet Employee
+                            $employee = new Employee($lastname, $firstname, $mail, $phone, $income, $created, $adress);
+                            // Modification de l'employé
+                            $employee->update($id);
+                            header('Location: /dashboard/profil-employe?id='.$id);
                         } else {
                             header('Location: /dashboard/employes');
                             exit();
                         }
                     }
                 }
-
+    
                 // Action effectuée si la méthode est en GET et si delete est présent
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
                         if (Employee::checkId($id) == true) {
-                            try {
-                                Employee::delete($id);
-                                header('Location: /dashboard/employes');
-                            } catch (Exception $e) {
-                                header('Location: /500');
-                                exit();
-                            }
+                            Employee::delete($id);
+                            header('Location: /dashboard/employes');
                         } else {
                             header('Location: /dashboard/employes');
                             exit();
@@ -105,12 +97,12 @@
                     }
                 }
             }
-        } catch (Exception $e) {
-            header('Location: /500');
+        } else {
+            header('Location: /connexion');
             exit();
         }
-    } else {
-        header('Location: /connexion');
+    } catch (Exception $e) {
+        header('Location: /500');
         exit();
     }
 

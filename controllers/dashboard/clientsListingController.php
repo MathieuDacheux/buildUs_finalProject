@@ -28,11 +28,13 @@
     // Vérification de la session
     if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
         try {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id']) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();
             } else {
+                // Nouvelle date de session
+                $_SESSION['time'] = time();
                 // ID de l'admin connecté
                 $created = $_SESSION['id'];
                 // Listing des employés

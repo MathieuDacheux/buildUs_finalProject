@@ -8,7 +8,8 @@
     require_once(__DIR__.'/../helpers/functions.php');
 
     // Appel du modèle
-    require_once(__DIR__.'/../../buildus/models/Admin.php');
+    require_once(__DIR__.'/../helpers/Validation.php');
+    require_once(__DIR__.'/../models/Admin.php');
 
     // Variables
     $style = whichCss(); 
@@ -31,19 +32,19 @@
         $newsletter = (filter_input(INPUT_POST, 'newsletter', FILTER_SANITIZE_NUMBER_INT));
 
         // Validation des inputs
-        if (validationInput($mail, REGEX_MAIL) != 'true') {
+        if (validationInput($mail, REGEX_MAIL) != true) {
             $errorsRegistration['mail'] = validationInput($mail, REGEX_MAIL);
         }
-        if (validationInput($lastname, REGEX_NAME) != 'true') {
+        if (validationInput($lastname, REGEX_NAME) != true) {
             $errorsRegistration['lastname'] = validationInput($lastname, REGEX_NAME);
         }
-        if (validationInput($firstname, REGEX_NAME) != 'true') {
+        if (validationInput($firstname, REGEX_NAME) != true) {
         $errorsRegistration['firstname'] = validationInput($firstname, REGEX_NAME);
         }
-        if (validationInput($password, REGEX_PASSWORD) != 'true') {
+        if (validationInput($password, REGEX_PASSWORD) != true) {
             $errorsRegistration['password'] = validationInput($password, REGEX_PASSWORD);
         }        
-        if (validationInput($passwordConfirm, REGEX_PASSWORD) != 'true') {
+        if (validationInput($passwordConfirm, REGEX_PASSWORD) != true) {
             $errorsRegistration['passwordConfirm'] = validationInput($passwordConfirm, REGEX_PASSWORD);
         }
         if ($password != $passwordConfirm) {
@@ -72,7 +73,7 @@
                     // Ajout de l'utilisateur
                     if ($admin->add() == true) {
                         $success = true;
-                        if ($admin->sendEmail() == true) {
+                        if (Mail::validationAccount($admin->getEmail(), $admin->getFirstname(), $admin->getLastname()) == true) {
                             $success = true;
                         } else {
                             $succes = false;

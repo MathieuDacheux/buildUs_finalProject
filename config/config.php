@@ -1,4 +1,6 @@
 <?php
+
+
     // Début de la session
     session_start();
 
@@ -37,6 +39,9 @@
     define('DB_NAME', 'buildUs');
     define('USERNAME', 'godtier');
     define('PASSWORD', 'Dr3tqvmkl2prcg80*');
+
+    // Constante de temps de session
+    define('SESSION_TIME', 1200);
 
     // Tableaux d'erreurs
     $errorsModify = [];
