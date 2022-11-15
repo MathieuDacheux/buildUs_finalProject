@@ -107,10 +107,33 @@
     color: var(--black0);
 }
 
+.passwordIndication {
+    width: 90%;
+}
+
+.passwordIndication p {
+    font-size: .8rem;
+}
+
+.passwordIndication ul {
+    padding: 0;
+}
+
+.passwordIndication li {
+    padding-left: .5rem;
+    font-size: .8rem;
+    color: var(--primary80);
+
+}
+
 @media screen and (min-width: 577px) {
     .formContainer {
         background: url('../assets/img/background/desktop/backgroundConnexionDesktop.svg') no-repeat;
         background-position: center;
         background-size: cover;
     }
+}
+
+.hidden {
+    display: none;
 }

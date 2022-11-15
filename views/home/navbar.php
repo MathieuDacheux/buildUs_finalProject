@@ -12,26 +12,19 @@
             </div>
             
             <!-- Navbar for desktop view -->
-
-            <?php if (isset($_SESSION['id'])) : ?>
                 <div class="desktopNav flexCenterBetween">
                     <a href="#pricing">Tarifs</a>
                     <a href="#features">Fonctionnalités</a>
-                    <a href="/inscription" class="createAccount">Déconnexion</a>
+                    <?php if (isset($_SESSION['id'])) : ?>
+                        <a href="/dashboard/deconnexion?deconnexion=true" class="createAccount">Déconnexion</a>
+                    <?php else : ?>
+                        <a href="/inscription" class="createAccount">Inscription</a>
+                    <?php endif; ?>    
                     <a href="/connexion" class="connectionAccount">Dashboard</a>
                 </div>
-            <?php else : ?>
-                <div class="desktopNav flexCenterBetween">
-                    <a href="#pricing">Tarifs</a>
-                    <a href="#features">Fonctionnalités</a>
-                    <a href="/inscription" class="createAccount">Inscription</a>
-                    <a href="/connexion" class="connectionAccount">Connexion</a>
-                </div>
-            <?php endif; ?>
 
             <!-- Burger Menu for mobile view -->
 
-            <?php if (isset($_SESSION['id'])) : ?>
                 <div class="mobileNav">
                     <a class="openModal" href="#"><span class="containerBurger"></span></a>
                     <ul class="mobileNavList flexCenterCenterColumn">
@@ -39,7 +32,11 @@
                         <li><a href="#features">Fonctionnalités</a></li>
                         <div class="flexCenterAround containerConnection">
                             <li class="flexCenterCenter">
-                                <a href="/inscription" class="createAccount">Déconnexion</a>
+                                <?php if (isset($_SESSION['id'])) : ?>
+                                    <a href="/dashboard/deconnexion?deconnexion=true" class="createAccount">Inscription</a>
+                                <?php else : ?>
+                                    <a href="/inscription" class="createAccount">Déconnexion</a>
+                                <?php endif; ?>
                             </li>
                             <li class="flexCenterCenter">
                                 <a href="/connexion" class="connectionAccount">Dashboard</a>
@@ -47,23 +44,6 @@
                         </div>
                     </ul>
                 </div>
-            <?php else : ?>
-                <div class="mobileNav">
-                    <a class="openModal" href="#"><span class="containerBurger"></span></a>
-                    <ul class="mobileNavList flexCenterCenterColumn">
-                        <li><a href="#pricing">Tarifs</a></li>
-                        <li><a href="#features">Fonctionnalités</a></li>
-                        <div class="flexCenterAround containerConnection">
-                            <li class="flexCenterCenter">
-                                <a href="/inscription" class="createAccount">Inscription</a>
-                            </li>
-                            <li class="flexCenterCenter">
-                                <a href="/connexion" class="connectionAccount">Connexion</a>
-                            </li>
-                        </div>
-                    </ul>
-                </div>
-            <?php endif; ?>
         </nav>
 
         <!-- Products image for each size of screen -->

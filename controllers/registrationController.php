@@ -67,7 +67,7 @@
             $admin = new Admin($firstname, $lastname, $mail, $password, $newsletter);
             // Vérification de l'unicité de l'email
             try {
-                if ($admin->isExist() == true) {
+                if (Admin::isExist($mail) == true) {
                     $errorsRegistration['mail'] = 'Cet email est déjà utilisé';
                 } else {
                     // Ajout de l'utilisateur

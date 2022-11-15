@@ -9,6 +9,8 @@
 
     // Appel du modèle
     require_once(__DIR__.'/../../models/Admin.php');
+    require_once(__DIR__.'/../../models/Employee.php');
+    require_once(__DIR__.'/../../models/Client.php');
 
     // Variables
     $style = '<link rel="stylesheet" href="../public/css/main.css">
@@ -31,6 +33,12 @@
             } else {
                 // Nouvelle date de session
                 $_SESSION['time'] = time();
+                // Récupération des données de l'admin
+                $created = $_SESSION['id'];
+                // Affichage des derniers employés
+                $lastEmployees = Employee::get($created);
+                // Affichage des derniers clients
+                $lastClients = Client::get($created);
             }
         } else {
             header('Location: /connexion');

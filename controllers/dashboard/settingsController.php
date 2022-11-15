@@ -57,7 +57,7 @@
                     // Si tableau d'erreurs vide
                     if (empty($errorsModify)){
                         // Upate des informations de l'admin
-                        Admin::update($firstname, $lastname, $mail, $created);
+                        Admin::updateProfil($firstname, $lastname, $mail, $created);
                         header('Location: /dashboard/parametres');
                         exit();
                     }

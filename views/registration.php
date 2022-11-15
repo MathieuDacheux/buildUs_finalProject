@@ -50,7 +50,7 @@
                             <li>- 8 caractères minimum</li>
                         </ul>
                     </div>
-                    <input type="password" placeholder="Mot de passe (confirmation)*" name="passwordConfirm" required>
+                    <input type="password" placeholder="Mot de passe (confirmation)*" name="passwordConfirm" pattern="<?= REGEX_PASSWORD ?>" required>
                     <div class="formCheckboxContainer">
                         <div class="formCheckbox">
                             <input type="checkbox" name="CGU[]" id="termServices" name="termServices" value="1" <?= (!empty($cgu) && in_array('1', $cgu)) ? 'checked' : '' ?> required>

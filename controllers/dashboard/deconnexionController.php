@@ -14,7 +14,7 @@
         $deconnexion = $_GET['deconnexion'];
         if ($deconnexion == 'true') {
             session_destroy();
-            header('Location: /connexion');
+            header('Location: /accueil');
             exit();
         }
     }

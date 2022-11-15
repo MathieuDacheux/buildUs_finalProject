@@ -57,10 +57,10 @@ class Admin extends User {
      * Vérification si l'email existe déjà
      * @return bool
      */
-    public function isExist () :bool {
+    public static function isExist ($email) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT * FROM users WHERE email = :email');
-        $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
+        $query = $databaseConnection->prepare('SELECT `email` FROM users WHERE email = :email and `Id_role` = 1;');
+        $query->bindValue(':email', $email, PDO::PARAM_STR);
         $query->execute();
         if ($query->rowCount() == 1) {
             return true;
@@ -95,15 +95,28 @@ class Admin extends User {
     /*********************************** READ ************************************/
     /************************************** **************************************/
     
-    public static function getId (string $email) :int {
+    /**
+     * @param string $email
+     * 
+     * @return int
+     */
+    public static function getId (string $email = '', int $id = 0) :int {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT `Id_users` FROM `users` WHERE `email` = :email and `Id_role` = 1');
-        $query->bindValue(':email', $email, PDO::PARAM_INT);
+        if ($email != '' && $id == 0) {
+            $query = $databaseConnection->prepare('SELECT `Id_users` FROM `users` WHERE `email` = :email and `Id_role` = 1');
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
+        } else if ($email == '' && $id != 0) {
+            $query = $databaseConnection->prepare('SELECT `Id_users` FROM `users` WHERE `Id_users` = :id and `Id_role` = 1');
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+        }
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result->Id_users;
     }
 
+    /**
+     * @return array
+     */
     public static function getOne () :array {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('SELECT `Id_users`, `firstname`, `lastname`, `email` FROM `users` WHERE `Id_users` = :id AND `Id_role` = 1');
@@ -113,11 +126,37 @@ class Admin extends User {
         return $result;
     }
 
+    /**
+     * @param mixed $id
+     * 
+     * @return bool
+     */
+    public static function isActivated ($id) :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT `activated_at` FROM `users` WHERE `Id_users` = :id AND `Id_role` = 1');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        if ($result->activated_at != NULL) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /************************************** **************************************/
     /********************************** UPDATE ***********************************/
     /************************************** **************************************/
 
-    public static function update (string $firstname, string $lastname, string $email, int $id) :bool {
+    /**
+     * @param string $firstname
+     * @param string $lastname
+     * @param string $email
+     * @param int $id
+     * 
+     * @return bool
+     */
+    public static function updateProfil (string $firstname, string $lastname, string $email, int $id) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('UPDATE `users` SET `firstname` = :firstname, `lastname` = :lastname, `email` = :email WHERE `Id_users` = :id AND `Id_role` = 1 ;');
         $query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
@@ -132,10 +171,34 @@ class Admin extends User {
         }
     }
 
+    /**
+     * @param mixed $password
+     * @param mixed $id
+     * 
+     * @return bool
+     */
+    public static function updatePassword ($password, $id) :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('UPDATE `users` SET `password` = :password WHERE `Id_users` = :id AND `Id_role` = 1 ;');
+        $query->bindValue(':password', $password, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        if ($query->rowCount() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /************************************** **************************************/
     /********************************** DELETE ***********************************/
     /************************************** **************************************/
 
+    /**
+     * @param int $id
+     * 
+     * @return bool
+     */
     public static function delete (int $id) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
@@ -147,5 +210,4 @@ class Admin extends User {
             return false;
         }
     }
-
 }

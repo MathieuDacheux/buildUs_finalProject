@@ -47,3 +47,4 @@
     $errorsModify = [];
     $errorsRegistration = [];
     $errorConnexion = [];
+    $errorForgot = [];

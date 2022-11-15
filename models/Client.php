@@ -120,7 +120,7 @@ class Client extends User {
     public static function get (int $idCreator ,int $id = 0) :array {
         $databaseConnection = Database::getConnection();
         if ($id == 0) {
-            $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 3 and `created_by` = :created';
+            $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 3 and `created_by` = :created ORDER BY `Id_users` DESC LIMIT 5 ;';
             $query = $databaseConnection->prepare($sql);
         } else {
             $sql = 'SELECT `firstname`, `lastname`, `Id_users`, `email`, `phone`, `siret`, `adress` FROM `users` WHERE `Id_role` = 3 and `created_by` = :created AND `Id_users` = :id';
@@ -167,7 +167,6 @@ class Client extends User {
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->bindValue(':created', $this->getCreated());
         $query->execute();
-        var_dump($query->rowCount());
         return $query->rowCount() > 0 ? true : false;
     }
 

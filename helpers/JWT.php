@@ -6,12 +6,16 @@ class JWT {
      * Création d'un token JWT
      * @return string
      */
-    public static function createToken () :string {
+    public static function createToken (int $id = 0) :string {
         $databaseConnection = Database::getConnection();
         // Création de l'entête du token
         $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
         // Création du payload du token
-        $payload = json_encode(['Id_user' => $databaseConnection->lastInsertId()]);
+        if ($id == 0 ) {
+            $payload = json_encode(['Id_user' => $databaseConnection->lastInsertId()]);
+        } else {
+            $payload = json_encode(['Id_user' => $id]);
+        }
         // Encodage de l'entête du token en base 64
         $base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
         // Encodage du payload du token en base 64

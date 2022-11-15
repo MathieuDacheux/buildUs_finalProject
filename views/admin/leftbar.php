@@ -78,7 +78,7 @@
                     </li>
                     <li>
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <a href="dashboard/deconnexion?deconnexion=true"><span>Déconnexion</span></a>
+                        <a href="/dashboard/deconnexion?deconnexion=true"><span>Déconnexion</span></a>
                     </li>
                 </div>
             </ul>

@@ -119,7 +119,7 @@ class Employee extends User {
     public static function get (int $idCreator ,int $id = 0) :array {
         $databaseConnection = Database::getConnection();
         if ($id == 0) {
-            $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created';
+            $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created ORDER BY `Id_users` DESC LIMIT 5;';
             $query = $databaseConnection->prepare($sql);
         } else {
             $sql = 'SELECT `firstname`, `lastname`, `Id_users`, `email`, `phone`, `salaries`, `adress` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created AND `Id_users` = :id';
