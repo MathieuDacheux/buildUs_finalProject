@@ -15,7 +15,6 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-
 }
 
 /* Settings container Subject */
@@ -102,14 +101,15 @@ main {
     main {
         height: 100%;
         width: calc(100vw - 200px);
+        padding: 0rem .5rem;
         overflow: hidden;
         display: flex;
         align-items: center;
     }
     
     .containerRecap {
-        width: 95%;
-        height: 45%;
+        width: 100%;
+        height: 49%;
         justify-content: space-between;
     }
 

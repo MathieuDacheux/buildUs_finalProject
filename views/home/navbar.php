@@ -17,10 +17,11 @@
                     <a href="#features">Fonctionnalités</a>
                     <?php if (isset($_SESSION['id'])) : ?>
                         <a href="/dashboard/deconnexion?deconnexion=true" class="createAccount">Déconnexion</a>
+                        <a href="/connexion" class="connectionAccount">Dashboard</a>
                     <?php else : ?>
                         <a href="/inscription" class="createAccount">Inscription</a>
+                        <a href="/connexion" class="connectionAccount">Connexion</a>
                     <?php endif; ?>    
-                    <a href="/connexion" class="connectionAccount">Dashboard</a>
                 </div>
 
             <!-- Burger Menu for mobile view -->
@@ -31,16 +32,21 @@
                         <li><a href="#pricing">Tarifs</a></li>
                         <li><a href="#features">Fonctionnalités</a></li>
                         <div class="flexCenterAround containerConnection">
-                            <li class="flexCenterCenter">
-                                <?php if (isset($_SESSION['id'])) : ?>
-                                    <a href="/dashboard/deconnexion?deconnexion=true" class="createAccount">Inscription</a>
-                                <?php else : ?>
-                                    <a href="/inscription" class="createAccount">Déconnexion</a>
-                                <?php endif; ?>
-                            </li>
-                            <li class="flexCenterCenter">
-                                <a href="/connexion" class="connectionAccount">Dashboard</a>
-                            </li>
+                            <?php if (isset($_SESSION['id'])) : ?>
+                                <li class="flexCenterCenter">
+                                    <a href="/dashboard/deconnexion?deconnexion=true" class="createAccount">Déconnexion</a>
+                                </li>
+                                <li class="flexCenterCenter">
+                                    <a href="/connexion" class="connectionAccount">Dashboard</a>
+                                </li>
+                            <?php else : ?>
+                                <li class="flexCenterCenter">
+                                    <a href="/inscription" class="createAccount">Inscription</a>
+                                </li>
+                                <li class="flexCenterCenter">
+                                    <a href="/connexion" class="connectionAccount">Connexion</a>
+                                </li>
+                            <?php endif; ?>
                         </div>
                     </ul>
                 </div>

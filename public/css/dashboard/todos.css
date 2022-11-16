@@ -67,11 +67,12 @@ form legend {
     font-size: 1.25rem;
     border: 0px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Container list tasks */
 
-.containerTasksPage{
+.containerSubject{
     width: 95%;
     height: 600px;
     overflow-y: scroll;
@@ -92,7 +93,7 @@ form legend {
     justify-content: center;
 }
 
-.navTask a {
+.navTask p {
     background-color: var(--black0);
     color: var(--primary60);
     padding: .5rem 1rem;
@@ -144,6 +145,47 @@ form legend {
     border-radius: 50%;
 }
 
+.showResult {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    transition: all .3s ease;
+    z-index: 5;
+}
+
+.showResult p {
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    color: var(--black0);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.goodResult {
+    background-color: var(--succes80);
+}
+
+.badResult {
+    background-color: var(--error80);
+}
+
+.containerPlus a i {
+    font-size: 1rem;
+    color: var(--black100);
+    cursor: pointer;
+}
+
+.containerPlus {
+    width: 75px;
+}
+
 .hidden {
     display: none;
 }
@@ -156,10 +198,19 @@ form legend {
         align-items: center;
         justify-content: center;
     }
-    .containerTasksPage {
+    .containerSubject {
         height: calc(100vh - 100px - 1rem - 5%);
     }
+    .containerPlus a i {
+        font-size: 1.25rem;
+        color: var(--black100);
+    }
+    .containerPlus {
+        width: 100px;
+    }
 }
+
+
 
 @media screen and (min-width: 1200px) {
     main {
@@ -169,7 +220,14 @@ form legend {
         align-items: center;
         justify-content: center;
     }
-    .containerTasksPage {
+    .containerSubject {
         height: calc(100vh - 100px - 1rem - 5%);
+    }
+    .containerPlus a i {
+        font-size: 1.25rem;
+        color: var(--black100);
+    }
+    .containerPlus {
+        width: 100px;
     }
 }

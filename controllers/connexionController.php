@@ -8,6 +8,7 @@
     require_once(__DIR__.'/../helpers/functions.php');
 
     // Appel du modèle
+    require_once(__DIR__.'/../helpers/JWT.php');
     require_once(__DIR__.'/../helpers/Validation.php');
     require_once(__DIR__.'/../models/Admin.php');
 
