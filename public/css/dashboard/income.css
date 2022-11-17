@@ -5,6 +5,7 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    position: relative;
 }
 
 /* Settings container Recap */
@@ -15,6 +16,7 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
 /* Settings container Subject */
@@ -25,6 +27,7 @@ main {
     border-radius: 10px;
     margin-bottom: 1rem;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .income {
@@ -42,13 +45,41 @@ main {
 .containerTitle {
     text-align: center;
     height: 50px;
+    position: relative;
+}
+
+.titleIncome {
+    color: var(--black0);
+}
+
+.containerTitle .containerAdd {
+    position: absolute;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--black0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.containerTitle .containerAdd {
+    background-color: var(--black0);
+}
+
+.containerTitle .containerAdd i{
+    font-size: 1.25rem;
+    color: var(--primary80);
 }
 
 .containerContent {
     width: 100%;
-    height: calc(100% - 50px);
-    padding: .5rem;
+    height: calc(100% - 100px);
     overflow-y: scroll;
+}
+
+.containerIncome {
+    width: 95%;
+    height: 95%;
 }
 
 .listingRecap {
@@ -134,4 +165,131 @@ main {
         width: calc(100vw - 425px);
         overflow: hidden;
     }
+    .containerRecap {
+        width: 100%;
+        height: 49%;
+        justify-content: space-between;
+    }
+
+    .containerSubject {
+        height: 100%;
+    }
+
+    .income {
+        width: 100%;
+        height: 100%;
+    }
+
+    .clients , .employees {
+        width: 49.5%;
+        height: 100%;
+    }
+}
+
+.formContentTitle {
+    height: 75px;
+}
+
+.formContentTitle h3 {
+    text-align: center;
+    color: var(--primary80);
+}
+
+/* Form */
+
+.formContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 300px;
+    height: 150px;
+    background-color: var(--black0);
+    border-radius: 5px;
+}
+
+.formContentTitle {
+    width: 100%;
+    height: 75px;
+    position: relative;
+}
+
+.formContentTitle .containerAdd {
+    position: absolute;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--black0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formContentTitle .containerAdd {
+    background-color: var(--primary80);
+}
+
+.formContentTitle .containerAdd i{
+    font-size: 1.25rem;
+    color: var(--black0);
+}
+
+.formIncome {
+    width: 100%;
+    height: calc(100% - 75px);
+}
+
+.containerForm {
+    width: 100%;
+    height: 100%;
+}
+
+.formTask {
+    width: 60%;
+    height: 35px;
+    margin-right: .5rem;
+}
+
+.formTask input {
+    width: 100%;
+    height: 100%;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    border: 2px solid var(--black40);
+    color: var(--black100);
+}
+
+.formTask input::placeholder {
+    color: var(--black80);
+}
+
+.formTask input:focus {
+    outline: none;
+    border: 2px solid var(--primary60);
+}
+
+.registerButton {
+    height: 35px;
+    width: 35px;
+}
+
+.registerButton button {
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary80);
+    color: var(--black0);
+    font-size: 1.25rem;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }

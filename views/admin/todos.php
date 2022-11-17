@@ -5,7 +5,7 @@
             <legend class="flexCenterCenter">Rappels</legend>
             <div class="containerForm flexCenterCenter">
                 <div class="formTask">
-                    <input type="text" name="task" maxlength="100">
+                    <input type="text" placeholder="Ajoutez un rappel" name="task" maxlength="100">
                 </div>
                 <div class="registerButton flexCenterCenter">
                     <button type="submit"><i class="fa-solid fa-plus"></i></button>

@@ -1,58 +1,41 @@
 <main>
+
+    <!-- Modal ajout client -->
+    <div class="formContent flexCenterCenter hidden">
+    </div>
+
     <div class="containerRecap">
-        <div class="containerSubject income">
-            <div class="containerTitle flexCenterCenter">
-                    <h3>Graphiques</h3>
-            </div>
+        <div class="containerSubject income flexCenterCenter">
             <div class="containerIncome">
-                <canvas></canvas>
+                <canvas id="revenus"></canvas>
             </div>
         </div>
     </div>
     <div class="containerRecap flexCenterCenterBetween">
         <div class="containerSubject clients">
             <div class="containerTitle flexCenterCenter">
-                <h3>Clients</h3>
+                <div class="containerAdd flexCenterCenter">
+                    <i class="fa-solid fa-plus revenusIncome"></i>
+                </div>
+                <h3 class="titleIncome">Chiffre d'affaires</h3>
             </div>
             <div class="containerContent flexCenterColumn">
-                <div class="listingRecap flexCenterBetween">
-                    <div class="containerInformations">
-                        <div class="containerPicture">
-                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
-                        </div>
-                        <div class="containerName">
-                            <p>Mathieu Dacheux</p>
-                        </div>
-                    </div>
-                    <div class="containerMore flexCenterCenter">
-                        <div class="containerPlus flexCenterCenter">
-                            <a href=""><i class="fa-regular fa-eye"></i></a>
-                        </div>
-                    </div>      
-                </div>
+
             </div>
         </div>
         <div class="containerSubject employees">
             <div class="containerTitle flexCenterCenter">
-                <h3>Employées</h3>
-            </div>
-            <div class="containerContent flexCenterColumn">
-                <div class="listingRecap flexCenterBetween">
-                    <div class="containerInformations">
-                        <div class="containerPicture">
-                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" alt="">
-                        </div>
-                        <div class="containerName">
-                            <p>Mathieu Dacheux</p>
-                        </div>
-                    </div>
-                    <div class="containerMore flexCenterCenter">
-                        <div class="containerPlus flexCenterCenter">
-                            <a href=""><i class="fa-regular fa-eye"></i></a>
-                        </div>
-                    </div>      
+                <div class="containerAdd flexCenterCenter">
+                    <i class="fa-solid fa-plus targetIncome"></i>
                 </div>
+                <h3 class="titleIncome">Objectif</h3>
+            </div>
+            <div class="containerContent flexCenterCenter">
+                <canvas id="target"></canvas>
             </div>
         </div>
     </div>
 </main>
+
+<!-- CDN CHART.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>

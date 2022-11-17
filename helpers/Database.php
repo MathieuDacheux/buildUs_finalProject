@@ -20,7 +20,7 @@ class Database {
      * Instanciation de la Database si elle n'existe pas
      * @return Database
      */
-    public static function getInstance() :Database {
+    private static function getInstance() :Database {
         if (self::$instance == null) {
             self::$instance = new Database();
         }

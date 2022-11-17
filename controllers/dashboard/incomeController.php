@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/../../public/css/dashboard/income.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
 
-    $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+    $javascript = '<script defer src="../public/js/openNavbar.js"></script>
+    <script defer src="../public/js/chartGraph.js"></script>';
     
     $title = TITLE_HEAD[13];
     $description = DESCRIPTION_HEAD[7];
