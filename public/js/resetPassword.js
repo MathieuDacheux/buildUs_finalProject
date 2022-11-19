@@ -12,7 +12,6 @@ const passwordIndication = document.querySelector('.passwordIndication');
 const buttonSubmit = document.querySelector('.registerButton');
 
 // Function verify form
-
 const verifyPassword = () => {
     if (regexPassword.test(inputPassword.value)) {
         inputPassword.style.borderColor = '#75DB79';

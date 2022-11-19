@@ -37,7 +37,6 @@
                         <div class="containerMore flexCenterCenter">
                             <div class="containerPlus flexCenterAround">
                                 <a href="/dashboard/rappels?checked=1&amp;id=<?= $task->Id_todos ?>"><i class="fa-solid fa-check"></i></a>
-                                <a href="/dashboard/rappels?view=true&amp;id=<?= $task->Id_todos ?>"><i class="fa-regular fa-eye"></i></a>
                                 <a href="/dashboard/rappels?delete=1&amp;id=<?= $task->Id_todos ?>"><i class="fa-solid fa-trash"></i></a>
                             </div>
                         </div>      

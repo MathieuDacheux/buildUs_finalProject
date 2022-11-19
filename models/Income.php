@@ -38,6 +38,26 @@ class Income {
     /************************************** **************************************/
 
     /**
+     * @param int $id
+     * @param int $idAuthor
+     * 
+     * @return bool
+     */
+    public static function isExist (int $id, int $idAuthor) :bool {
+        $databaseConnection = Database::getConnection();
+        $req = $databaseConnection->prepare('SELECT `Id_incomes` FROM incomes WHERE `Id_incomes` = :id AND `Id_users` = :user_id ;');
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':user_id', $idAuthor, PDO::PARAM_INT);
+        $req->execute();
+        $result = $req->fetch(PDO::FETCH_OBJ);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Création d'un revenu
      * @param float $amount
      * @param int $user_id
@@ -70,7 +90,12 @@ class Income {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public static function getLastIncome (int $id) :object {
+    /**
+     * @param int $id
+     * 
+     * @return object|bool
+     */
+    public static function getLastIncome (int $id) :object|bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('SELECT * FROM `incomes` WHERE `Id_users` = :id ORDER BY `income_date` DESC LIMIT 1');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
@@ -106,10 +131,11 @@ class Income {
      * @param int $id
      * @return bool
      */
-    public function delete (int $id) :bool {
+    public static function delete (int $id, int $idAuthor) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('DELETE FROM incomes WHERE id = :id');
+        $query = $databaseConnection->prepare('DELETE FROM `incomes` WHERE `Id_incomes` = :id AND Id_users = :user_id ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->bindValue(':user_id', $idAuthor, PDO::PARAM_INT);
         $query->execute();
         return ($query->rowCount() == 1) ? true : false;
     }

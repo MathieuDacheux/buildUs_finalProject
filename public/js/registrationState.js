@@ -7,6 +7,10 @@ const uriEmployee = '/dashboard/employes';
 const uriClient = '/dashboard/clients';
 const uriTodo = '/dashboard/rappels';
 
+/***************************** *****************************/
+/************************ Functions ************************/
+/***************************** *****************************/
+
 const showResultUri = (URI) => {
     if (document.querySelector('.showResult')) {
         const showResult = document.querySelector('.showResult');
@@ -23,7 +27,7 @@ const showResultUri = (URI) => {
             resultFormText.textContent == 'Tâche terminée') {
                 setTimeout(() => {
                     window.location.href = URI;
-                }, 2000);
+                }, 1000);
             };
         };
     };

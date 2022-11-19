@@ -83,6 +83,24 @@
                             exit();
                         }
                     }
+
+                }
+                // Si la méthode est en GET et que delete et ID sont définis
+                if ($_GET['delete'] = '1' && isset($_GET['id'])) {
+                    var_dump($_GET['id']);
+                    // Filtrage des données
+                    $id = trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+                    var_dump($id);
+
+                    // Vérification si l'ID existe
+                    if (Income::isExist($id, $created) == true) {
+                        // Suppression du revenu
+                        Income::delete($id, $created);
+                        header('Location: /dashboard/business');
+                        exit();
+                    } else {
+                        echo 'Erreur';
+                    }
                 }
             }
         } else {
