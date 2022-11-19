@@ -112,20 +112,17 @@
     if (isset($_GET['modify']) == 'true') {
         $style = '<link rel="stylesheet" href="../public/css/main.css">
         <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-        <link rel="stylesheet" href="/../../public/css/dashboard/modify.css">
-        <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
+        <link rel="stylesheet" href="/../../public/css/dashboard/modify.css">';
         include (__DIR__.'/../../views/templates/header.php');
         include (__DIR__.'/../../views/admin/leftbar.php');
         include (__DIR__.'/../../views/admin/clientModify.php');
     } else {
         $style = '<link rel="stylesheet" href="../public/css/main.css">
         <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
-        <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">
-        <link rel="stylesheet" href="/../../public/css/dashboard/rightbar.css">';
+        <link rel="stylesheet" href="/../../public/css/dashboard/profil.css">';
         include (__DIR__.'/../../views/templates/header.php');
         include (__DIR__.'/../../views/admin/leftbar.php');
         include (__DIR__.'/../../views/admin/clientProfil.php');
     }
-
-    include (__DIR__.'/../../views/admin/rightbar.php');
+    
     include (__DIR__.'/../../views/templates/footer.php');

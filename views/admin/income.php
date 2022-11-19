@@ -20,15 +20,34 @@
                 <h3 class="titleIncome">Chiffre d'affaires</h3>
             </div>
             <div class="containerContent flexCenterColumn">
-
+                <?php if(isset($incomeDisplay)) : ?>
+                    <?php foreach($incomeDisplay as $income) : ?>
+                        <div class="listingRecap flexCenterBetween">
+                            <div class="containerInformations">
+                                <div class="containerPicture">
+                                    <p><i class="fa-solid fa-euro-sign"></i></p>
+                                </div>
+                                <div class="containerName">
+                                    <!-- Change the format of the income_date -->
+                                    <p><?= $income->daily_income ?> € | <?= date('d/m/Y', strtotime($income->income_date)) ?></p>
+                                </div>
+                            </div>
+                            <div class="containerMore flexCenterCenter">
+                                <div class="containerPlus flexCenterAround">
+                                    <a href="/dashboard/business?delete=1&amp;id=<?= $income->Id_incomes ?>"><i class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </div>      
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
         <div class="containerSubject employees">
             <div class="containerTitle flexCenterCenter">
                 <div class="containerAdd flexCenterCenter">
-                    <i class="fa-solid fa-plus targetIncome"></i>
+                    <i class="fa-solid fa-pen targetIncome"></i>
                 </div>
-                <h3 class="titleIncome">Objectif</h3>
+                <h3 class="titleIncome">Objectif hebdomadaire</h3>
             </div>
             <div class="containerContent flexCenterCenter">
                 <canvas id="target"></canvas>

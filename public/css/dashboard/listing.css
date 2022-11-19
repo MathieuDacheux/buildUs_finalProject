@@ -136,17 +136,6 @@ main {
     }
 }
 
-@media screen and (min-width: 1200px) {
-    main {
-        width: calc(100vw - 425px);
-        height: 100vh;
-    }
-    .containerSubject {
-        width: 95%;
-        height: 95%;
-    }
-}
-
 /* Modal confirmation d'inscription */
 
 .showResult {
@@ -277,13 +266,6 @@ form {
     main {
         height: 100vh;
         width: calc(100vw - 200px);
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    main {
-        height: 100vh;
-        width: calc(100vw - 425px);
     }
 }
 

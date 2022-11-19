@@ -99,10 +99,3 @@ form {
     }
 }
 
-@media screen and (min-width: 1200px) {
-    main {
-        height: 100vh;
-        width: calc(100vw - 425px);
-    }
-}
-
