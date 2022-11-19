@@ -44,7 +44,7 @@ main {
 
 .containerTitle {
     text-align: center;
-    height: 50px;
+    height: 75px;
     position: relative;
 }
 
@@ -68,7 +68,6 @@ main {
 
 .containerTitle .containerAdd i{
     font-size: 1.25rem;
-    color: var(--primary80);
 }
 
 .containerContent {
@@ -164,7 +163,7 @@ main {
 }
 
 .formContentTitle {
-    height: 75px;
+    height: 50px;
 }
 
 .formContentTitle h3 {
@@ -254,6 +253,14 @@ main {
 .registerButton {
     height: 35px;
     width: 35px;
+}
+
+.revenusIncome {
+    color: var(--primary60);
+}
+
+.targetIncome {
+    color: var(--primary80);
 }
 
 .registerButton button {

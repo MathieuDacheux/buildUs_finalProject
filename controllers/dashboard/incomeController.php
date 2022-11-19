@@ -85,6 +85,7 @@
                     }
 
                 }
+                
                 // Si la méthode est en GET et que delete et ID sont définis
                 if ($_GET['delete'] = '1' && isset($_GET['id'])) {
                     var_dump($_GET['id']);
