@@ -44,13 +44,13 @@ class Invoice {
      * 
      * @return bool
      */
-    public static function isExist (int $id, int $idCreator) :bool {
+    public static function isExist (int $id, int $idCreator) :object|bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('SELECT * FROM `invoices` WHERE `Id_bills` = :id AND `Id_users` = :idCreator');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->bindValue(':idCreator', $idCreator, PDO::PARAM_INT);
         $query->execute();
-        return $query->rowCount() == 1 ? true : false;
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
     /**
@@ -59,7 +59,7 @@ class Invoice {
      */
     public function add () :bool{
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('INSERT INTO invoices (`url`, `Id_users`) VALUES (:url, :id_user);');
+        $query = $databaseConnection->prepare('INSERT INTO `invoices` (`url`, `Id_users`) VALUES (:url, :id_user);');
         $query->bindValue(':url', $this->url, PDO::PARAM_STR);
         $query->bindValue(':id_user', $this->id, PDO::PARAM_INT);
         $query->execute();
@@ -83,6 +83,16 @@ class Invoice {
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    public static function getOne (int $id) {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT `url` FROM `invoices` WHERE `Id_bills` = :id ;');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        var_dump($result->url);
+        return $result->url;
     }
 
     /************************************** **************************************/

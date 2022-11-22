@@ -27,7 +27,7 @@
     // Vérification de la session
     if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
         try {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - $_SESSION['time']) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();

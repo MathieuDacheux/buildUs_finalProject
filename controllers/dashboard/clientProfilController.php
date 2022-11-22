@@ -14,7 +14,7 @@
 
     // Variables
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>
-    <script defer src="../public/js/invoiceRender.js"></script>';
+    <script defer src="../public/js/invoiceState.js"></script>';
     
     $title = TITLE_HEAD[9];
     $description = DESCRIPTION_HEAD[7];
@@ -22,7 +22,7 @@
     try {
         // Vérification de la session
         if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
-            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - SESSION_TIME) {
+            if (Admin::getId($_SESSION['login']) != $_SESSION['id'] && $_SESSION['time'] < time() - $_SESSION['time']) {
                 session_destroy();
                 header('Location: /connexion');
                 exit();
@@ -70,16 +70,35 @@
                                             // Instanciation de la classe Invoice
                                             $invoice = new Invoice($fileName, $id);
                                             if ($invoice->add() == true) {
-                                                header('Location: /dashboard/profil-client?id='.$id);
-                                                exit();
+                                                $success = 'Le document a bien été ajouté';
                                             }
+                                        } else {
+                                            $error = 'Une erreur est survenue lors de l\'upload du fichier';
                                         }
+                                    } else {
+                                        $error = 'Le fichier est trop volumineux';
                                     }
+                                } else {
+                                    $error = 'L\'extension du fichier n\'est pas autorisée';
                                 }
+                            } else {
+                                $error = 'Une erreur est survenue lors de l\'upload du fichier';
+                            }
+
+                        }
+                        // Action effectuée si la méthode est en GET et si id PDF est présent
+                        if (isset($_GET['pdf'])) {
+                            $idPDF = intval(trim(filter_input(INPUT_GET, 'pdf', FILTER_SANITIZE_NUMBER_INT)));
+                            if (Invoice::isExist($idPDF, $id) == true) {
+                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/bills/'.Invoice::getOne($idPDF, $id).'.pdf');
+                                Invoice::delete($idPDF, $id);
+                                header('Location: /dashboard/profil-client?id='.$id);
+                                exit();
+                            } else {
+                                header('Location: /dashboard/profil-client?id='.$id);
+                                exit();
                             }
                         }
-
-                        // if 
                     } else {
                         header('Location: /dashboard/clients');
                         exit();
@@ -120,6 +139,7 @@
                             // Modification de l'employé
                             $client->update($id);
                             header('Location: /dashboard/profil-client?id='.$id);
+                            exit();
                         } else {
                             header('Location: /dashboard/client');
                             exit();
@@ -139,24 +159,11 @@
                         }
                     }
                 }
-
-                // Action effectuée si la méthode est en GET et si id PDF est présent
-                if (isset($_GET['delete'])) {
-                    if ($_GET['delete'] == 'true') {
-                        if (Invoice::isExist($id) == true) {
-                            Client::delete($id);
-                            header('Location: /dashboard/clients');
-                        } else {
-                            header('Location: /dashboard/clients');
-                            exit();
-                        }
-                    }
-                }
             }
         } else {
             header('Location: /connexion');
             exit();
-        }
+        }  
     } catch (Exception $e) {
         header('Location: /500');
         exit();

@@ -52,7 +52,7 @@
                                     <a href="/dashboard/profil-client?id=<?= $invoice->Id_users ?>&amp;pdf=<?= $invoice->Id_bills ?>"><i class="fa-solid fa-xmark"></i></a>
                                 </div>
                                 <a href="/public/uploads/bills/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
-                                <p><?= $invoice->url ?></p>
+                                <p><?= str_replace('_', ' ', $invoice->url)  ?></p>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -65,4 +65,18 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal $error -->
+    <?php if (isset($error)) : ?>
+        <div class="showResult visible">
+            <p class="resultFormText badResult"><?= $error ?></p>
+        </div>
+    <?php endif; ?>
+
+    <!-- Modal $success -->
+    <?php if (isset($success)) : ?>
+        <div class="showResult visible">
+            <p class="resultFormText goodResult"><?= $success ?></p>
+        </div>
+    <?php endif; ?>
 </main>
