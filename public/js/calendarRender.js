@@ -25,11 +25,13 @@ const eventForm = `<div class="formContainer">
 const showModal = (writeHTML) => {
     calendarEl.style.opacity = '0.5';
     formContainer.classList.remove('hidden');
+    formContainer.classList.add('formContentCss');
     formContainer.innerHTML = writeHTML;
     if (document.querySelector('.fa-xmark').addEventListener('click', () => {
-        form.classList.add('hidden');
+        formContainer.classList.add('hidden');
+        formContainer.classList.remove('formContentCss');
         calendarEl.style.opacity = '1';
-        form.innerHTML = '';
+        formContainer.innerHTML = '';
     }));
 };
 

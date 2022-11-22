@@ -2,13 +2,12 @@ main {
     width: 100vw;
     height: calc(100vh - 75px);
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .containerRecap {
     width: 95%;
-    height: 95%;
+    height: 800px;
     background-color: var(--primary60);
     border-radius: 10px;
 }
@@ -113,6 +112,42 @@ main {
 .containerBills {
     height: 80%;
     width: 100%;
+    display: flex;
+    padding: 1rem;
+}
+
+.invoices {
+    height: auto;
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerAdd {
+    position: absolute;
+}
+
+.invoices i {
+    font-size: 2.5rem;
+    color: var(--primary80);
+    margin: .5rem 0rem;
+}
+
+.containerAdd i {
+    position: absolute;
+    right: -15px;
+    top: -12.5px;
+    font-size: .8rem;
+    color: var(--black100);
+    margin-bottom: .5rem;
+}
+
+
+.invoices p {
+    font-size: .7rem;
+    color: var(--black100);
+    text-align: center;
 }
 
 .formContent form {
@@ -154,6 +189,11 @@ main {
     main {
         width: calc(100vw - 200px);
         height: 100vh;
+        align-items: center;
+    }
+    .containerRecap {
+        width: 95%;
+        height: 95%;
     }
     .containerButtons {
         width: 400px;

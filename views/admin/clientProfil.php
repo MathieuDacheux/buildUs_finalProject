@@ -45,7 +45,17 @@
             </div>
             <div class="formContent">
                 <div class="containerBills">
-
+                    <?php if (isset($invoicesDisplay)) : ?>
+                        <?php foreach ($invoicesDisplay as $invoice) : ?>
+                            <div class="invoices">
+                                <div class="containerAdd flexCenterCenter">
+                                    <a href="/dashboard/profil-client?id=<?= $invoice->Id_users ?>&amp;pdf=<?= $invoice->Id_bills ?>"><i class="fa-solid fa-xmark"></i></a>
+                                </div>
+                                <a href="/public/uploads/bills/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
+                                <p><?= $invoice->url ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
                 <form method="POST" enctype="multipart/form-data" class="flexCenterBetween">
                     <label for="bills">Déposez une nouvelle facture</label>

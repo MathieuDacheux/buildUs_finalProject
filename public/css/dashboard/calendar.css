@@ -13,7 +13,7 @@ main {
 
 /* Formulaire d'ajout d'événements */
 
-.formContent {
+.formContentCss {
     position: absolute;
     width: 300px;
     height: 125px;

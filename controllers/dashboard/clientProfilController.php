@@ -10,9 +10,11 @@
     // Appel du modèle
     require_once(__DIR__.'/../../models/Admin.php');
     require_once(__DIR__.'/../../models/Client.php');
+    require_once(__DIR__.'/../../models/Invoice.php');
 
     // Variables
-    $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+    $javascript = '<script defer src="../public/js/openNavbar.js"></script>
+    <script defer src="../public/js/invoiceRender.js"></script>';
     
     $title = TITLE_HEAD[9];
     $description = DESCRIPTION_HEAD[7];
@@ -37,7 +39,47 @@
                     // Vérification de l'id
                     if (validationInput($id, REGEX_ID) == 'true' && Client::checkId($id) == true) {
                         // Récupération des informations de l'employé
-                        $client = Client::get($created, $id);                 
+                        $client = Client::get($created, $id);
+                        $invoicesDisplay = Invoice::get($id);
+
+                        // Action effectué si la méthode est en POST
+                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                            // Filtrage de la donnée
+                            $bills = $_FILES['bills'];
+                            // Emplacement de stockage des fichiers uploadés
+                            $targetDirection =  $_SERVER['DOCUMENT_ROOT'].'/public/uploads/bills/';
+                            
+                            // Vérification si le fichier est bien uploadé sans erreur
+                            if (isset($_FILES['bills']) && $_FILES['bills']['error'] == 0) {
+                                // Nom du fichier
+                                $fileInfo = pathinfo($bills['name']);
+                                // Récupération de l'extension du fichier
+                                $fileExtension = $fileInfo['extension'];
+                                // Récupération du nom du fichier
+                                $fileInfo['filename'] = str_replace(' ', '_', $fileInfo['filename']);
+                                $fileName = $fileInfo['filename'];
+                                // Extension autorisée
+                                $extensionAllowed = 'pdf';
+                                
+                                // Vérification de l'extension
+                                if($fileExtension == $extensionAllowed) {
+                                    // Vérication de la taille du fichier
+                                    if ($bills['size'] <= 5000000) {
+                                        // Déplacement du fichier
+                                        if (move_uploaded_file($bills['tmp_name'], $targetDirection.$fileName.'.'.$fileExtension)) {
+                                            // Instanciation de la classe Invoice
+                                            $invoice = new Invoice($fileName, $id);
+                                            if ($invoice->add() == true) {
+                                                header('Location: /dashboard/profil-client?id='.$id);
+                                                exit();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // if 
                     } else {
                         header('Location: /dashboard/clients');
                         exit();
@@ -85,10 +127,23 @@
                     }
                 }
                 
-                // Action effectuée si la méthode est en POST et si delete est présent
+                // Action effectuée si la méthode est en GET et si delete est présent
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
                         if (Client::checkId($id) == true) {
+                            Client::delete($id);
+                            header('Location: /dashboard/clients');
+                        } else {
+                            header('Location: /dashboard/clients');
+                            exit();
+                        }
+                    }
+                }
+
+                // Action effectuée si la méthode est en GET et si id PDF est présent
+                if (isset($_GET['delete'])) {
+                    if ($_GET['delete'] == 'true') {
+                        if (Invoice::isExist($id) == true) {
                             Client::delete($id);
                             header('Location: /dashboard/clients');
                         } else {
@@ -106,7 +161,6 @@
         header('Location: /500');
         exit();
     }
-
 
     // Appel des vues
     if (isset($_GET['modify']) == 'true') {

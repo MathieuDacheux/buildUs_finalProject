@@ -101,7 +101,7 @@ fetch ('/helpers/ajax/getSevenDays.php')
         // Dataset reçoit les revenus des 7 derniers indexés par les jours de la semaine en valeur numérique
         data.forEach(element => {
             let date = new Date(element.income_date);
-            let day = date.getDay();
+            let day = (date.getDay() != 0) ? date.getDay() : 7;
             let revenus = parseInt(element.daily_income);
             totalRevenus += revenus;
             targetRevenus = parseInt(element.target);
