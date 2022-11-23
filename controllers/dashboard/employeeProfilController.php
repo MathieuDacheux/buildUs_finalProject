@@ -10,9 +10,11 @@
     // Appel des modèles
     require_once(__DIR__.'/../../models/Admin.php');
     require_once(__DIR__.'/../../models/Employee.php');
+    require_once(__DIR__.'/../../models/Invoice.php');
 
     // Variables
-    $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+    $javascript = '<script defer src="../public/js/openNavbar.js"></script>
+    <script defer src="../public/js/invoiceState.js"></script>';
     
     $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
@@ -38,6 +40,65 @@
                     if (validationInput($id, REGEX_ID) == 'true' && Employee::checkId($id) == true) {
                         // Récupération des informations de l'employé
                         $employee = Employee::get($created ,$id);
+                        $invoicesDisplay = Invoice::get($id);
+
+                        // Action effectué si la méthode est en POST
+                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                            // Filtrage de la donnée
+                            $bills = $_FILES['bills'];
+                            // Emplacement de stockage des fichiers uploadés
+                            $targetDirection =  $_SERVER['DOCUMENT_ROOT'].'/public/uploads/payslip/';
+                            
+                            // Vérification si le fichier est bien uploadé sans erreur
+                            if (isset($_FILES['bills']) && $_FILES['bills']['error'] == 0) {
+                                // Nom du fichier
+                                $fileInfo = pathinfo($bills['name']);
+                                // Récupération de l'extension du fichier
+                                $fileExtension = $fileInfo['extension'];
+                                // Récupération du nom du fichier
+                                $fileInfo['filename'] = str_replace(' ', '_', $fileInfo['filename']);
+                                $fileName = $fileInfo['filename'];
+                                // Extension autorisée
+                                $extensionAllowed = 'pdf';
+                                
+                                // Vérification de l'extension
+                                if($fileExtension == $extensionAllowed) {
+                                    // Vérication de la taille du fichier
+                                    if ($bills['size'] <= 5000000) {
+                                        // Déplacement du fichier
+                                        if (move_uploaded_file($bills['tmp_name'], $targetDirection.$fileName.'.'.$fileExtension)) {
+                                            // Instanciation de la classe Invoice
+                                            $invoice = new Invoice($fileName, $id);
+                                            if ($invoice->add() == true) {
+                                                $success = 'Le document a bien été ajouté';
+                                            }
+                                        } else {
+                                            $error = 'Une erreur est survenue lors de l\'upload du fichier';
+                                        }
+                                    } else {
+                                        $error = 'Le fichier est trop volumineux';
+                                    }
+                                } else {
+                                    $error = 'L\'extension du fichier n\'est pas autorisée';
+                                }
+                            } else {
+                                $error = 'Une erreur est survenue lors de l\'upload du fichier';
+                            }
+
+                        }
+                        // Action effectuée si la méthode est en GET et si id PDF est présent
+                        if (isset($_GET['pdf'])) {
+                            $idPDF = intval(trim(filter_input(INPUT_GET, 'pdf', FILTER_SANITIZE_NUMBER_INT)));
+                            if (Invoice::isExist($idPDF, $id) == true) {
+                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/payslip/'.Invoice::getOne($idPDF, $id).'.pdf');
+                                Invoice::delete($idPDF, $id);
+                                header('Location: /dashboard/profil-employe?id='.$id);
+                                exit();
+                            } else {
+                                header('Location: /dashboard/profil-employe?id='.$id);
+                                exit();
+                            }
+                        }
                     } else {
                         header('Location: /dashboard/employes');
                         exit();

@@ -14,7 +14,7 @@
             <div class="formContentTitle flexCenterCenter">
                 <?php if (isset($success)) : ?>
                     <?php if ($success == true) : ?>
-                        <h3>Mail<strong class="important">confirmation</strong> envoyé</h3>
+                        <h3>Mail de <strong class="important">confirmation</strong> envoyé</h3>
                     <?php elseif ($success == false) : ?>
                         <h3>Une <strong class="important">erreur</strong> est survenue</h3>
                     <?php endif; ?>

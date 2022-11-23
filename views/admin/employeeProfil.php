@@ -45,14 +45,39 @@
             </div>
             <div class="formContent">
                 <div class="containerBills">
-
+                    <?php if (isset($invoicesDisplay)) : ?>
+                        <?php foreach ($invoicesDisplay as $invoice) : ?>
+                            <div class="invoices">
+                                <div class="containerAdd flexCenterCenter">
+                                    <a href="/dashboard/profil-employe?id=<?= $invoice->Id_users ?>&amp;pdf=<?= $invoice->Id_bills ?>"><i class="fa-solid fa-xmark"></i></a>
+                                </div>
+                                <a href="/public/uploads/payslip/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
+                                <p><?= str_replace('_', ' ', $invoice->url)  ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
-                <form method="POST" enctype="multipart/form-data" class="flexCenterCenter">
-                    <label for="bills">Déposez un nouveau bulletin</label>
+                <form method="POST" enctype="multipart/form-data" class="flexCenterBetween">
+                    <label for="bills">Déposer un nouveau document</label>
                     <input type="file" name="bills" id="bills">
                     <button>Envoyer</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <!-- Modal $error -->
+    <?php if (isset($error)) : ?>
+        <div class="showResult visible">
+            <p class="resultFormText badResult"><?= $error ?></p>
+        </div>
+    <?php endif; ?>
+
+    <!-- Modal $success -->
+    <?php if (isset($success)) : ?>
+        <div class="showResult visible">
+            <p class="resultFormText goodResult"><?= $success ?></p>
+        </div>
+    <?php endif; ?>
+
 </main>

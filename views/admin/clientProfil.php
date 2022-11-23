@@ -58,7 +58,7 @@
                     <?php endif; ?>
                 </div>
                 <form method="POST" enctype="multipart/form-data" class="flexCenterBetween">
-                    <label for="bills">Déposez une nouvelle facture</label>
+                    <label for="bills">Déposer un nouveau document</label>
                     <input type="file" name="bills" id="bills">
                     <button>Envoyer</button>
                 </form>
@@ -79,4 +79,5 @@
             <p class="resultFormText goodResult"><?= $success ?></p>
         </div>
     <?php endif; ?>
+    
 </main>
