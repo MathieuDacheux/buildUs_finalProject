@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/settings.css">';
 
-    $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+    $javascript = '<script defer src="../public/js/openNavbar.js"></script>
+    <script defer src="../public/js/deleteAccount.js"></script>';
     
     $title = TITLE_HEAD[8];
     $description = DESCRIPTION_HEAD[7];
@@ -63,6 +64,16 @@
                             header('Location: /dashboard');
                             exit();
                         }
+                    }
+                }
+
+                // Suppression du compte
+                if (isset($_GET['delete'])) {
+                    if ($_GET['delete'] == 'true') {
+                        Admin::delete($created);
+                        session_destroy();
+                        header('Location: /accueil');
+                        exit();
                     }
                 }
             }

@@ -23,11 +23,14 @@
             
                     <!-- Button to submit form -->
             
-                    <div class="registerButton flexCenterAround">
+                    <div class="registerButton flexCenterCenterColumn">
                         <button type="submit">Modifier</button>
+                        <p class="deleteClient <?= $information->Id_users ?>">Supprimer</p>
                     </div>
                 </form>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
+
+    <div class="containerDeleteSelected"></div>
 </main>

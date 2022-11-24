@@ -222,7 +222,7 @@ class Admin extends User {
      */
     public static function delete (int $id) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('DELETE FROM users WHERE id = :id');
+        $query = $databaseConnection->prepare('DELETE FROM users WHERE `Id_users` = :id');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         if ($query->rowCount() == 1) {

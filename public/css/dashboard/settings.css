@@ -11,6 +11,7 @@ main {
     height: 300px;
     background-color: var(--primary60);
     border-radius: 10px;
+    transition: .3s ease;
 }
 
 /* Title */
@@ -82,6 +83,59 @@ main {
     font-weight: 600;
     border: 0;
     color: var(--primary80);
+}
+
+.deleteClient {
+    margin-top: .25rem;
+    color: var(--black0);
+    font-size: .75rem;
+    cursor: pointer;
+}
+
+.showResult {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 100%;
+    transition: all .3s ease;
+    z-index: 5;
+}
+
+.containerDelete {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: var(--black0);
+    z-index: 5;
+    border-radius: 5px;
+}
+
+.containerDelete h3 {
+    height: calc(100% - 100px);
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerLink {
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.containerLink a {
+    color: var(--black0);
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2.5px;
+    background-color: var(--primary80);
+    cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {

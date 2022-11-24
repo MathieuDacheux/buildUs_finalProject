@@ -5,7 +5,7 @@
 // Variables
 let formContent = document.querySelector('.containerDeleteSelected');
 const confirmationDelete = document.querySelector('.deleteClient');
-const containerRecap = document.querySelector('.containerRecap');
+const containerRecap = document.querySelector('.containerRecap') ? document.querySelector('.containerRecap') : document.querySelector('.containerForm');
 const idTarget = confirmationDelete.classList[1];
 
 /*************************** **************************/
