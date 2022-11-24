@@ -30,7 +30,7 @@
                 </div>
                 <div class="containerButtons flexCenterBetween">
                     <div class="containerButton flexCenterCenter">
-                        <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;delete=true">Supprimer le client</a>
+                        <a class="deleteClient <?= $information->Id_users ?>">Supprimer le client</a>
                     </div>
                     <div class="containerButton flexCenterCenter">
                         <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le client</a>
@@ -79,5 +79,6 @@
             <p class="resultFormText goodResult"><?= $success ?></p>
         </div>
     <?php endif; ?>
-    
+
+    <div class="containerDeleteSelected"></div>
 </main>

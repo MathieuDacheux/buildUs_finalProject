@@ -1,5 +1,4 @@
 <main class="flexCenterColumn">
-
     <div class="formContent">
         <form method="POST" class="flexCenterCenterColumn <?= isset($taskDisplay) ? 'disabled' : '' ;?>">
             <legend class="flexCenterCenter">Rappels</legend>
@@ -37,7 +36,6 @@
                         <div class="containerMore flexCenterCenter">
                             <div class="containerPlus flexCenterAround">
                                 <a href="/dashboard/rappels?checked=1&amp;id=<?= $task->Id_todos ?>"><i class="fa-solid fa-check"></i></a>
-                                <a href="/dashboard/rappels?delete=1&amp;id=<?= $task->Id_todos ?>"><i class="fa-solid fa-trash"></i></a>
                             </div>
                         </div>      
                     </div>
@@ -58,7 +56,7 @@
                         </div>
                         <div class="containerMore flexCenterCenter">
                             <div class="containerPlus flexCenterAround">
-                                <a href="/dashboard/rappels?delete=1&amp;id=<?= $task->Id_todos ?>"><i class="fa-solid fa-trash"></i></a>
+                                <i class="fa-solid fa-trash taskFinished <?= $task->Id_todos ?>"></i>
                             </div>
                         </div>      
                     </div>
@@ -105,5 +103,6 @@
         </div>
         <?php endif; ?>
     <?php endif; ?>
-</main>
 
+    <div class="containerDeleteSelected"></div>
+</main>

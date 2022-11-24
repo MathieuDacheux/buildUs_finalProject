@@ -12,8 +12,7 @@ const eventForm = `<div class="formContainer">
                         <h3>Rendez-vous</h3>
                     </div>
                     <form method="POST" class="formAddEvent">
-                        <input type="datetime-local" value="" placeholder="CA en chiffres*" name="amount">
-                        <input type="number" value="1" name="whichForm" class="hidden">
+                        <input type="datetime-local" name="event">
                         <button type="submit"><i class="fa-solid fa-plus"></i></button>
                     </form>
                 </div>`;
@@ -64,7 +63,21 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         }
     },
     events: [
-    ]
+        fetch('/calendar')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(element => {
+                calendar.addEvent({
+                    title: element.amount,
+                    start: element.date,
+                    allDay: true,
+                    backgroundColor: '#2d2d2d',
+                    borderColor: '#2d2d2d',
+                    textColor: '#fff'
+                });
+            });
+        })
+    ],
 });
 
 calendar.render()

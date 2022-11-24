@@ -14,8 +14,7 @@
     <div class="containerRecap flexCenterCenterBetween">
         <div class="containerSubject clients">
             <div class="containerTitle flexCenterCenter">
-                <div class="containerAdd flexCenterCenter">
-                    <i class="fa-solid fa-plus revenusIncome"></i>
+                <div class="containerAdd flexCenterCenter revenusIncome">
                 </div>
                 <h3 class="titleIncome">Chiffre d'affaires</h3>
             </div>
@@ -44,8 +43,7 @@
         </div>
         <div class="containerSubject employees">
             <div class="containerTitle flexCenterCenter">
-                <div class="containerAdd flexCenterCenter">
-                    <i class="fa-solid fa-pen targetIncome"></i>
+                <div class="containerAdd flexCenterCenter targetIncome">
                 </div>
                 <h3 class="titleIncome">Objectif hebdomadaire</h3>
             </div>

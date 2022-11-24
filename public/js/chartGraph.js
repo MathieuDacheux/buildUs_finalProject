@@ -12,6 +12,9 @@ let incomeCTX = canvasRevenus.getContext('2d');
 const containerRecap = document.querySelectorAll('.containerRecap');
 const containerSubject = document.querySelector('.containerSubject');
 
+const iconRevenue = document.querySelector('.revenusIncome');
+const iconTarget = document.querySelector('.targetIncome');
+
 let form = document.querySelector('.formContent');
 
 /********************************* ********************************/
@@ -52,6 +55,9 @@ fetch('/helpers/ajax/getLastIncome.php')
 
         // Si la date du dernier revenus enregistré est la même que la date du jour alors on affiche le revenus dans le formulaire
         let valueIncome  = (dateLastIncomeFormat === currentDateFormat) ? income : '';
+        let iconAdd = (valueIncome != '' ? 'fa-solid fa-pen' : 'fa-solid fa-plus');
+
+        iconRevenue.innerHTML = `<i class="${iconAdd}"></i>`;
         
         const revenusIncome = document.querySelector('.revenusIncome');
         const revenusHTML =  `<div class="formContainer">
@@ -68,7 +74,7 @@ fetch('/helpers/ajax/getLastIncome.php')
                                         </div>
                                         <input type="number" value="1" name="whichForm" class="hidden">
                                         <div class="registerButton flexCenterCenter">
-                                            <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                                            <button type="submit"><i class="${iconAdd}"></i></button>
                                         </div>
                                     </div>
                                 </form>
@@ -105,15 +111,14 @@ fetch ('/helpers/ajax/getSevenDays.php')
             let revenus = parseInt(element.daily_income);
             totalRevenus += revenus;
             targetRevenus = parseInt(element.target);
+            console.log(targetRevenus);
             if (daysInNumber.includes(day)) {
                 datasetRevenus[day - 1] = element.daily_income;
             } else {
                 datasetRevenus[day - 1] = 0;
             }
         });
-
         let targetCondition = ((targetRevenus - totalRevenus) > 0) ? targetRevenus - totalRevenus : 0;
-        
         // Ajout de l'objectif et du total des revenus dans le dataset
         datasetTarget.push(targetCondition, totalRevenus);
 
@@ -167,6 +172,9 @@ fetch ('/helpers/ajax/getSevenDays.php')
 
     // Si l'objectif hebdomadaire est égale à 0 alors la value est vide sinon elle est égale à l'objectif
     let valueTarget  = (targetRevenus != 0) ? targetRevenus : '';
+    let iconAdd = (valueTarget != '' ? 'fa-solid fa-pen' : 'fa-solid fa-plus');
+
+    iconTarget.innerHTML = `<i class="${iconAdd}"></i>`;
     
     const targetIncome = document.querySelector('.targetIncome');
     const targetHTML = `<div class="formContainer">
@@ -183,7 +191,7 @@ fetch ('/helpers/ajax/getSevenDays.php')
                             </div>
                             <input type="number" value="2" name="whichForm" class="hidden">
                             <div class="registerButton flexCenterCenter">
-                                <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                                <button type="submit"><i class="${iconAdd}"></i></button>
                             </div>
                         </div>
                     </form>

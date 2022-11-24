@@ -176,7 +176,7 @@ form legend {
     background-color: var(--error80);
 }
 
-.containerPlus a i {
+.containerPlus i {
     font-size: 1rem;
     color: var(--black100);
     cursor: pointer;
@@ -184,6 +184,41 @@ form legend {
 
 .containerPlus {
     width: 75px;
+}
+
+.containerDelete {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: var(--black0);
+    z-index: 5;
+    border-radius: 5px;
+}
+
+.containerDelete h3 {
+    height: calc(100% - 100px);
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerLink {
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.containerLink a {
+    color: var(--black0);
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2.5px;
+    background-color: var(--primary80);
+    cursor: pointer;
 }
 
 .hidden {
