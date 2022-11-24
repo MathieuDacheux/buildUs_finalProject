@@ -15,7 +15,6 @@ main {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-
 }
 
 /* Settings container Subject */
@@ -26,6 +25,16 @@ main {
     border-radius: 10px;
     margin-bottom: 1rem;
     overflow: hidden;
+}
+
+.graph {
+    width: 100%;
+    height: 100%;
+}
+
+.containerIncome {
+    width: 95%;
+    height: 95%;
 }
 
 .income {

@@ -28,9 +28,9 @@
                         <?= $information->adress ?>
                     </p>
                 </div>
-                <div class="containerButtons flexCenterBetween">
+                <div class="containerButtons flexCenterAround">
                     <div class="containerButton flexCenterCenter">
-                        <a class="deleteClient <?= $information->Id_users ?>">Supprimer le client</a>
+                        <a class="deleteClient <?= $information->Id_users ?>">Supprimer</a>
                     </div>
                     <div class="containerButton flexCenterCenter">
                         <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le client</a>

@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="/../../public/css/dashboard/leftbar.css">
     <link rel="stylesheet" href="/../../public/css/dashboard/dashboard.css">';
 
-    $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
+    $javascript = '<script defer src="../public/js/openNavbar.js"></script>
+    <script defer src="../public/js/graphMain.js"></script>';
     
     $title = TITLE_HEAD[7];
     $description = DESCRIPTION_HEAD[7];

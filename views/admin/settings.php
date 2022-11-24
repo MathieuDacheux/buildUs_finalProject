@@ -23,7 +23,7 @@
             
                     <!-- Button to submit form -->
             
-                    <div class="registerButton flexCenterCenter">
+                    <div class="registerButton flexCenterAround">
                         <button type="submit">Modifier</button>
                     </div>
                 </form>

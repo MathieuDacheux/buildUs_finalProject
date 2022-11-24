@@ -1,18 +1,20 @@
 /********************************* ********************************/
-/************* Open modal for add clients / employees *************/
+/*********** Open modal for delete clients / employees ************/
 /******************************** *********************************/
 
 // Variables
 let formContent = document.querySelector('.containerDeleteSelected');
-let confirmationDelete = document.querySelector('.deleteClient');
+const confirmationDelete = document.querySelector('.deleteClient');
+const containerRecap = document.querySelector('.containerRecap');
+const idTarget = confirmationDelete.classList[1];
 
 /*************************** **************************/
 /************************  Work ***********************/
 /*************************** **************************/
 
-confirmationDelete.addEventListener('click ', () => {
-    let idTarget = e.target.classList[3];
-    let url = `/dashboard/rappels?delete=1&amp;id=${idTarget}`;
+confirmationDelete.addEventListener('click', () => {
+    containerRecap.style.opacity = '0.5';
+    let url = `/dashboard/profil-client?id=${idTarget}&amp;delete=true`;
     let confirmationContainer = `<div class="containerDelete flexCenterCenterColumn">
                                     <h3>Confirmez la suppression</h3>
                                     <div class="containerLink flexCenterAround">
@@ -22,4 +24,9 @@ confirmationDelete.addEventListener('click ', () => {
                                 </div>`;
     formContent.innerHTML = confirmationContainer;
     formContent.classList.add('showResult');
+    document.querySelector('.closeContainer').addEventListener('click', () => {
+        formContent.classList.remove('showResult');
+        formContent.innerHTML = '';
+        containerRecap.style.opacity = '1';
+    });
 });

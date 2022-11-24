@@ -10,6 +10,7 @@ main {
     height: 800px;
     background-color: var(--primary60);
     border-radius: 10px;
+    transition: .3s ease;
 }
 
 .containerProfil {
@@ -214,6 +215,41 @@ main {
 
 .goodResult {
     background-color: var(--succes80);
+}
+
+.containerDelete {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: var(--black0);
+    z-index: 5;
+    border-radius: 5px;
+}
+
+.containerDelete h3 {
+    height: calc(100% - 100px);
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerLink {
+    width: 100%;
+    height: calc(100% - 100px);
+}
+
+.containerLink a {
+    color: var(--black0);
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2.5px;
+    background-color: var(--primary80);
+    cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {

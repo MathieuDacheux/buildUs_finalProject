@@ -30,7 +30,7 @@
                 </div>
                 <div class="containerButtons flexCenterBetween">
                     <div class="containerButton flexCenterCenter">
-                        <a href="/dashboard/profil-employee?id=<?= $information->Id_users ?>&amp;delete=true">Supprimer le salarié</a>
+                    <a class="deleteClient <?= $information->Id_users ?>">Supprimer</a>
                     </div>
                     <div class="containerButton flexCenterCenter">
                         <a href="/dashboard/profil-employee?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le salarié</a>
@@ -80,4 +80,5 @@
         </div>
     <?php endif; ?>
 
+    <div class="containerDeleteSelected"></div>
 </main>

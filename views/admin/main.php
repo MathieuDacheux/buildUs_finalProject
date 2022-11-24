@@ -1,11 +1,10 @@
 <main>
     <div class="containerRecap">
         <div class="containerSubject income">
-            <div class="containerTitle flexCenterCenter">
-                    <h3>Chiffre d'affaires</h3>
-            </div>
-            <div class="containerIncome">
-        
+            <div class="graph flexCenterCenter">
+                <div class="containerIncome flexCenterCenter">
+                    <canvas id="revenus"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -64,3 +63,6 @@
         </div>
     </div>
 </main>
+
+<!-- CDN CHART.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>

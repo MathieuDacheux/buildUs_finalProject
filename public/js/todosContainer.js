@@ -10,6 +10,7 @@ const linkChecked = document.querySelector('.todosFinished');
 const unChecked = document.querySelector('.unChecked');
 const checked = document.querySelector('.checked');
 let formContent = document.querySelector('.containerDeleteSelected');
+const containerSubject = document.querySelector('.containerSubject');
 
 let confirmationDelete = document.querySelectorAll('.taskFinished');
 
@@ -40,10 +41,12 @@ confirmationDelete.forEach(element => {
                                             </div>
                                         </div>`;
             formContent.innerHTML = confirmationContainer;
+            containerSubject.style.opacity = '0.5';
             formContent.classList.add('showResult');
             document.querySelector('.closeContainer').addEventListener('click', () => {
                 formContent.classList.remove('showResult');
                 formContent.innerHTML = '';
+                containerSubject.style.opacity = '1';
             });
         }
     });

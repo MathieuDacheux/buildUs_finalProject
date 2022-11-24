@@ -14,7 +14,8 @@
 
     // Variables
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>
-    <script defer src="../public/js/invoiceState.js"></script>';
+    <script defer src="../public/js/invoiceState.js"></script>
+    <script defer src="../public/js/deleteProfil.js"></script>';
     
     $title = TITLE_HEAD[10];
     $description = DESCRIPTION_HEAD[7];
