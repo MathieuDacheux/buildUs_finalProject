@@ -8,23 +8,23 @@
             </div>
             <h3>Ajout d'un employé</h3>
         </div>
-        <form method="POST" novalidate>
+        <form method="POST">
             <div class="formInput flexCenterCenterColumn">
                 <div class="formName flexCenterBetween">
                     <div class="flexCenterCenterColumn">
-                        <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" pattern="<?= '/'.REGEX_NAME.'/' ?>" required>
+                        <input type="text" placeholder="Nom*" name="lastname" value="<?= $lastname ?? '' ?>" pattern="<?= REGEX_NAME ?>" required>
                         <p class="errorMessage"><?= (array_key_exists('lastname', $errorsRegistration)) ? $errorsRegistration['lastname'] : '' ?></p>
                     </div>
                     <div class="flexCenterColumn">
-                        <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" pattern="<?= '/'.REGEX_NAME.'/' ?>" required>
+                        <input type="text" placeholder="Prénom*" name="firstname" value="<?= $firstname ?? '' ?>" pattern="<?= REGEX_NAME ?>" required>
                         <p class="errorMessage"><?= (array_key_exists('firstname', $errorsRegistration)) ? $errorsRegistration['firstname'] : '' ?></p>
                     </div>
                 </div>
-                <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" pattern="<?= '/'.REGEX_MAIL.'/' ?>" required>
+                <input type="mail" placeholder="example@app.com*" name="mail" value="<?= $mail ?? '' ?>" pattern="<?= REGEX_MAIL ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('mail', $errorsRegistration)) ? $errorsRegistration['mail'] : '' ?></p>
-                <input type="tel" placeholder="Téléphone*" name="phone" value="<?= $phone ?? '' ?>" pattern="<?= '/'.REGEX_PHONE.'/' ?>" required>
+                <input type="tel" placeholder="Téléphone*" name="phone" value="<?= $phone ?? '' ?>" pattern="<?= REGEX_PHONE ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('phone', $errorsRegistration)) ? $errorsRegistration['phone'] : '' ?></p>
-                <input type="number" placeholder="Salaire*" name="income" value="<?= $income ?? '' ?>" pattern="<?= '/'.REGEX_INCOME.'/' ?>" required>
+                <input type="number" placeholder="Salaire*" name="income" value="<?= $income ?? '' ?>" pattern="<?= REGEX_INCOME ?>" required>
                 <p class="errorMessage"><?= (array_key_exists('income', $errorsRegistration)) ? $errorsRegistration['income'] : '' ?></p>
                 <input type="text" placeholder="Adresse" name="adress" value="<?= $adress ?? '' ?>">
                 <p class="errorMessage"><?= (array_key_exists('adress', $errorsRegistration)) ? $errorsRegistration['adress'] : '' ?></p>

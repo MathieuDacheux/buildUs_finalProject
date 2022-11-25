@@ -5,7 +5,7 @@
     /******************** ********************/
 
     // !ECRITURE DU BON CSS DANS LE HEAD EN FONCTION DE L'URL DU NAVIGATEUR
-    function whichCss() {
+    function whichCss () {
         if ($_SERVER['REQUEST_URI'] == '/accueil') {
             $style = '<link rel="stylesheet" href="../public/css/main.css">
                     <link rel="stylesheet" href="../public/css/header.css">
@@ -41,7 +41,7 @@
     }
 
     // !ECRITURE DU BON JAVASCRIPT DANS LE HEAD EN FONCTION DE L'URL DU NAVIGATEUR
-    function wichJavscript() {
+    function wichJavscript () {
         if ($_SERVER['REQUEST_URI'] == '/accueil') {
             $javascript = '<script defer src="../public/js/openNavbar.js"></script>';
             return $javascript;
@@ -88,8 +88,17 @@
     /******************** ********************/
 
     // !DECONNECTION
-    function deconnection() {
+    function deconnection () {
         session_destroy();
         header('Location: /connexion');
         exit();
+    }
+
+    /********************* ********************/
+    /************** DELETE FILES **************/
+    /********************* ********************/
+
+    // !SUPPRESSION DES FICHIERS
+    function delete (int $id) {
+        
     }

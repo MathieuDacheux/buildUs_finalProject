@@ -51,7 +51,7 @@
                                 <div class="containerAdd flexCenterCenter">
                                     <a href="/dashboard/profil-client?id=<?= $invoice->Id_users ?>&amp;pdf=<?= $invoice->Id_bills ?>"><i class="fa-solid fa-xmark"></i></a>
                                 </div>
-                                <a href="/public/uploads/bills/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
+                                <a href="/public/uploads/<?= $invoice->Id_users ?>/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
                                 <p><?= str_replace('_', ' ', $invoice->url)  ?></p>
                             </div>
                         <?php endforeach; ?>

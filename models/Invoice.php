@@ -91,7 +91,6 @@ class Invoice {
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
         $result = $query->fetch(PDO::FETCH_OBJ);
-        var_dump($result->url);
         return $result->url;
     }
 

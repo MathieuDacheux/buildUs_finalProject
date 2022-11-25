@@ -14,7 +14,7 @@ const idTarget = confirmationDelete.classList[1];
 
 confirmationDelete.addEventListener('click', () => {
     containerRecap.style.opacity = '0.5';
-    let url = `/dashboard/profil-client?id=${idTarget}&amp;delete=true`;
+    let url = window.location.href.includes('clients') ? `/dashboard/profil-client?id=${idTarget}&amp;delete=true` : `/dashboard/profil-employe?id=${idTarget}&amp;delete=true` ;
     let confirmationContainer = `<div class="containerDelete flexCenterCenterColumn">
                                     <h3>Confirmez la suppression</h3>
                                     <div class="containerLink flexCenterAround">

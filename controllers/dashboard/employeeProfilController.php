@@ -48,7 +48,7 @@
                             // Filtrage de la donnée
                             $bills = $_FILES['bills'];
                             // Emplacement de stockage des fichiers uploadés
-                            $targetDirection =  $_SERVER['DOCUMENT_ROOT'].'/public/uploads/payslip/';
+                            $targetDirection =  $_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/';
                             
                             // Vérification si le fichier est bien uploadé sans erreur
                             if (isset($_FILES['bills']) && $_FILES['bills']['error'] == 0) {
@@ -61,6 +61,10 @@
                                 $fileName = $fileInfo['filename'];
                                 // Extension autorisée
                                 $extensionAllowed = 'pdf';
+                                // Si le dossier n'existe pas, on le crée
+                                if (!file_exists($targetDirection)) {
+                                    mkdir($targetDirection, 0777, true);
+                                }
                                 
                                 // Vérification de l'extension
                                 if($fileExtension == $extensionAllowed) {
@@ -91,7 +95,7 @@
                         if (isset($_GET['pdf'])) {
                             $idPDF = intval(trim(filter_input(INPUT_GET, 'pdf', FILTER_SANITIZE_NUMBER_INT)));
                             if (Invoice::isExist($idPDF, $id) == true) {
-                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/payslip/'.Invoice::getOne($idPDF, $id).'.pdf');
+                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/'.Invoice::getOne($idPDF, $id).'.pdf');
                                 Invoice::delete($idPDF, $id);
                                 header('Location: /dashboard/profil-employe?id='.$id);
                                 exit();
@@ -150,8 +154,20 @@
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
                         if (Employee::checkId($id) == true) {
+                            // Suppression du dossier contenant les factures de l'employé dans le dossier uploads du serveur
+                            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id)) {
+                                $files = scandir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id);
+                                foreach ($files as $file) {
+                                    if ($file != '.' && $file != '..') {
+                                        unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/'.$file);
+                                    }
+                                }
+                                rmdir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id);
+                            }
+                            // Suppression de l'employé dans la base de données
                             Employee::delete($id);
                             header('Location: /dashboard/employes');
+                            exit();
                         } else {
                             header('Location: /dashboard/employes');
                             exit();

@@ -12,6 +12,7 @@
     require_once(__DIR__.'/../../models/Client.php');
     require_once(__DIR__.'/../../models/Invoice.php');
 
+    
     // Variables
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>
     <script defer src="../public/js/invoiceState.js"></script>
@@ -48,7 +49,7 @@
                             // Filtrage de la donnée
                             $bills = $_FILES['bills'];
                             // Emplacement de stockage des fichiers uploadés
-                            $targetDirection =  $_SERVER['DOCUMENT_ROOT'].'/public/uploads/bills/';
+                            $targetDirection =  $_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/';
                             
                             // Vérification si le fichier est bien uploadé sans erreur
                             if (isset($_FILES['bills']) && $_FILES['bills']['error'] == 0) {
@@ -61,7 +62,10 @@
                                 $fileName = $fileInfo['filename'];
                                 // Extension autorisée
                                 $extensionAllowed = 'pdf';
-                                
+                                // Si le dossier n'existe pas, on le crée
+                                if (!file_exists($targetDirection)) {
+                                    mkdir($targetDirection, 0777, true);
+                                }
                                 // Vérification de l'extension
                                 if($fileExtension == $extensionAllowed) {
                                     // Vérication de la taille du fichier
@@ -74,7 +78,7 @@
                                                 $success = 'Le document a bien été ajouté';
                                             }
                                         } else {
-                                            $error = 'Une erreur est survenue lors de l\'upload du fichier';
+                                            $error = 'Le fichier n\'a pas pu être déplacé';
                                         }
                                     } else {
                                         $error = 'Le fichier est trop volumineux';
@@ -91,7 +95,7 @@
                         if (isset($_GET['pdf'])) {
                             $idPDF = intval(trim(filter_input(INPUT_GET, 'pdf', FILTER_SANITIZE_NUMBER_INT)));
                             if (Invoice::isExist($idPDF, $id) == true) {
-                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/bills/'.Invoice::getOne($idPDF, $id).'.pdf');
+                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/'.Invoice::getOne($idPDF, $id).'.pdf');
                                 Invoice::delete($idPDF, $id);
                                 header('Location: /dashboard/profil-client?id='.$id);
                                 exit();
@@ -152,6 +156,15 @@
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
                         if (Client::checkId($id) == true) {
+                            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id)) {
+                                $files = scandir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id);
+                                foreach ($files as $file) {
+                                    if ($file != '.' && $file != '..') {
+                                        unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/'.$file);
+                                    }
+                                }
+                                rmdir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id);
+                            }
                             Client::delete($id);
                             header('Location: /dashboard/clients');
                         } else {

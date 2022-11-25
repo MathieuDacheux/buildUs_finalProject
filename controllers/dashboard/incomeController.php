@@ -68,7 +68,6 @@
                     } else if ($whichForm == 2) {
                         // Filtrage des données
                         $target = trim(filter_input(INPUT_POST, 'target', FILTER_SANITIZE_NUMBER_INT));
-                        var_dump($target);
                         // Validation des données
                         if (validationInput($target, REGEX_INCOME) != true) {
                             $errorsRegistration['amount'] = 'Le montant doit être un nombre';
@@ -88,10 +87,8 @@
                 
                 // Si la méthode est en GET et que delete et ID sont définis
                 if ($_GET['delete'] = '1' && isset($_GET['id'])) {
-                    var_dump($_GET['id']);
                     // Filtrage des données
                     $id = trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-                    var_dump($id);
 
                     // Vérification si l'ID existe
                     if (Income::isExist($id, $created) == true) {
