@@ -114,7 +114,7 @@ class Client extends User {
     /************************************** **************************************/
 
     /**
-     * Récupération de tous les clients
+     * Récupération d'un client ou d'un seul
      * @return array
      */
     public static function get (int $idCreator ,int $id = 0) :array {
@@ -167,7 +167,7 @@ class Client extends User {
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->bindValue(':created', $this->getCreated());
         $query->execute();
-        return $query->rowCount() > 0 ? true : false;
+        return $query->rowCount() == 0 ? true : false;
     }
 
     /************************************** **************************************/
@@ -178,11 +178,11 @@ class Client extends User {
      * Suppression d'un client
      * @return bool
      */
-    public static function delete (int $id) :bool {
+    public static function delete (int $id, int $idCreator) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('DELETE FROM `users` WHERE `Id_users` = :id AND `Id_role` = 3 AND `created_by` = :created ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':created', $_SESSION['id'], PDO::PARAM_INT);
+        $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
         $query->execute();
         return $query->rowCount() > 0 ? true : false;
     }

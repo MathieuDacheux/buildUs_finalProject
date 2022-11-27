@@ -67,25 +67,18 @@
 
                     // Si tableau d'erreurs vide
                     if (empty($errorsRegistration)) {
-                        // Instanciation de l'objet Employee
+                        // Instanciation de l'objet Client
                         $client = new Client($lastname, $firstname, $mail, $phone, $siret, $created, $adress);
                         // Vérification de l'unicité du numéro de SIRET
-                        try {
-                            if ($client->isExist() == true) {
-                                $isExist = true;
+                        if ($client->isExist() == true) {
+                            $isExist = true;
+                        } else {
+                            // Ajout de l'employé
+                            if ($client->add() == true) {
+                                $confirmation = true;
                             } else {
-                                // Ajout de l'employé
-                                if ($client->add() == true) {
-                                    $confirmation = true;
-                                } else {
-                                    $confirmation = false;
-                                }
+                                $confirmation = false;
                             }
-                        } catch (Exception $e) {
-                            echo $e->getMessage();
-                            die();
-                            header('Location: /500');
-                            exit();
                         }
                     }
                 }

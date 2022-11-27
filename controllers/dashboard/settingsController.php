@@ -70,6 +70,8 @@
                 // Suppression du compte
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
+                        // Supprimer tout les clients et employés liés à l'admin ainsi que tout les pdf liés à ces clients et employés
+                        Admin::deleteAll();
                         Admin::delete($created);
                         session_destroy();
                         header('Location: /accueil');

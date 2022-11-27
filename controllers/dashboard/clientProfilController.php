@@ -138,10 +138,9 @@
                         }
                         // Si tableau d'erreurs vide
                         if (empty($errorsModify)) {
-                            // Instanciation de l'objet Employee
+                            // Instanciation de l'objet Client
                             $client = new Client($lastname, $firstname, $mail, $phone, $siret, $created, $adress);
-                            
-                            // Modification de l'employé
+                            // Modification d'un client
                             $client->update($id);
                             header('Location: /dashboard/profil-client?id='.$id);
                             exit();
@@ -165,7 +164,7 @@
                                 }
                                 rmdir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id);
                             }
-                            Client::delete($id);
+                            Client::delete($id, $created);
                             header('Location: /dashboard/clients');
                         } else {
                             header('Location: /dashboard/clients');

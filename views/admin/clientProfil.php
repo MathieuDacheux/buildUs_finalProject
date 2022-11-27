@@ -15,12 +15,12 @@
                             <?= $information->firstname ?>
                         </p>
                     </div>
-                    <p>
+                    <a href="mailto:<?= $information->email ?>">
                         <?= $information->email ?>
-                    </p>
-                    <p>
+                    </a>
+                    <a href="tel:<?= $information->phone ?>">
                         <?= $information->phone ?>
-                    </p>
+                    </a>
                     <p>
                         <?= $information->siret ?>
                     </p>
