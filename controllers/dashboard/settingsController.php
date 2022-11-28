@@ -71,7 +71,22 @@
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == 'true') {
                         // Supprimer tout les clients et employés liés à l'admin ainsi que tout les pdf liés à ces clients et employés
-                        Admin::deleteAll();
+                        $resultCreated = Admin::deleteCreatedBy($created);
+                        // Suppression des dossiers liés aux clients et employés
+                        foreach ($resultCreated as $value) {
+                            $idUser = intval($value->Id_users, 10);
+                            if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idUser)) {
+                                $files = scandir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idUser);
+                                foreach ($files as $file) {
+                                    if ($file != '.' && $file != '..') {
+                                        unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idUser.'/'.$file);
+                                    }
+                                }
+                                rmdir($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idUser);
+                            }
+                            Admin::delete($idUser);
+                        }
+                        // Suppression de l'admin
                         Admin::delete($created);
                         session_destroy();
                         header('Location: /accueil');

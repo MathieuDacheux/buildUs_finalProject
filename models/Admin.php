@@ -218,17 +218,27 @@ class Admin extends User {
     /**
      * @param int $id
      * 
+     * @return array
+     */
+    public static function deleteCreatedBy (int $id) :array {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('SELECT `Id_users` FROM `users` WHERE `created_by` = :id ;');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // Delete user
+    /**
+     * @param int $id
+     * 
      * @return bool
      */
     public static function delete (int $id) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('DELETE FROM users WHERE `Id_users` = :id');
+        $query = $databaseConnection->prepare('DELETE FROM `users` WHERE `Id_users` = :id ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        if ($query->rowCount() == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($query->rowCount() > 0) ? true : false;
     }
 }
