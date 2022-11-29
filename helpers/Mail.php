@@ -8,7 +8,7 @@ class Mail {
      * Envoi d'un email de confirmation
      * @return bool
      */
-    public static function validationAccount ($email, $firstname, $lastname) :bool {
+    public static function validationAccount (string $email, string $firstname, string $lastname) :bool {
         $to = $email;
         $subject = 'Bienvenue sur BuildUs, votre dashboard est prêt !';
         $message = 'Bonjour '.$firstname.' '.$lastname.',
@@ -17,19 +17,14 @@ class Mail {
         $headers = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
         'Reply-To: contact@buildus.fr' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-        if (mail($to, $subject, $message, $headers)) {
-            $success = true;
-        } else {
-            $success = false;
-        }
-        return $success;
+        return (mail($to, $subject, $message, $headers)) ? true : false;
     }
 
     /**
      * Envoi d'un email de réinitialisation de mot de passe
      * @return bool
      */
-    public static function resetPassword ($email, $id) :bool {
+    public static function resetPassword (string $email, int $id) :bool {
         $to = $email;
         $subject = 'Réinitialisation de votre mot de passe';
         $message = 'Bonjour,
@@ -38,12 +33,21 @@ class Mail {
         $headers = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
         'Reply-To: contact@buildus.fr' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-        if (mail($to, $subject, $message, $headers)) {
-            $success = true;
-        } else {
-            $success = false;
-        }
-        return $success;
+        return (mail($to, $subject, $message, $headers)) ? true : false;
+    }
+
+    public static function sendInvoice (string $email, string $url, int $id) :bool {
+        $to = $email;
+        $token = JWT::createToken($id);
+        $link = 'http://buildus.localhost/dashboard/download?token='.$token.'&'.'file='.$url;
+        $subject = 'Votre facture BuildUs';
+        $message = 'Bonjour, 
+        Vous trouverez ci-joint votre facture BuildUs : '.$link.'
+        A bientôt sur BuildUs !';
+        $header = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
+        'Reply-To: contact@buildus.fr' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+        return (mail($to, $subject, $message, $header)) ? true : false;
     }
     
 }

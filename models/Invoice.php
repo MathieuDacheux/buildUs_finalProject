@@ -42,13 +42,18 @@ class Invoice {
      * @param int $id
      * @param int $idCreator
      * 
-     * @return bool
+     * @return object
      */
-    public static function isExist (int $id, int $idCreator) :object|bool {
+    public static function isExist (int $id, int $idCreator = 0, int $which = 0) :object {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('SELECT * FROM `invoices` WHERE `Id_bills` = :id AND `Id_users` = :idCreator');
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
-        $query->bindValue(':idCreator', $idCreator, PDO::PARAM_INT);
+        if ($which == 0 && $idCreator != 0) {
+            $query = $databaseConnection->prepare('SELECT * FROM `invoices` WHERE `Id_bills` = :id AND `Id_users` = :idCreator');
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+            $query->bindValue(':idCreator', $idCreator, PDO::PARAM_INT);
+        } else {
+            $query = $databaseConnection->prepare('SELECT * FROM `invoices` WHERE `Id_bills` = :id ;');
+            $query->bindValue(':id', $id, PDO::PARAM_INT);
+        }
         $query->execute();
         return $query->fetch(PDO::FETCH_OBJ);
     }

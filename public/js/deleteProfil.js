@@ -15,7 +15,7 @@ const idTarget = confirmationDelete.classList[1];
 
 confirmationDelete.addEventListener('click', () => {
     containerRecap.style.opacity = '0.5';
-    let url = window.location.href.includes('clients') ? `/dashboard/profil-client?id=${idTarget}&amp;delete=true` : `/dashboard/profil-employe?id=${idTarget}&amp;delete=true` ;
+    let url = window.location.href.includes('client') ? `/dashboard/profil-client?id=${idTarget}&amp;delete=true` : `/dashboard/profil-employe?id=${idTarget}&amp;delete=true` ;
     let confirmationContainer = `<div class="containerDelete flexCenterCenterColumn">
                                     <h3>Confirmez la suppression</h3>
                                     <div class="containerLink flexCenterAround">
@@ -43,9 +43,9 @@ containerMoreInfo.forEach((element) => {
         let id = element.classList[2];
         let state = (element.classList[3] == 0) ? '1' : '0';
         let idPDF = element.classList[4];
-        let who = window.location.href.includes('clients') ? 'client' : 'employe' ;
+        let who = window.location.href.includes('client') ? 'client' : 'employe';
         let linkUpdate = (state == 0) ? 'Annuler le paiement' : 'Confirmer le paiement';
-        let urlSend = `/dashboard/profil-${who}?id=${id}&amp;send=${file}`;
+        let urlSend = `/dashboard/profil-${who}?id=${id}&amp;send=${file}&amp;idPDF=${idPDF}`;
         let urlDownload = `/public/uploads/${id}/${file}.pdf`;
         let urlUpdate = `/dashboard/profil-${who}?id=${id}&amp;url=${file}&amp;update=${state}`;
         let urlDelete = `/dashboard/profil-${who}?id=${id}&amp;pdf=${idPDF}`;
