@@ -11,6 +11,7 @@
     require_once(__DIR__.'/../../models/Admin.php');
     require_once(__DIR__.'/../../models/Employee.php');
     require_once(__DIR__.'/../../models/Invoice.php');
+    require_once(__DIR__.'/../../helpers/Mail.php');
 
     // Variables
     $javascript = '<script defer src="../public/js/openNavbar.js"></script>
@@ -188,6 +189,22 @@
                         } else if ($update == 1) {
                             Invoice::update($idGet, $urlFile, 1);
                             header('Location: /dashboard/profil-employe?id='.$idGet);
+                            exit();
+                        }
+                    } else {
+                        header('Location: /dashboard/profil-employe?id='.$id);
+                        exit();
+                    }
+                }
+
+                // Action effectuée si la méthode est en GET et si mail est présent
+                if (isset($_GET['send'])) {
+                    $urlFile = trim(filter_input(INPUT_GET, 'send', FILTER_SANITIZE_SPECIAL_CHARS));
+                    $idUser = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)), 10);
+                    $idPDF = intval(trim(filter_input(INPUT_GET, 'idPDF', FILTER_SANITIZE_NUMBER_INT)), 10);
+                    if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idUser.'/'.$urlFile.'.pdf')) {
+                        if(Mail::sendInvoice('dchxmathieu@gmail.com', $urlFile, $idPDF)) {
+                            header('Location: /dashboard/profil-employe?id='.$idUser);
                             exit();
                         }
                     } else {
