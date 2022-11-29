@@ -11,7 +11,7 @@
     <div class="containerRecap flexCenterCenterBetween">
         <div class="containerSubject clients">
             <div class="containerTitle flexCenterCenter">
-                <h3>Clients</h3>
+                <h3><a href="/dashboard/clients">Clients</a></h3>
             </div>
             <div class="containerContent flexCenterColumn">
                 <?php if (isset($lastClients)) :?>
@@ -37,7 +37,7 @@
         </div>
         <div class="containerSubject employees">
             <div class="containerTitle flexCenterCenter">
-                <h3>Employées</h3>
+                <h3><a href="/dashboard/employes">Employées</a></h3>
             </div>
             <div class="containerContent flexCenterColumn">
                 <?php if (isset($lastEmployees)) : ?>

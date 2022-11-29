@@ -48,11 +48,11 @@
                     <?php if (isset($invoicesDisplay)) : ?>
                         <?php foreach ($invoicesDisplay as $invoice) : ?>
                             <div class="invoices">
-                                <div class="containerAdd flexCenterCenter">
-                                    <a href="/dashboard/profil-client?id=<?= $invoice->Id_users ?>&amp;pdf=<?= $invoice->Id_bills ?>"><i class="fa-solid fa-xmark"></i></a>
-                                </div>
                                 <a href="/public/uploads/<?= $invoice->Id_users ?>/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
-                                <p><?= str_replace('_', ' ', $invoice->url)  ?></p>
+                                <p><?= str_replace('_', ' ', $invoice->url)  ?> <i class="fa-solid fa-check <?= ($invoice->state == 0) ? 'bad' : 'good' ;?>"></i></p>
+                                <div class="containerMore flexCenterCenter">
+                                    <a class="moreInformations <?= $invoice->url ?>  <?= $information->Id_users ?>">Voir plus</a>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>

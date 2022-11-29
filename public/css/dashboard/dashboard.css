@@ -61,6 +61,11 @@ main {
     overflow-y: scroll;
 }
 
+h3 a {
+    font-size: 1.5rem;
+    color: var(--black0);
+}
+
 .listingRecap {
     width: 100%;
     height: 70px;
