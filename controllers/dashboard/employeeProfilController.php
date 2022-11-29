@@ -174,6 +174,27 @@
                         }
                     }
                 }
+
+                // Action effectuée si la méthode est en GET et si update est présent
+                if (isset($_GET['update'])) {
+                    $urlFile = trim(filter_input(INPUT_GET, 'url', FILTER_SANITIZE_SPECIAL_CHARS));
+                    $idGet = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)), 10);
+                    $update = intval(trim(filter_input(INPUT_GET, 'update', FILTER_SANITIZE_NUMBER_INT)), 10);
+                    if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idGet.'/'.$urlFile.'.pdf')) {
+                        if ($update == 0) {
+                            Invoice::update($idGet, $urlFile, 0);
+                            header('Location: /dashboard/profil-employe?id='.$idGet);
+                            exit();
+                        } else if ($update == 1) {
+                            Invoice::update($idGet, $urlFile, 1);
+                            header('Location: /dashboard/profil-employe?id='.$idGet);
+                            exit();
+                        }
+                    } else {
+                        header('Location: /dashboard/profil-employe?id='.$id);
+                        exit();
+                    }
+                }
             }
         } else {
             header('Location: /connexion');

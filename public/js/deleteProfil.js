@@ -39,18 +39,25 @@ confirmationDelete.addEventListener('click', () => {
 containerMoreInfo.forEach((element) => {
     element.addEventListener('click', () => {
         containerRecap.style.opacity = '0.5';
-        let id = element.classList[2];
         let file = element.classList[1];
-        let urlSend = `/dashboard/profil-client?id=${id}&amp;file=${file}`;
+        let id = element.classList[2];
+        let state = (element.classList[3] == 0) ? '1' : '0';
+        let idPDF = element.classList[4];
+        let who = window.location.href.includes('clients') ? 'client' : 'employe' ;
+        let linkUpdate = (state == 0) ? 'Annuler le paiement' : 'Confirmer le paiement';
+        let urlSend = `/dashboard/profil-${who}?id=${id}&amp;send=${file}`;
         let urlDownload = `/public/uploads/${id}/${file}.pdf`;
+        let urlUpdate = `/dashboard/profil-${who}?id=${id}&amp;url=${file}&amp;update=${state}`;
+        let urlDelete = `/dashboard/profil-${who}?id=${id}&amp;pdf=${idPDF}`;
         let confirmationContainer = `<div class="containerDelete flexCenterCenterColumn">
                                         <div class="containerAdd flexCenterCenter">
                                             <i class="fa-solid fa-xmark closeContainer"></i>
                                         </div>
                                         <div class="containerLinkMore flexCenterCenterColumn">
                                             <a href="${urlDownload}" download>Télécharger</a>
-                                            <a href="${urlSend}">Envoyer</a>
-                                            <a href="${urlDownload}">Confirmer le paiement</a>
+                                            <a href="${urlSend}">Envoyer par mail</a>
+                                            <a href="${urlUpdate}">${linkUpdate}</a>
+                                            <a href="${urlDelete}">Supprimer</a>
                                         </div>
                                     </div>`;
         formContent.innerHTML = confirmationContainer;

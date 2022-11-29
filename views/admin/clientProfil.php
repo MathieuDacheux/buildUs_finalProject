@@ -49,9 +49,9 @@
                         <?php foreach ($invoicesDisplay as $invoice) : ?>
                             <div class="invoices">
                                 <a href="/public/uploads/<?= $invoice->Id_users ?>/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
-                                <p><?= str_replace('_', ' ', $invoice->url)  ?> <i class="fa-solid fa-check <?= ($invoice->state == 0) ? 'bad' : 'good' ;?>"></i></p>
+                                <p class="clampMessage"><?= str_replace('_', ' ', $invoice->url)  ?> </p><i class="fa-solid fa-check <?= ($invoice->state == 0) ? 'bad' : 'good' ;?>"></i>
                                 <div class="containerMore flexCenterCenter">
-                                    <a class="moreInformations <?= $invoice->url ?>  <?= $information->Id_users ?>">Voir plus</a>
+                                    <a class="moreInformations <?= $invoice->url ?>  <?= $information->Id_users ?> <?= $invoice->state ?> <?= $invoice->Id_bills ?>">Voir plus</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>

@@ -114,7 +114,9 @@ main {
     height: 80%;
     width: 100%;
     display: flex;
-    padding: 1rem;
+    flex-flow: row wrap;
+    padding: .5rem;
+    overflow-y: scroll;
 }
 
 .invoices {
@@ -164,6 +166,15 @@ main {
 
 .formContent form input {
     display: none;
+}
+
+.clampMessage {
+    line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .containerMore {
@@ -285,14 +296,11 @@ main {
     justify-content: center;
     background-color: var(--primary80);
     text-align: center;
-}
-
-.containerLinkMore a:first-child {
     margin-bottom: .5rem;
 }
 
 .containerLinkMore a:last-child {
-    margin-top: .5rem;
+    margin-bottom: 0rem;
 }
 
 @media screen and (min-width: 1000px) {

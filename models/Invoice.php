@@ -98,12 +98,12 @@ class Invoice {
     /*********************************** UPDATE **********************************/
     /************************************** **************************************/
 
-    public static function update (int $id, string $url, $state) :bool {
+    public static function update (int $id, string $url, int $state) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('UPDATE `invoices` SET `state` = :state WHERE `Id_users` = :id AND `url` = :url ;');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->bindValue(':url', $url, PDO::PARAM_STR);
-        $query->bindValue(':state', $state, PDO::PARAM_STR);
+        $query->bindValue(':state', $state, PDO::PARAM_INT);
         $query->execute();
         return $query->rowCount() == 1 ? true : false;
     }
