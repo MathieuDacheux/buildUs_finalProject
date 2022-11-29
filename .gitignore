@@ -1,0 +1,8 @@
+.idea/buildus.iml
+.idea/php.xml
+gitignore
+.idea/vcs.xml
+.idea/modules.xml
+.DS_Store
+# Ignore public/uploads
+public/uploads
