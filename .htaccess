@@ -12,7 +12,7 @@ RewriteRule ^500$ controllers/error500Controller.php
 RewriteRule ^accueil$ controllers/homeController.php
 RewriteRule ^cgu$ controllers/cguController.php
 RewriteRule ^confidentialite$ controllers/confidentialyController.php
-Rewriterule ^dashboard/deconnexion controllers/dashboard/deconnexionController.php
+RewriteRule ^dashboard/deconnexion controllers/dashboard/deconnexionController.php
 
 # Redirection Page d'inscription / connexion / mot de passe oublié
 RewriteRule ^inscription$ controllers/registrationController.php
@@ -20,25 +20,25 @@ RewriteRule ^connexion$ controllers/connexionController.php
 RewriteRule ^reinitialiser$ controllers/resetPasswordController.php
 
 # Redirection Tableau de bord
-Rewriterule ^dashboard$ controllers/dashboard/dashboardController.php
-Rewriterule ^dashboard/parametres controllers/dashboard/settingsController.php
+RewriteRule ^dashboard$ controllers/dashboard/dashboardController.php
+RewriteRule ^dashboard/parametres controllers/dashboard/settingsController.php
 
 # Redirection Page des employés
-Rewriterule ^dashboard/clients controllers/dashboard/clientsListingController.php
-Rewriterule ^dashboard/profil-client controllers/dashboard/clientProfilController.php
+RewriteRule ^dashboard/clients controllers/dashboard/clientsListingController.php
+RewriteRule ^dashboard/profil-client controllers/dashboard/clientProfilController.php
 
 # Redirection Page des clients
-Rewriterule ^dashboard/employes controllers/dashboard/employeesListingController.php
-Rewriterule ^dashboard/profil-employe controllers/dashboard/employeeProfilController.php
+RewriteRule ^dashboard/employes controllers/dashboard/employeesListingController.php
+RewriteRule ^dashboard/profil-employe controllers/dashboard/employeeProfilController.php
 
 # Redirection Page du chiffre d'affaires
-Rewriterule ^dashboard/business controllers/dashboard/incomeController.php
+RewriteRule ^dashboard/business controllers/dashboard/incomeController.php
 
 # Redirection Page des rappels
-Rewriterule ^dashboard/rappels controllers/dashboard/todosController.php
+RewriteRule ^dashboard/rappels controllers/dashboard/todosController.php
 
 # Redirection Page du calendrier
-Rewriterule ^dashboard/calendrier controllers/dashboard/calendarController.php
+RewriteRule ^dashboard/calendrier controllers/dashboard/calendarController.php
 
 # Redirection Page des vérifications mail
-Rewriterule ^download controllers/dashboard/verifyEmailController.php
+RewriteRule ^download controllers/dashboard/verifyEmailController.php

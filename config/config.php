@@ -19,6 +19,7 @@
     'BuildUs | Calendrier',
     'BuildUs | Rappels',
     'BuildUs | Chiffre d\'affaires',
+    'BuildUs | Factures',
     ]);
 
     // Metadonnées description dans HEAD
