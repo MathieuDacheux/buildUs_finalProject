@@ -114,21 +114,24 @@ class Employee extends User {
 
     /**
      * Récupération de tous les employés
-     * @return array
+     * @return array|object
      */
-    public static function get (int $idCreator ,int $id = 0) :array {
+    public static function get (int $idCreator ,int $id = 0) :array|object {
         $databaseConnection = Database::getConnection();
         if ($id == 0) {
             $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created ORDER BY `Id_users` DESC LIMIT 5;';
             $query = $databaseConnection->prepare($sql);
+            $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
         } else {
             $sql = 'SELECT `firstname`, `lastname`, `Id_users`, `email`, `phone`, `salaries`, `adress` FROM `users` WHERE `Id_role` = 2 AND `created_by` = :created AND `Id_users` = :id';
             $query = $databaseConnection->prepare($sql);
             $query->bindValue(':id', $id, PDO::PARAM_INT);
+            $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_OBJ);
         }
-        $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 

@@ -5,38 +5,36 @@
                 <h3 class="titleColor">Information du salarié</h3>
             </div>
             <?php if (isset($employee)) : ?>
-                <?php foreach($employee as $information) : ?>
                 <div class="containerContent">
                     <div class="containerName">
                         <p>
-                            <?= $information->lastname ?>
+                            <?= $employee->lastname ?>
                         </p>
                         <p>
-                            <?= $information->firstname ?>
+                            <?= $employee->firstname ?>
                         </p>
                     </div>
-                    <a href="mailto:<?= $information->email ?>">
-                        <?= $information->email ?>
+                    <a href="mailto:<?= $employee->email ?>">
+                        <?= $employee->email ?>
                     </a>
-                    <a href="tel:<?= $information->phone ?>">
-                        <?= $information->phone ?>
+                    <a href="tel:<?= $employee->phone ?>">
+                        <?= $employee->phone ?>
                     </a>
                     <p>
-                        <?= $information->salaries ?> €
+                        <?= $employee->salaries ?> €
                     </p>
                     <p>
-                        <?= $information->adress ?>
+                        <?= $employee->adress ?>
                     </p>
                 </div>
                 <div class="containerButtons flexCenterBetween">
                     <div class="containerButton flexCenterCenter">
-                    <a class="deleteClient <?= $information->Id_users ?>">Supprimer</a>
+                    <a class="deleteClient <?= $employee->Id_users ?>">Supprimer</a>
                     </div>
                     <div class="containerButton flexCenterCenter">
-                        <a href="/dashboard/profil-employee?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le salarié</a>
+                        <a href="/dashboard/profil-employee?id=<?= $employee->Id_users ?>&amp;modify=true">Modifier le salarié</a>
                     </div>
                 </div>
-                <?php endforeach; ?>
             <?php endif; ?>
         </div>
         <div class="containerForm">
@@ -51,7 +49,7 @@
                                 <a href="/public/uploads/<?= $invoice->Id_users ?>/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
                                 <p class="clampMessage"><?= str_replace('_', ' ', $invoice->url)  ?> </p><i class="fa-solid fa-check <?= ($invoice->state == 0) ? 'bad' : 'good' ;?>"></i>
                                 <div class="containerMore flexCenterCenter">
-                                    <a class="moreInformations <?= $invoice->url ?>  <?= $information->Id_users ?> <?= $invoice->state ?> <?= $invoice->Id_bills ?>">Voir plus</a>
+                                    <a class="moreInformations <?= $invoice->url ?>  <?= $invoice->Id_users ?> <?= $invoice->state ?> <?= $invoice->Id_bills ?>">Voir plus</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>

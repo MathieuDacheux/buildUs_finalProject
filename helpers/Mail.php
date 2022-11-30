@@ -10,9 +10,11 @@ class Mail {
      */
     public static function validationAccount (string $email, string $firstname, string $lastname) :bool {
         $to = $email;
+        $domain = $_SERVER['HTTP_HOST'];
+        var_dump($domain);
         $subject = 'Bienvenue sur BuildUs, votre dashboard est prêt !';
         $message = 'Bonjour '.$firstname.' '.$lastname.',
-        Votre compte a bien été créé, il vous faut l\'activer en cliquant sur le lien ci-dessous : http://buildus.localhost/connexion?token='.JWT::createToken().' 
+        Votre compte a bien été créé, il vous faut l\'activer en cliquant sur le lien ci-dessous : http://'.$_SERVER['HTTP_HOST'].'/connexion?token='.JWT::createToken().' 
         A bientôt sur BuildUs !';
         $headers = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
         'Reply-To: contact@buildus.fr' . "\r\n" .
@@ -26,9 +28,11 @@ class Mail {
      */
     public static function resetPassword (string $email, int $id) :bool {
         $to = $email;
+        // Use the current url to get the domain name
+        
         $subject = 'Réinitialisation de votre mot de passe';
         $message = 'Bonjour,
-        Vous avez demandé à réinitialiser votre mot de passe, il vous faut le modifier en cliquant sur le lien ci-dessous : http://buildus.localhost/reinitialiser?token='.JWT::createToken($id).'
+        Vous avez demandé à réinitialiser votre mot de passe, il vous faut le modifier en cliquant sur le lien ci-dessous : http://'.$_SERVER['HTTP_HOST'].'/reinitialiser?token='.JWT::createToken($id).'
         A bientôt sur BuildUs !';
         $headers = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
         'Reply-To: contact@buildus.fr' . "\r\n" .
@@ -39,7 +43,7 @@ class Mail {
     public static function sendInvoice (string $email, string $url, int $id) :bool {
         $to = $email;
         $token = JWT::createToken($id);
-        $link = 'http://buildus.localhost/dashboard/download?token='.$token.'&'.'file='.$url;
+        $link = 'http://'.$_SERVER['HTTP_HOST'].'/download?token='.$token.'&'.'file='.$url;
         $subject = 'Votre facture BuildUs';
         $message = 'Bonjour, 
         Vous trouverez ci-joint votre facture BuildUs : '.$link.'

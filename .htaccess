@@ -41,4 +41,4 @@ Rewriterule ^dashboard/rappels controllers/dashboard/todosController.php
 Rewriterule ^dashboard/calendrier controllers/dashboard/calendarController.php
 
 # Redirection Page des vérifications mail
-Rewriterule ^dashboard/download controllers/dashboard/verifyEmailController.php
+Rewriterule ^download controllers/dashboard/verifyEmailController.php

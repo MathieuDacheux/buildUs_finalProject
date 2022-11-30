@@ -96,13 +96,12 @@
                         if (isset($_GET['pdf'])) {
                             $idPDF = intval(trim(filter_input(INPUT_GET, 'pdf', FILTER_SANITIZE_NUMBER_INT)));
                             if (Invoice::isExist($idPDF, $id) == true) {
-                                unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/'.Invoice::getOne($idPDF, $id).'.pdf');
-                                Invoice::delete($idPDF, $id);
-                                header('Location: /dashboard/profil-client?id='.$id);
-                                exit();
+                                if (unlink($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$id.'/'.Invoice::getOne($idPDF, $id).'.pdf')) {
+                                    Invoice::delete($idPDF, $id);
+                                    $success = 'Le document a bien été supprimé';
+                                }
                             } else {
-                                header('Location: /dashboard/profil-client?id='.$id);
-                                exit();
+                                $error = 'Le fichier n\'existe pas';
                             }
                         }
                     } else {
@@ -181,13 +180,13 @@
                     $update = intval(trim(filter_input(INPUT_GET, 'update', FILTER_SANITIZE_NUMBER_INT)), 10);
                     if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idGet.'/'.$urlFile.'.pdf')) {
                         if ($update == 0) {
-                            Invoice::update($idGet, $urlFile, 0);
-                            header('Location: /dashboard/profil-client?id='.$idGet);
-                            exit();
+                            if (Invoice::update($idGet, $urlFile, 0))
+                            $success = 'Document mis à jour';
                         } else if ($update == 1) {
-                            Invoice::update($idGet, $urlFile, 1);
-                            header('Location: /dashboard/profil-client?id='.$idGet);
-                            exit();
+                            if (Invoice::update($idGet, $urlFile, 1))
+                            $success = 'Document mis à jour';
+                        } else {
+                            $error = 'Une erreur est survenue';
                         }
                     } else {
                         header('Location: /dashboard/profil-client?id='.$id);
@@ -200,10 +199,10 @@
                     $urlFile = trim(filter_input(INPUT_GET, 'send', FILTER_SANITIZE_SPECIAL_CHARS));
                     $idUser = intval(trim(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT)), 10);
                     $idPDF = intval(trim(filter_input(INPUT_GET, 'idPDF', FILTER_SANITIZE_NUMBER_INT)), 10);
+                    $idUserInformations= Client::get($created, $idUser);
                     if (file_exists($_SERVER['DOCUMENT_ROOT'].'/public/uploads/'.$idUser.'/'.$urlFile.'.pdf')) {
-                        if(Mail::sendInvoice('dchxmathieu@gmail.com', $urlFile, $idPDF)) {
-                            header('Location: /dashboard/profil-client?id='.$idUser);
-                            exit();
+                        if(Mail::sendInvoice($idUserInformations->email, $urlFile, $idPDF)) {
+                            $success = 'Facture envoyée';
                         }
                     } else {
                         header('Location: /dashboard/profil-client?id='.$id);

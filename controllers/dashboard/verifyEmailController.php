@@ -28,8 +28,11 @@
                 header('Content-Length: ' . filesize($link));
                 readfile($link);
                 exit;
+            } else {
+                header('Location: /accueil');    
             }
+        } else {
+            header('Location: /accueil');
         }
     }
-
-
+ 

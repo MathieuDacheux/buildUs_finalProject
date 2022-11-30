@@ -115,21 +115,24 @@ class Client extends User {
 
     /**
      * Récupération d'un client ou d'un seul
-     * @return array
+     * @return array|object
      */
-    public static function get (int $idCreator ,int $id = 0) :array {
+    public static function get (int $idCreator ,int $id = 0) :array|object {
         $databaseConnection = Database::getConnection();
         if ($id == 0) {
             $sql = 'SELECT `firstname`, `lastname`, `Id_users` FROM `users` WHERE `Id_role` = 3 and `created_by` = :created ORDER BY `Id_users` DESC LIMIT 5 ;';
             $query = $databaseConnection->prepare($sql);
+            $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
         } else {
             $sql = 'SELECT `firstname`, `lastname`, `Id_users`, `email`, `phone`, `siret`, `adress` FROM `users` WHERE `Id_role` = 3 and `created_by` = :created AND `Id_users` = :id';
             $query = $databaseConnection->prepare($sql);
+            $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
             $query->bindValue(':id', $id, PDO::PARAM_INT);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_OBJ);
         }
-        $query->bindValue(':created', $idCreator, PDO::PARAM_INT);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 

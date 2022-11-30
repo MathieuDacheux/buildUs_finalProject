@@ -5,38 +5,36 @@
                 <h3 class="titleColor">Information du client</h3>
             </div>
             <?php if (isset($client)) : ?>
-                <?php foreach($client as $information) : ?>
                 <div class="containerContent">
                     <div class="containerName">
                         <p>
-                            <?= $information->lastname ?>
+                            <?= $client->lastname ?>
                         </p>
                         <p>
-                            <?= $information->firstname ?>
+                            <?= $client->firstname ?>
                         </p>
                     </div>
-                    <a href="mailto:<?= $information->email ?>">
-                        <?= $information->email ?>
+                    <a href="mailto:<?= $client->email ?>">
+                        <?= $client->email ?>
                     </a>
-                    <a href="tel:<?= $information->phone ?>">
-                        <?= $information->phone ?>
+                    <a href="tel:<?= $client->phone ?>">
+                        <?= $client->phone ?>
                     </a>
                     <p>
-                        <?= $information->siret ?>
+                        <?= $client->siret ?>
                     </p>
                     <p>
-                        <?= $information->adress ?>
+                        <?= $client->adress ?>
                     </p>
                 </div>
                 <div class="containerButtons flexCenterAround">
                     <div class="containerButton flexCenterCenter">
-                        <a class="deleteClient <?= $information->Id_users ?>">Supprimer</a>
+                        <a class="deleteClient <?= $client->Id_users ?>">Supprimer</a>
                     </div>
                     <div class="containerButton flexCenterCenter">
-                        <a href="/dashboard/profil-client?id=<?= $information->Id_users ?>&amp;modify=true">Modifier le client</a>
+                        <a href="/dashboard/profil-client?id=<?= $client->Id_users ?>&amp;modify=true">Modifier le client</a>
                     </div>
                 </div>
-                <?php endforeach; ?>
             <?php endif; ?>
         </div>
         <div class="containerForm">
@@ -51,7 +49,7 @@
                                 <a href="/public/uploads/<?= $invoice->Id_users ?>/<?= $invoice->url ?>.pdf" download><i class="fa-regular fa-file-pdf"></i></a>
                                 <p class="clampMessage"><?= str_replace('_', ' ', $invoice->url)  ?> </p><i class="fa-solid fa-check <?= ($invoice->state == 0) ? 'bad' : 'good' ;?>"></i>
                                 <div class="containerMore flexCenterCenter">
-                                    <a class="moreInformations <?= $invoice->url ?>  <?= $information->Id_users ?> <?= $invoice->state ?> <?= $invoice->Id_bills ?>">Voir plus</a>
+                                    <a class="moreInformations <?= $invoice->url ?>  <?= $invoice->Id_users ?> <?= $invoice->state ?> <?= $invoice->Id_bills ?>">Voir plus</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>

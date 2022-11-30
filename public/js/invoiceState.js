@@ -11,11 +11,16 @@ const containerContent = document.querySelector('.containerRecap');
 /******************************** *********************************/
 
 const showResult = () => {
+    // Recupération du host
+    let host = window.location.host;
+    // Verifie si le href contient le mot 'client' ou 'employe'
+    let who = window.location.href.includes('client') ? 'client' : 'employe';
+    // Récupération de la premiere variable get
+    let idTarget = window.location.href.split('?')[1].split('&')[0].split('=')[1];
     containerContent.style.opacity = '0.5';
     setTimeout(() => {
         containerContent.style.opacity = '1';
-        // Relocation to the same page
-        window.location.href = window.location.href;
+        window.location.href = `http://${host}/dashboard/profil-${who}?id=${idTarget}`;
     }, 1000);
 };
 
