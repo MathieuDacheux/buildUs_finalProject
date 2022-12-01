@@ -4,80 +4,115 @@ require_once(__DIR__.'/../helpers/Database.php');
 
 class Event {
 
-    private int $id;
+    private string $title;
     private string $start_at;
-    private string|null $end_at;
-    private string|null $description;
-
+    private string $end_at;
+    private bool $allDay;
+    private int $created;
+    
     /**
-     * Constructeur
-     * @param int $id
+     * @param string $title
      * @param string $start_at
-     * @param string|null $end_at
-     * @param int|null $description
+     * @param string $end_at
+     * @param bool $allDay
+     * @param int $created
      */
-    public function __construct (int $id, string $start_at, string $end_at = null, int $description = null) {
-        $this->id = $id;
+    public function __construct (string $title, string $start_at, string $end_at, bool $allDay, int $created) {
+        $this->title = $title;
         $this->start_at = $start_at;
         $this->end_at = $end_at;
-        $this->description = $description;
+        $this->allDay = $allDay;
+        $this->created = $created;
     }
 
     /**
-     * Retourne l'ID de l'utilisateur qui a crée l'évènement
-     * @return int
-     */
-    public function getId () : int {
-        return $this->id;
-    }
-
-    /**
-     * Retourne la date de début de l'évènement
+     * Retourne le titre de l'événement
      * @return string
      */
-    public function getStartAt () : string {
+    public function getTittle () : string {
+        return $this->title;
+    }
+
+    /**
+     * Retourne la date de début de l'événement
+     * @return string
+     */
+    public function getStart_at () :string {
         return $this->start_at;
     }
 
     /**
-     * Retourne la date de fin de l'évènement
+     * Retourne la date de fin de l'événement
      * @return string
      */
-    public function getEndAt () : string {
+    public function getEnd_at () :string {
         return $this->end_at;
     }
 
     /**
-     * Retourne la description de l'évènement
-     * @return int
+     * Retourne si l'événement est sur toute la journée
+     * @return bool
      */
-    public function getDescription () : int {
-        return $this->description;
+    public function getAllDay () :bool {
+        return $this->allDay;
     }
 
-    /****************************** ******************************/
-    /*************************** CREATE **************************/
-    /****************************** ******************************/
+    /**
+     * Retourne l'ID du créateur de l'événement
+     * @return int
+     */
+    public function getIdAuthor () :int {
+        return $this->created;
+    }
 
-    public function add () : bool {
+    /********************************* *********************************/
+    /***************************** CREATE ******************************/
+    /********************************* *********************************/
+
+    public static function isExist (int $id) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->query('INSERT INTO `events` (`start_at`, `end_at`, `description`, `Id_users` ) VALUES (:start_at, :end_at, :description, :id) ;');
-        $query->bindValue(':start_at', $this->getStartAt(), PDO::PARAM_STR);
-        $query->bindValue(':end_at', $this->getEndAt(), PDO::PARAM_STR);
-        $query->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
-        $query->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        $query = $databaseConnection->prepare('SELECT * FROM `events` WHERE `Id_events` = :id');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result ? true : false;
+    }
+
+    public function add () :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('INSERT INTO `events` (title, start_at, end_at, all_day, Id_users) VALUES (:title, :start_at, :end_at, :allDay, :created)');
+        $query->bindValue(':title', $this->title, PDO::PARAM_STR);
+        $query->bindValue(':start_at', $this->start_at, PDO::PARAM_STR);
+        $query->bindValue(':end_at', $this->end_at, PDO::PARAM_STR);
+        $query->bindValue(':allDay', $this->allDay, PDO::PARAM_BOOL);
+        $query->bindValue(':created', $this->created, PDO::PARAM_INT);
         return $query->execute();
     }
 
-    /****************************** ******************************/
-    /*************************** READ ***************************/
-    /****************************** ******************************/
+    /********************************* *********************************/
+    /***************************** READ ********************************/
+    /********************************* *********************************/
 
-    public static function get (int $id) : array {
+    public static function get ($created) :array {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->query('SELECT * FROM `events` WHERE `Id_users` = :id');
-        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        $query = $databaseConnection->prepare('SELECT `Id_events`, `title`, `start_at`, `end_at`, `all_day` FROM `events` WHERE `Id_users` = :created');
+        $query->bindValue(':created', $created, PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    /********************************* *********************************/
+    /***************************** UPDATE ******************************/
+    /********************************* *********************************/
+
+    /********************************* *********************************/
+    /***************************** DELETE ******************************/
+    /********************************* *********************************/
+
+    public static function delete ($id) :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('DELETE FROM `events` WHERE `Id_events` = :id');
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        return $query->execute();
     }
 }

@@ -38,14 +38,42 @@
 
                 // Actions effectuées si la méthode est en POST
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    // Filtrage des données 
-                    $start_at = trim(filter_input(INPUT_POST, 'event', FILTER_SANITIZE_SPECIAL_CHARS));
-                    
-                    $event = new Event($created, $start_at);
-                    if ($event->add() == true) {
-                        $registerConfirmation = true;
-                    } else {
-                        $registerConfirmation = false;
+                    $whichForm = intval(trim(filter_input(INPUT_POST, 'whichForm', FILTER_SANITIZE_NUMBER_INT)), 10);
+
+                    // Formulaire d'ajout d'événement
+                    if ($whichForm == 1) {
+                        // Filtrage des données
+                        $titleEvent = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+                        // Date de début
+                        $start_at = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_SPECIAL_CHARS);
+                        // Suppression la partie entre les parenthèses
+                        $start_at = preg_replace('/\([^)]+\)/', '', $start_at);
+                        // Changement du format de date
+                        $start_at = new DateTime($start_at, new DateTimeZone('Europe/Paris'));
+                        $start_at = $start_at->format('Y-m-d H:i:s');
+                        // Date de fin
+                        $end_at = filter_input(INPUT_POST, 'end', FILTER_SANITIZE_SPECIAL_CHARS);
+                        // Suppression la partie entre les parenthèses
+                        $end_at = preg_replace('/\([^)]+\)/', '', $end_at);
+                        // Changement du format de date
+                        $end_at = new DateTime($end_at, new DateTimeZone('Europe/Paris'));
+                        $end_at = $end_at->format('Y-m-d H:i:s');
+                        // Journée entière
+                        $allDay = filter_input(INPUT_POST, 'allDay', FILTER_SANITIZE_SPECIAL_CHARS) == 'true' ? true : false;
+                        if (validationInput($start_at, REGEX_DATE) == true && validationInput($end_at, REGEX_DATE) == true) {
+                            // Instanciation de l'objet Event
+                            $event = new Event($titleEvent, $start_at, $end_at, $allDay, $created);
+                            // Ajout de l'événement
+                            $event->add();
+                        }
+
+                    // Formulaire de suppression d'événement
+                    } else if ($whichForm == 2) {
+                        // Filtrage des données
+                        $idEvent = intval(trim(filter_input(INPUT_POST, 'idEvent', FILTER_SANITIZE_NUMBER_INT)), 10);
+                        if (Event::isExist($idEvent)) {
+                            Event::delete($idEvent);
+                        }
                     }
                 }
             }
