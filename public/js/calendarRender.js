@@ -58,12 +58,36 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         }
         calendar.unselect()
     },
+    // Update event when drag and drop
+    eventDrop: function (arg) {
+        const data = {
+            idEvent: arg.event.id,
+            start: arg.event.start,
+            end: arg.event.end,
+            whichForm: 2
+        };
+        // Put the data into a form and send it
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '';
+        for (const name in data) {
+            if (data.hasOwnProperty(name)) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                input.value = data[name];
+                form.appendChild(input);
+            }
+        }
+        document.body.appendChild(form);
+        form.submit();
+    },
     // Delete event
     eventClick: function (arg) {
         if (confirm('Voulez-vous supprimer cet événement ?')) {
             const data = {
                 idEvent: arg.event.id,
-                whichForm: 2
+                whichForm: 3
             };
             // Put the data into a form and send it
             const form = document.createElement('form');

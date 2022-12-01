@@ -40,9 +40,8 @@
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $whichForm = intval(trim(filter_input(INPUT_POST, 'whichForm', FILTER_SANITIZE_NUMBER_INT)), 10);
 
-                    // Formulaire d'ajout d'événement
                     if ($whichForm == 1) {
-                        // Filtrage des données
+                        // Formulaire d'ajout d'événement
                         $titleEvent = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
                         // Date de début
                         $start_at = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -66,10 +65,28 @@
                             // Ajout de l'événement
                             $event->add();
                         }
-
-                    // Formulaire de suppression d'événement
                     } else if ($whichForm == 2) {
-                        // Filtrage des données
+                        // Formulaire de modification d'événement
+                        $idEvent = intval(trim(filter_input(INPUT_POST, 'idEvent', FILTER_SANITIZE_NUMBER_INT)), 10);
+                        // Date de début
+                        $start_at = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_SPECIAL_CHARS);
+                        // Suppression la partie entre les parenthèses
+                        $start_at = preg_replace('/\([^)]+\)/', '', $start_at);
+                        // Changement du format de date
+                        $start_at = new DateTime($start_at, new DateTimeZone('Europe/Paris'));
+                        $start_at = $start_at->format('Y-m-d H:i:s');
+                        // Date de fin
+                        $end_at = filter_input(INPUT_POST, 'end', FILTER_SANITIZE_SPECIAL_CHARS);
+                        // Suppression la partie entre les parenthèses
+                        $end_at = preg_replace('/\([^)]+\)/', '', $end_at);
+                        // Changement du format de date
+                        $end_at = new DateTime($end_at, new DateTimeZone('Europe/Paris'));
+                        $end_at = $end_at->format('Y-m-d H:i:s');
+                        if (Event::isExist($idEvent)) {
+                            Event::update($start_at, $end_at, $idEvent);
+                        }
+                    } else if ($whichForm == 3) {
+                        // Formulaire de suppression d'événement
                         $idEvent = intval(trim(filter_input(INPUT_POST, 'idEvent', FILTER_SANITIZE_NUMBER_INT)), 10);
                         if (Event::isExist($idEvent)) {
                             Event::delete($idEvent);

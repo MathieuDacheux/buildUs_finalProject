@@ -105,6 +105,15 @@ class Event {
     /***************************** UPDATE ******************************/
     /********************************* *********************************/
 
+    public static function update (string $start, string $end, int $id) :bool {
+        $databaseConnection = Database::getConnection();
+        $query = $databaseConnection->prepare('UPDATE `events` SET `start_at` = :start_at, `end_at` = :end_at WHERE `Id_events` = :id');
+        $query->bindValue(':start_at', $start, PDO::PARAM_STR);
+        $query->bindValue(':end_at', $end, PDO::PARAM_STR);
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+        return $query->execute();
+    }
+
     /********************************* *********************************/
     /***************************** DELETE ******************************/
     /********************************* *********************************/
