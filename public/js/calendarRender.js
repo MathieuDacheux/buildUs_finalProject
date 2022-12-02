@@ -8,36 +8,71 @@ const showModal = (start, end, allDay) => {
     calendarEl.style.opacity = '0.5';
     formContainer.classList.remove('hidden');
     formContainer.classList.add('formContentCss');
+    // Changement du format de date
     let date = new Date(start);
-    // change le format de la date en d-m-Y
-    let dateStart = date.getDate() + '/' + date.getMonth();  
-    formContainer.innerHTML = `<div class="formContainer">
+    // Changement de la date en dd/mm/yyyy
+    let dateTitle = date.getDate() + '/' + (date.getMonth()) + '/' + date.getFullYear();
+    // Change the format of the date for datetime-local input
+    let dateStart = new Date(date.setDate(date.getDate() + 1)).toISOString().slice(0, 10) + 'T08:00';
+    // Changement du format de date
+    date = new Date(end);
+    // Change the format of the date for datetime-local input
+    let dateEnd = date.toISOString().slice(0, 10) + 'T17:00';
+    formContainer.innerHTML = ` <div class="formContainer">
                                     <div class="formContentTitle flexCenterCenter">
-                                        <div class="containerAdd flexCenterCenter">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </div>
-                                        <h3>Nouvel événement le ${dateStart}</h3>
+                                        <h3>Nouvel événement le ${dateTitle}</h3>
                                     </div>
                                     <div class="formAddEvent flexCenterCenterColumn">
-                                        <input type="text" name="title" placeholder="Titre de l'événement">
-                                        <input type="checkbox" name="allDay" value="${allDay}">
-                                        <input type="hidden" name="start" value="${start}">
-                                        <div class="containerButton">
-                                            <button class="addEventButton">Ajouter</button>
+                                        <div class="containerInput flexCenterCenter">
+                                            <label for="allDay">Journée entière :</label>
+                                            <input type="checkbox" name="allDay" id="allDay" value="false">
+                                        </div>
+                                        <div class="containerInput flexCenterCenterColumn">
+                                            <label for="title" class="titleLabel">Titre de l'événement :</label>
+                                            <input type="text" name="title">
+                                        </div>
+                                        <div class="containerInputDate flexCenterCenterColumn">
+                                            <label for="start" class="titleLabel">Début :</label>
+                                            <input type="datetime-local" name="start" value="${dateStart}">
+                                        </div>
+                                        <div class="containerInputDate flexCenterCenterColumn">
+                                            <label for="end" class="titleLabel">Fin :</label>
+                                            <input type="datetime-local" name="end" value="${dateEnd}">
                                         </div>
                                     </div>
+                                    <div class="containerButton">
+                                        <button class="addEventButton">Ajouter</button>
+                                        <button class="cancelButton">Annuler</button>
+                                    </div>
                                 </div>`;
-    if (document.querySelector('input[name="allDay"]').addEventListener('click', () => {
-        let allDay = document.querySelector('input[name="allDay"]');
-        allDay.value = (allDay.value == 'true') ? 'true' : 'false';
-        if (allDay.value)
-    }));
-    if (document.querySelector('.fa-xmark').addEventListener('click', () => {
+    const allDayCheckbox = document.querySelector('#allDay');
+    const containerInputDate = document.querySelectorAll('.containerInputDate');
+    allDayCheckbox.addEventListener('change', () => {
+        if (allDayCheckbox.checked) {
+            allDayCheckbox.value = 'true';
+            containerInputDate.forEach((container) => {
+                container.children[1].setAttribute('disabled', 'disabled'); 
+            });
+            // Change the value inside the input
+            containerInputDate[0].children[1].value = dateStart.slice(0, 10) + 'T00:00';
+            containerInputDate[1].children[1].value = dateEnd.slice(0, 10) + 'T23:59';
+        } else {
+            allDayCheckbox.value = 'false';
+            containerInputDate.forEach((container) => {
+                container.children[1].removeAttribute('disabled');
+            });
+            // Change the value inside the input
+            containerInputDate[0].children[1].value = dateStart;
+            containerInputDate[1].children[1].value = dateEnd;
+        }
+    });
+    const cancelButton = document.querySelector('.cancelButton');
+    cancelButton.addEventListener('click', () => {
         formContainer.classList.add('hidden');
         formContainer.classList.remove('formContentCss');
-        calendarEl.style.opacity = '1';
         formContainer.innerHTML = '';
-    }));
+        calendarEl.style.opacity = '1';
+    });
 };
 
 // Création d'un calendrier FullCalendar
@@ -72,17 +107,28 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         showModal(arg.start, arg.end, arg.allDay);
         // var title = prompt('Titre de l\'événement:');
         if (document.querySelector('.addEventButton').addEventListener('click', () => {
-            const data = {
-                title: document.querySelector('input[name="title"]').value,
-                start: document.querySelector('input[name="start"]').value,
-                end: document.querySelector('input[name="end"]').value,
-                allDay: document.querySelector('input[name="allDay"]').value,
-                whichForm: 1
-            };
+            let data = {};
+            if (document.querySelector('input[name="allDay"]').value == 'false') {
+                data = {
+                    title: document.querySelector('input[name="title"]').value,
+                    start: document.querySelector('input[name="start"]').value,
+                    end: document.querySelector('input[name="end"]').value,
+                    allDay: false,
+                    whichForm: 1
+                };
+            } else {
+                data = {
+                    title: document.querySelector('input[name="title"]').value,
+                    start: document.querySelector('input[name="start"]').value,
+                    end: document.querySelector('input[name="end"]').value,
+                    allDay: true,
+                    whichForm: 1
+                };
+            }
+            console.log(data);
             // Put the data into a form and send it
             const form = document.createElement('form');
             form.method = 'POST';
-            form.action = '';
             for (const name in data) {
                 if (data.hasOwnProperty(name)) {
                     const input = document.createElement('input');
@@ -156,13 +202,16 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
                         start: item.start_at,
                         end: item.end_at,
                         allDay: 'true',
-                        id: item.Id_events
+                        id: item.Id_events,
+                        backgroundColor: '#5275EC',
                     })
                 } else {
                     calendar.addEvent({
                         title: item.title,
                         start: item.start_at,
                         end: item.end_at,
+                        id: item.Id_events,
+                        backgroundColor: '#7D97F1',
                     })
                 }
 

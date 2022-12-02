@@ -9,6 +9,7 @@ main {
 #calendar {
     width: 95%;
     height: 95%;
+    transition: .3s ease;
 }
 
 /* Formulaire d'ajout d'événements */
@@ -16,7 +17,7 @@ main {
 .formContentCss {
     position: absolute;
     width: 300px;
-    height: 125px;
+    height: 350px;
     z-index: 2;
 }
 
@@ -32,66 +33,73 @@ main {
 }
 
 .formContentTitle {
-    height: 50%;
+    height: 20%;
     width: 100%;
-    padding: .5rem;
-    position: relative;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.containerAdd {
-    position: absolute;
-    right: 15px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--primary80);
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.containerAdd i {
-    font-size: 1.25rem;
-    color: var(--black0);
-}
-
 .formAddEvent {
-    height: 50%;
+    height: 60%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.formAddEvent input:first-child {
-    height: 30px;
-    width: 70%;
+label[for="allDay"] {
     margin-right: 1rem;
-    border-radius: 5px;
-    border: 2px solid var(--black40);
-    color: var(--black100);
 }
 
-.formAddEvent input::placeholder {
-    color: var(--black80);
+.formAddEvent:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.formAddEvent input:focus {
-    outline: none;
-    border: 2px solid var(--primary60);
+.containerInput, .containerInputDate {
+    height: 100%;
+    width: 100%;
 }
 
+.formAddEvent:nth-child(2), .formAddEvent:nth-child(3) {
+    margin-bottom: .5rem;
+}
 
-.formAddEvent button:last-child {
-    height: 30px;
-    width: 30px;
-    background-color: var(--primary80);
+.titleLabel {
+    margin-top: .25rem;
+}
+
+.containerButton {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addEventButton, .cancelButton {
     color: var(--black0);
-    font-size: 1.25rem;
-    border: 0px;
+    background-color: var(--primary80);
+    padding: .5rem .5rem ;
+    font-size: 1rem;
+    text-align: center;
     border-radius: 5px;
-    cursor: pointer;
+    border: 0px;
+}
+
+.addEventButton {
+    margin-right: 1rem;
+}
+
+input[type="text"], input[type="datetime-local"] {
+    width: 80%;
+    border: 1px solid var(--hr);
+    border-radius: 5px;
+    padding: .5rem;
 }
 
 @media screen and (min-width: 1000px) {
