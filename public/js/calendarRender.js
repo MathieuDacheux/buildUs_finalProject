@@ -2,44 +2,6 @@
 /****************** Création du FullCalendar.Js *******************/
 /******************************** *********************************/
 
-const formContainer = document.querySelector('.formContent');
-
-const showModal = (start, end, allDay) => {
-    calendarEl.style.opacity = '0.5';
-    formContainer.classList.remove('hidden');
-    formContainer.classList.add('formContentCss');
-    let date = new Date(start);
-    // change le format de la date en d-m-Y
-    let dateStart = date.getDate() + '/' + date.getMonth();  
-    formContainer.innerHTML = `<div class="formContainer">
-                                    <div class="formContentTitle flexCenterCenter">
-                                        <div class="containerAdd flexCenterCenter">
-                                            <i class="fa-solid fa-xmark"></i>
-                                        </div>
-                                        <h3>Nouvel événement le ${dateStart}</h3>
-                                    </div>
-                                    <div class="formAddEvent flexCenterCenterColumn">
-                                        <input type="text" name="title" placeholder="Titre de l'événement">
-                                        <input type="checkbox" name="allDay" value="${allDay}">
-                                        <input type="hidden" name="start" value="${start}">
-                                        <div class="containerButton">
-                                            <button class="addEventButton">Ajouter</button>
-                                        </div>
-                                    </div>
-                                </div>`;
-    if (document.querySelector('input[name="allDay"]').addEventListener('click', () => {
-        let allDay = document.querySelector('input[name="allDay"]');
-        allDay.value = (allDay.value == 'true') ? 'true' : 'false';
-        if (allDay.value)
-    }));
-    if (document.querySelector('.fa-xmark').addEventListener('click', () => {
-        formContainer.classList.add('hidden');
-        formContainer.classList.remove('formContentCss');
-        calendarEl.style.opacity = '1';
-        formContainer.innerHTML = '';
-    }));
-};
-
 // Création d'un calendrier FullCalendar
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -69,14 +31,13 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
 
     // Create new event in FullDay
     select: function (arg) {
-        showModal(arg.start, arg.end, arg.allDay);
-        // var title = prompt('Titre de l\'événement:');
-        if (document.querySelector('.addEventButton').addEventListener('click', () => {
+        var title = prompt('Titre de l\'événement:');
+        if (title) {
             const data = {
-                title: document.querySelector('input[name="title"]').value,
-                start: document.querySelector('input[name="start"]').value,
-                end: document.querySelector('input[name="end"]').value,
-                allDay: document.querySelector('input[name="allDay"]').value,
+                title: title,
+                start: arg.start,
+                end: arg.end,
+                allDay: arg.allDay,
                 whichForm: 1
             };
             // Put the data into a form and send it
@@ -94,8 +55,8 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
             }
             document.body.appendChild(form);
             form.submit();
-            calendar.unselect()
-        }));
+        }
+        calendar.unselect()
     },
     // Update event when drag and drop
     eventDrop: function (arg) {
