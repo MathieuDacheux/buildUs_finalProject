@@ -41,6 +41,7 @@
                     $whichForm = intval(trim(filter_input(INPUT_POST, 'whichForm', FILTER_SANITIZE_NUMBER_INT)), 10);
 
                     if ($whichForm == 1) {
+                        
                         // Formulaire d'ajout d'événement
                         $titleEvent = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
                         // Date de début
