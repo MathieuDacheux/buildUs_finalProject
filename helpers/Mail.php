@@ -14,7 +14,7 @@ class Mail {
         var_dump($domain);
         $subject = 'Bienvenue sur BuildUs, votre dashboard est prêt !';
         $message = 'Bonjour '.$firstname.' '.$lastname.',
-        Votre compte a bien été créé, il vous faut l\'activer en cliquant sur le lien ci-dessous : '.$_SERVER['HTTP_ORIGIN'].'/connexion?token='.JWT::createToken().' 
+        Votre compte a bien été créé, il vous faut l\'activer en cliquant sur le lien ci-dessous : http://'.$_SERVER['HTTP_HOST'].'/connexion?token='.JWT::createToken().' 
         A bientôt sur BuildUs !';
         $headers = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
         'Reply-To: contact@buildus.fr' . "\r\n" .
@@ -32,7 +32,7 @@ class Mail {
         
         $subject = 'Réinitialisation de votre mot de passe';
         $message = 'Bonjour,
-        Vous avez demandé à réinitialiser votre mot de passe, il vous faut le modifier en cliquant sur le lien ci-dessous : '.$_SERVER['HTTP_ORIGIN'].'/reinitialiser?token='.JWT::createToken($id).'
+        Vous avez demandé à réinitialiser votre mot de passe, il vous faut le modifier en cliquant sur le lien ci-dessous : http://'.$_SERVER['HTTP_HOST'].'/reinitialiser?token='.JWT::createToken($id).'
         A bientôt sur BuildUs !';
         $headers = 'From: BuildUs < contact@buildus.fr >' . "\r\n" .
         'Reply-To: contact@buildus.fr' . "\r\n" .
@@ -43,7 +43,7 @@ class Mail {
     public static function sendInvoice (string $email, string $url, int $id) :bool {
         $to = $email;
         $token = JWT::createToken($id);
-        $link = $_SERVER['HTTP_ORIGIN'].'/download?token='.$token.'&'.'file='.$url;
+        $link = 'http://'.$_SERVER['HTTP_HOST'].'/download?token='.$token.'&'.'file='.$url;
         $subject = 'Votre facture BuildUs';
         $message = 'Bonjour, 
         Vous trouverez ci-joint votre facture BuildUs : '.$link.'
@@ -53,5 +53,4 @@ class Mail {
         'X-Mailer: PHP/' . phpversion();
         return (mail($to, $subject, $message, $header)) ? true : false;
     }
-    
 }

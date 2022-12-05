@@ -41,7 +41,6 @@
                     $whichForm = intval(trim(filter_input(INPUT_POST, 'whichForm', FILTER_SANITIZE_NUMBER_INT)), 10);
 
                     if ($whichForm == 1) {
-                        
                         // Formulaire d'ajout d'événement
                         $titleEvent = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
                         // Date de début
@@ -67,8 +66,10 @@
                             $event->add();
                         }
                     } else if ($whichForm == 2) {
-                        // Formulaire de modification d'événement
+                        // ID de l'événement
                         $idEvent = intval(trim(filter_input(INPUT_POST, 'idEvent', FILTER_SANITIZE_NUMBER_INT)), 10);
+                        // Titre de l'événement
+                        $titleEvent = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
                         // Date de début
                         $start_at = filter_input(INPUT_POST, 'start', FILTER_SANITIZE_SPECIAL_CHARS);
                         // Suppression la partie entre les parenthèses
@@ -76,15 +77,25 @@
                         // Changement du format de date
                         $start_at = new DateTime($start_at, new DateTimeZone('Europe/Paris'));
                         $start_at = $start_at->format('Y-m-d H:i:s');
+                        $allDay = filter_input(INPUT_POST, 'allDay', FILTER_SANITIZE_SPECIAL_CHARS) == 'true' ? true : false;
                         // Date de fin
                         $end_at = filter_input(INPUT_POST, 'end', FILTER_SANITIZE_SPECIAL_CHARS);
-                        // Suppression la partie entre les parenthèses
-                        $end_at = preg_replace('/\([^)]+\)/', '', $end_at);
-                        // Changement du format de date
-                        $end_at = new DateTime($end_at, new DateTimeZone('Europe/Paris'));
-                        $end_at = $end_at->format('Y-m-d H:i:s');
+                        if ($end_at == "") {
+                            // end_at devient start_at avec une heure de 23h59
+                            $end_at = new DateTime($start_at, new DateTimeZone('Europe/Paris'));
+                            $end_at->setTime(23, 59, 59);
+                            $end_at = $end_at->format('Y-m-d H:i:s');
+                        } else {
+                            $end_at = preg_replace('/\([^)]+\)/', '', $end_at);
+                            $end_at = new DateTime($end_at, new DateTimeZone('Europe/Paris'));
+                            $end_at = $end_at->format('Y-m-d H:i:s');
+                        }
                         if (Event::isExist($idEvent)) {
-                            Event::update($start_at, $end_at, $idEvent);
+                            if ($allDay == true) {
+                                Event::update($titleEvent ,$start_at, $end_at, $idEvent);
+                            } else {
+                                Event::update($titleEvent ,$start_at, $end_at, $idEvent, $allDay);
+                            }
                         }
                     } else if ($whichForm == 3) {
                         // Formulaire de suppression d'événement

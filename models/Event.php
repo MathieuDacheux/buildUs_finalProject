@@ -69,6 +69,11 @@ class Event {
     /***************************** CREATE ******************************/
     /********************************* *********************************/
 
+    /**
+     * @param int $id
+     * 
+     * @return bool
+     */
     public static function isExist (int $id) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('SELECT * FROM `events` WHERE `Id_events` = :id');
@@ -78,6 +83,9 @@ class Event {
         return $result ? true : false;
     }
 
+    /**
+     * @return bool
+     */
     public function add () :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('INSERT INTO `events` (title, start_at, end_at, all_day, Id_users) VALUES (:title, :start_at, :end_at, :allDay, :created)');
@@ -93,7 +101,12 @@ class Event {
     /***************************** READ ********************************/
     /********************************* *********************************/
 
-    public static function get ($created) :array {
+    /**
+     * @param int $created
+     * 
+     * @return array
+     */
+    public static function get (int $created) :array {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('SELECT `Id_events`, `title`, `start_at`, `end_at`, `all_day` FROM `events` WHERE `Id_users` = :created');
         $query->bindValue(':created', $created, PDO::PARAM_INT);
@@ -105,11 +118,20 @@ class Event {
     /***************************** UPDATE ******************************/
     /********************************* *********************************/
 
-    public static function update (string $start, string $end, int $id) :bool {
+    /**
+     * @param string $start
+     * @param string $end
+     * @param int $id
+     * 
+     * @return bool
+     */
+    public static function update (string $title, string $start, string $end, int $id, bool $allDay = true) :bool {
         $databaseConnection = Database::getConnection();
-        $query = $databaseConnection->prepare('UPDATE `events` SET `start_at` = :start_at, `end_at` = :end_at WHERE `Id_events` = :id');
+        $query = $databaseConnection->prepare('UPDATE `events` SET `title` = :title, `start_at` = :start_at, `end_at` = :end_at, `all_day` = :allDay WHERE `Id_events` = :id');
+        $query->bindValue(':title', $title, PDO::PARAM_STR);
         $query->bindValue(':start_at', $start, PDO::PARAM_STR);
         $query->bindValue(':end_at', $end, PDO::PARAM_STR);
+        $query->bindValue(':allDay', $allDay, PDO::PARAM_BOOL);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         return $query->execute();
     }
@@ -118,7 +140,12 @@ class Event {
     /***************************** DELETE ******************************/
     /********************************* *********************************/
 
-    public static function delete ($id) :bool {
+    /**
+     * @param int $id
+     * 
+     * @return bool
+     */
+    public static function delete (int $id) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('DELETE FROM `events` WHERE `Id_events` = :id');
         $query->bindValue(':id', $id, PDO::PARAM_INT);
