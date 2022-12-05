@@ -75,7 +75,7 @@ const showModalInput = (start, end) => {
     });
 };
 
-const showModalRead = (start, end, title) => {
+const showModalRead = (start, end, title, allDay) => {
     calendarEl.style.opacity = '0.5';
     formContainer.classList.remove('hidden');
     formContainer.classList.add('formContentCss');
@@ -88,10 +88,8 @@ const showModalRead = (start, end, title) => {
     // Changement de la date en dd/mm/yyyy
     let dateEnd = dateTimeEnd.getDate() + '/' + (dateTimeEnd.getMonth()) + '/' + dateTimeEnd.getFullYear();
     // Vérification si l'événement est sur une journée entière
-    let allDay = false;
     if (dateEnd == '1/0/1970') {
         dateInputEnd = dateInputStart.slice(0, 10) + 'T23:59';
-        allDay = true;
     } else {
         // Changement du format de date pour datetime-local
         dateInputEnd = new Date(dateTimeEnd.setDate(dateTimeEnd.getDate() + 1)).toISOString().slice(0, 10) + 'T' + dateTimeEnd.toTimeString().slice(0, 5);
@@ -247,9 +245,9 @@ var calendar = new FullCalendar.Calendar(calendarEl, {
         document.body.appendChild(form);
         form.submit();
     },
-    // Delete event
+    // Update and Delete
     eventClick: function (arg) {
-        showModalRead(arg.event.start, arg.event.end, arg.event.title);
+        showModalRead(arg.event.start, arg.event.end, arg.event.title, arg.event.allDay);
         if (document.querySelector('.deleteEventButton').addEventListener('click', () => {
             const data = {
                 idEvent: arg.event.id,
