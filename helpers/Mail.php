@@ -53,5 +53,4 @@ class Mail {
         'X-Mailer: PHP/' . phpversion();
         return (mail($to, $subject, $message, $header)) ? true : false;
     }
-    
 }

@@ -42,7 +42,7 @@
                     // Vérification de l'id
                     if (validationInput($id, REGEX_ID) == 'true' && Client::checkId($id) == true) {
                         // Récupération des informations de l'employé
-                        $client = Client::get($created, $id);
+                        $client = Client::get($created, $id);           
                         $invoicesDisplay = Invoice::get($id);
 
                         // Action effectué si la méthode est en POST
@@ -85,7 +85,7 @@
                                         $error = 'Le fichier est trop volumineux';
                                     }
                                 } else {
-                                    $error = 'L\'extension du fichier n\'est pas autorisée';
+                                    $error = 'L\'extension du fichier doit être en PDF';
                                 }
                             } else {
                                 $error = 'Une erreur est survenue lors de l\'upload du fichier';

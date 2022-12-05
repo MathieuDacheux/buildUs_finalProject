@@ -68,7 +68,7 @@
                     // Si tableau d'erreurs vide
                     if (empty($errorsRegistration)) {
                         // Instanciation de l'objet Client
-                        $client = new Client($lastname, $firstname, $mail, $phone, $siret, $created, $adress);
+                        $client = new Client($firstname, $lastname, $mail, $phone, $siret, $created, $adress);
                         // Vérification de l'unicité du numéro de SIRET
                         if ($client->isExist() == true) {
                             $isExist = true;
