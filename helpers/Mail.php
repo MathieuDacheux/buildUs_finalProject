@@ -10,8 +10,6 @@ class Mail {
      */
     public static function validationAccount (string $email, string $firstname, string $lastname) :bool {
         $to = $email;
-        $domain = $_SERVER['HTTP_HOST'];
-        var_dump($domain);
         $subject = 'Bienvenue sur BuildUs, votre dashboard est prêt !';
         $message = 'Bonjour '.$firstname.' '.$lastname.',
         Votre compte a bien été créé, il vous faut l\'activer en cliquant sur le lien ci-dessous : http://'.$_SERVER['HTTP_HOST'].'/connexion?token='.JWT::createToken().' 

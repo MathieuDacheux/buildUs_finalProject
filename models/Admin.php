@@ -174,12 +174,12 @@ class Admin extends User {
     }
 
     /**
-     * @param int $password
+     * @param string $password
      * @param int $id
      * 
      * @return bool
      */
-    public static function updatePassword (int $password, int $id) :bool {
+    public static function updatePassword (string $password, int $id) :bool {
         $databaseConnection = Database::getConnection();
         $query = $databaseConnection->prepare('UPDATE `users` SET `password` = :password WHERE `Id_users` = :id AND `Id_role` = 1 ;');
         $query->bindValue(':password', $password, PDO::PARAM_STR);
