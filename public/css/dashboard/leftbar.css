@@ -130,7 +130,7 @@
     /* Aside container in desktop */
 
     .containerLeft {
-        width: 175px;
+        width: 200px;
         height: 100vh;
         display: flex;
         flex-direction: column;

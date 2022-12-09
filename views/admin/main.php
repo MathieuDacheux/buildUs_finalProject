@@ -37,7 +37,7 @@
         </div>
         <div class="containerSubject employees">
             <div class="containerTitle flexCenterCenter">
-                <h3><a href="/dashboard/employes">Employées</a></h3>
+                <h3><a href="/dashboard/employes">Employés</a></h3>
             </div>
             <div class="containerContent flexCenterColumn">
                 <?php if (isset($lastEmployees)) : ?>

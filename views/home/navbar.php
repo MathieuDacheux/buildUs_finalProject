@@ -69,6 +69,6 @@
         <!-- Call to action -->
 
         <div class="footerBanner flexCenterCenter">
-            <a href="#features" class="callToAction">Découvrez BuildUs</a>
+            <a href="#pricing" class="callToAction">Découvrez BuildUs</a>
         </div>
     </header>
