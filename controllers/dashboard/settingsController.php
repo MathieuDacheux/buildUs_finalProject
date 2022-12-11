@@ -60,7 +60,7 @@
                             $errorsModify['mail'] = 'Cette adresse mail est déjà utilisée';
                         } else {
                             // Modification des informations de l'admin
-                            Admin::updateProfil($mail, $lastname, $firstname, $created);
+                            Admin::updateProfil($firstname, $lastname, $mail, $created);
                             header('Location: /dashboard');
                             exit();
                         }
