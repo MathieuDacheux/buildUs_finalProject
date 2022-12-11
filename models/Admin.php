@@ -166,11 +166,7 @@ class Admin extends User {
         $query->bindValue(':email', $email, PDO::PARAM_STR);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        if ($query->rowCount() == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($query->rowCount() == 1) ? true : false;
     }
 
     /**
@@ -185,11 +181,7 @@ class Admin extends User {
         $query->bindValue(':password', $password, PDO::PARAM_STR);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        if ($query->rowCount() == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($query->rowCount() == 1) ? true : false;
     }
 
     /**
@@ -204,11 +196,7 @@ class Admin extends User {
         $query->bindValue(':target', $target, PDO::PARAM_INT);
         $query->bindValue(':id', $id, PDO::PARAM_INT);
         $query->execute();
-        if ($query->rowCount() == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($query->rowCount() == 1) ? true : false;
     }
 
     /************************************** **************************************/
