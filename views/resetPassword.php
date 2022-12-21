@@ -21,7 +21,7 @@
             <form method="POST">
                 <?php if (isset($_GET['token'])) : ?>
                     <div class="formInput flexCenterCenterColumn">
-                        <input type="password" placeholder="Mot de passe*" name="password" pattern="<?= REGEX_PASSWORD ?>" required>
+                        <input type="password" placeholder="Mot de passe*" class="passwordReini"name="password" pattern="<?= REGEX_PASSWORD ?>" required>
                         <p class="errorMessage"><?= (array_key_exists('password', $errorForgot)) ? $errorForgot['password'] : '' ?></p>
                         <div class="passwordIndication hidden">
                             <p>Il doit contenir :</p>

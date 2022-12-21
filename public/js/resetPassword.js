@@ -6,7 +6,7 @@
 const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$/;
 
 // Variables Input from DOM
-const inputPassword = document.querySelector('[name=password]');
+const inputPassword = document.querySelector('.passwordReini');
 const inputConfirmPassword = document.querySelector('[name=passwordConfirm]');
 const passwordIndication = document.querySelector('.passwordIndication');
 const buttonSubmit = document.querySelector('.registerButton');
