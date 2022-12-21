@@ -54,11 +54,15 @@
                         $errorsModify['firstname'] = validationInput($firstname, REGEX_NAME);
                     }
                     // Si tableau d'erreurs vide
-                    if (empty($errorsModify)){    
-                        // Modification des informations de l'admin
-                        Admin::updateProfil($firstname, $lastname, $mail, $created);
-                        header('Location: /dashboard/parametres');
-                        exit();
+                    if (empty($errorsModify)){
+                        if (Admin::isExist($mail) == true) {
+                            $errorsModify['mail'] = 'Cette adresse mail est déjà utilisée';
+                        } else {
+                            // Modification des informations de l'admin
+                            Admin::updateProfil($mail, $lastname, $firstname, $created);
+                            header('Location: /dashboard');
+                            exit();
+                        }
                     }
                 }
 
